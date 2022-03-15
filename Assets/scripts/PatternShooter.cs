@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class PatternShooter : MonoBehaviour
 {
     public Transform shotPrefabBig;
-    public float shootingRate = 0.5f;
+    public float shootingRateFast = 0.25f;
+    public float shootingRateAverage = 0.5f;
+    public float shootingRateSlow = 1f;
     private float shootCooldown;
-    private bool canAttack => shootCooldown <= 0f;
 
-    public ShootingPattern shootingPattern;
+    public ShootingPattern currentShootingPattern;
     public enum ShootingPattern
     {
         Random,
@@ -22,6 +23,7 @@ public class PatternShooter : MonoBehaviour
     private void Start()
     {
         shootCooldown = 0f;
+        currentShootingPattern = ShootingPattern.MachineGun;
     }
 
     // Update is called once per frame
@@ -30,12 +32,31 @@ public class PatternShooter : MonoBehaviour
         shootCooldown -= Time.deltaTime;
         if(shootCooldown <= 0f)
         {
-            shootCooldown = shootingRate;
+            AttackByCurrentPattern();
+        }
+    }
+
+    private void AttackByCurrentPattern()
+    {
+        if (currentShootingPattern == ShootingPattern.Random)
+        {
+            shootCooldown = shootingRateAverage;
 
             var projType = (Projectile.Type)Random.Range(0, (int)Projectile.Type.FastLine);
-            var shotTransform = Instantiate(shotPrefabBig, transform.position, new Quaternion(), gameObject.transform) as Transform;
-
-            shotTransform.GetComponent<Projectile>().SetVelocityByType(projType);
+            FireSingleShot(projType);
         }
+        else if (currentShootingPattern == ShootingPattern.MachineGun)
+        {
+            shootCooldown = shootingRateFast;
+            var projType = Projectile.Type.FastLine;
+
+            FireSingleShot(projType);
+        }
+    }
+
+    private void FireSingleShot(Projectile.Type projType)
+    {
+        var shotTransform = Instantiate(shotPrefabBig, transform.position, new Quaternion(), gameObject.transform) as Transform;
+        shotTransform.GetComponent<Projectile>().SetVelocityByType(projType);
     }
 }
