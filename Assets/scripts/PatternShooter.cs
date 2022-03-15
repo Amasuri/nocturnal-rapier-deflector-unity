@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PatternShooter : MonoBehaviour
 {
+    public Transform shotPrefabSmall;
+    public Transform shotPrefabNormal;
     public Transform shotPrefabBig;
+
     public float shootingRateFast = 0.25f;
     public float shootingRateAverage = 0.5f;
     public float shootingRateSlow = 1f;
@@ -56,7 +59,16 @@ public class PatternShooter : MonoBehaviour
 
     private void FireSingleShot(Projectile.Type projType)
     {
-        var shotTransform = Instantiate(shotPrefabBig, transform.position, new Quaternion(), gameObject.transform) as Transform;
+        //Selecting shot from three different types, 33% chance each
+        var rand = Random.Range(0, 100);
+        var shotPrefab = shotPrefabBig;
+        if (rand <= 33)
+            shotPrefab = shotPrefabNormal;
+        else if (rand > 33 && rand <= 66)
+            shotPrefab = shotPrefabSmall;
+
+        //Spawning shot instance on field w/ tying it to parent for scale
+        var shotTransform = Instantiate(shotPrefab, transform.position, new Quaternion(), gameObject.transform) as Transform;
         shotTransform.GetComponent<Projectile>().SetVelocityByType(projType);
     }
 }

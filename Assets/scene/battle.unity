@@ -1044,9 +1044,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b206f51158b1b48be340ab3b57debb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotPrefabSmall: {fileID: 669061332708072213, guid: 007ade2bfa01ce842a210a47c1b09015, type: 3}
+  shotPrefabNormal: {fileID: 669061332708072213, guid: 21da92451e507aa4b8f7d7752292ace1, type: 3}
   shotPrefabBig: {fileID: 669061332708072213, guid: bc66e6cc0238ba248b79a47d306b0481, type: 3}
-  shootingRate: 0.5
-  shootingPattern: 0
+  shootingRateFast: 0.25
+  shootingRateAverage: 0.5
+  shootingRateSlow: 1
+  currentShootingPattern: 0
 --- !u!1 &2032663548
 GameObject:
   m_ObjectHideFlags: 0
