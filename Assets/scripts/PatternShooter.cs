@@ -26,7 +26,7 @@ public class PatternShooter : MonoBehaviour
     private void Start()
     {
         shootCooldown = 0f;
-        currentShootingPattern = ShootingPattern.MachineGun;
+        currentShootingPattern = ShootingPattern.Random;
     }
 
     // Update is called once per frame
