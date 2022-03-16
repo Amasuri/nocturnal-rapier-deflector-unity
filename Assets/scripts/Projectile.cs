@@ -72,7 +72,8 @@ public class Projectile : MonoBehaviour
             //Bounciness is already set via PhysicsMaterial2D, so what's left is apply mouse vector
             var resultingRapierVelocity = rapierVelocity * MouseBouncinessModifier;
             rb.AddForce(resultingRapierVelocity);
-            Debug.Log(resultingRapierVelocity);
+
+            //Debug.Log(resultingRapierVelocity);
 
             if (UnityEngine.Random.Range(0, 100) <= 50)
                 hit1.Play();
