@@ -5,11 +5,44 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
+    public RelativePosition relativePosition = RelativePosition.Center;
+    public enum RelativePosition
+    {
+        Center,
+        Left,
+        Right
+    }
+
     public float ScrollSpeed = 1f;
+
+    private float lBound;
+    private float rBound;
 
     // Start is called before the first frame update
     private void Start()
     {
+        var img = gameObject.GetComponent<SpriteRenderer>();
+
+        lBound = 0f;
+        rBound = img.bounds.size.x;
+
+        if (relativePosition == RelativePosition.Center)
+        {
+            lBound = 0f;
+            rBound = img.bounds.size.x;
+        }
+        else if (relativePosition == RelativePosition.Left)
+        {
+            lBound = -img.bounds.size.x;
+            rBound = 0f;
+        }
+        else if (relativePosition == RelativePosition.Right)
+        {
+            lBound = img.bounds.size.x;
+            rBound = img.bounds.size.x * 2;
+        }
+
+        transform.position = new Vector2(lBound, transform.position.y);
     }
 
     // Update is called once per frame
@@ -19,10 +52,9 @@ public class BackgroundScroll : MonoBehaviour
         var movement = new Vector2(ScrollSpeed, 0) * Time.deltaTime;
         transform.Translate(movement);
 
-        var img = gameObject.GetComponent<SpriteRenderer>();
-        if (transform.position.x > img.bounds.size.x)
-            transform.position = new Vector2(0, transform.position.y);
+        if (transform.position.x > rBound)
+            transform.position = new Vector2(lBound, transform.position.y);
 
-        Debug.Log(Convert.ToString(transform.position.x) + " " + Convert.ToString(img.size.x));
+        //Debug.Log(Convert.ToString(transform.position.x) + " " + Convert.ToString(img.size.x));
     }
 }
