@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-    public float ScrollSpeed = 0.5f;
+    public float ScrollSpeed = 1f;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,7 +20,7 @@ public class BackgroundScroll : MonoBehaviour
         transform.Translate(movement);
 
         var img = gameObject.GetComponent<SpriteRenderer>();
-        if (transform.position.x > img.size.x)
+        if (transform.position.x > img.bounds.size.x)
             transform.position = new Vector2(0, transform.position.y);
 
         Debug.Log(Convert.ToString(transform.position.x) + " " + Convert.ToString(img.size.x));
