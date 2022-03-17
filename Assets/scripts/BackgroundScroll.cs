@@ -13,7 +13,7 @@ public class BackgroundScroll : MonoBehaviour
         Right
     }
 
-    public float ScrollSpeed = 1f;
+    public float ScrollSpeed = 0.15f;
 
     private float lBound;
     private float rBound;

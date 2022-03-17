@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     /// <summary>
     /// Default mouse velocity is very tiny to have any effect on the projectiles
     /// </summary>
-    private const int MouseBouncinessModifier = 3000;
+    private const int MouseBouncinessModifier = 500;
     private const float NoCollideMaxMs = 0.1f;
     private float NoCollideTimer;
 
@@ -29,10 +29,10 @@ public class Projectile : MonoBehaviour
 
     public static List<Vector2> velocities = new List<Vector2>
     {
-        new Vector2(14, 2), //hits
-        new Vector2(3, 16), //hits
-        new Vector2(7, 7), //hits
-        new Vector2(17, 2), //hits
+        new Vector2(2.3f, 0.3f), //hits
+        new Vector2(0.5f, 2.65f), //hits
+        new Vector2(1.15f, 1.15f), //hits
+        new Vector2(2.8f, 0.3f), //hits
     };
 
     // Start is called before the first frame update
