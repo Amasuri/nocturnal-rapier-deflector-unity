@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextPool : MonoBehaviour
+public static class TextPool
 {
     public enum SceneType
     {
