@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static TextPool;
 
 public class TextScene : MonoBehaviour
 {
     private int MaxTextId => CurrentText.Length - 1;
     private int CurrentTextInt = 0;
-    public string[] CurrentText = { };
+    private string[] CurrentText = { };
+    private string FormattedLine = "";
     public SceneType CurrentSceneType;
+    private float CurrentTextMs = 0f;
 
     public TextMeshProUGUI textTerminal;
 
@@ -27,21 +30,27 @@ public class TextScene : MonoBehaviour
         if (MaxTextId <= 0)
             return;
 
+        UpdateTextLine();
+
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             CurrentTextInt++;
-            UpdateTextLine();
+            CurrentTextMs = 0;
         }
 
         if(CurrentTextInt >= MaxTextId)
         {
             CurrentTextInt = MaxTextId;
+            SceneManager.LoadScene("battle");
+            SceneManager.UnloadSceneAsync("dialogue");
         }
     }
 
     private void UpdateTextLine()
     {
-        textTerminal.text = CurrentText[CurrentTextInt];
+        CurrentTextMs += Time.deltaTime * 1000;
+        FormattedLine = TextUtils.GetTimeCharSplitFittedLine(CurrentText[CurrentTextInt], 9999, (int)CurrentTextMs);
+        textTerminal.text = FormattedLine;
     }
 
     public void InitNewScene(SceneType sceneType)
