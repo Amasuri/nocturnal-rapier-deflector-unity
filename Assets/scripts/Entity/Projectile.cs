@@ -13,10 +13,11 @@ public class Projectile : MonoBehaviour
     /// Default mouse velocity is very tiny to have any effect on the projectiles
     /// </summary>
     private const int MouseBouncinessModifier = 500;
-    private const float NoCollideMaxMs = 0.1f;
-    private float NoCollideTimer;
+    private const float NoStartCollideMaxSec = 0.1f;
+    private float NoStartCollideTimer;
 
-    public bool HitOccured { get; private set; }
+    public bool AlreadyHitSomething { get; private set; }
+    public bool StartTimerAlreadyPassed => NoStartCollideTimer <= 0f;
 
     public Type type;
     public enum Type
@@ -40,9 +41,9 @@ public class Projectile : MonoBehaviour
     {
         //Auto-destroy after 20 seconds
         Destroy(gameObject, 20);
-        NoCollideTimer = NoCollideMaxMs;
+        NoStartCollideTimer = NoStartCollideMaxSec;
 
-        HitOccured = false;
+        AlreadyHitSomething = false;
 
         UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
 
@@ -58,7 +59,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Tiny window ensures no self-score when the witch spawns projectiles inside itself
-        if (NoCollideTimer > 0f)
+        if (NoStartCollideTimer > 0f)
         {
             return;
         }
@@ -86,9 +87,9 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         //Tiny window ensures no self-score when the witch spawns projectiles inside itself
-        if (NoCollideTimer > 0f)
+        if (NoStartCollideTimer > 0f)
         {
-            NoCollideTimer -= Time.deltaTime;
+            NoStartCollideTimer -= Time.deltaTime;
         }
 
         //this.gameObject.transform.Rotate(0, 0, 1f);
@@ -96,7 +97,7 @@ public class Projectile : MonoBehaviour
 
     public void DoHit()
     {
-        HitOccured = true;
+        AlreadyHitSomething = true;
     }
 
     public void SetVelocityByType(Type vel)
