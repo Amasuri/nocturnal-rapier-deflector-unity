@@ -16,6 +16,21 @@ public class TextScene : MonoBehaviour
 
     public TextMeshProUGUI textTerminal;
 
+    public static CurrentActor currentActor;
+    public static CurrentActorState currentActorState;
+
+    public enum CurrentActor
+    {
+        Witch,
+        Rapier
+    }
+    public enum CurrentActorState
+    {
+        Normal,
+        Talking,
+        Shocked
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -27,6 +42,7 @@ public class TextScene : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //Text related
         if (MaxTextId <= 0)
             return;
 
@@ -38,7 +54,12 @@ public class TextScene : MonoBehaviour
             CurrentTextMs = 0;
         }
 
-        if(CurrentTextInt >= MaxTextId)
+        //Text state related
+        currentActor = GetCurrentActor();
+        currentActorState = GetCurrentActorState();
+
+        //Scene load
+        if (CurrentTextInt >= MaxTextId)
         {
             CurrentTextInt = MaxTextId;
             SceneManager.LoadScene("battle");
@@ -57,5 +78,22 @@ public class TextScene : MonoBehaviour
     {
         CurrentText = TextPool.GetPreBattleDialogue(sceneType);
         CurrentTextInt = 0;
+    }
+
+    public CurrentActorState GetCurrentActorState()
+    {
+        //On the left is raw data of current line. On the right is formatted & time-encoded speech (which means, cut mid-sentence if actor is speaking)
+        if (CurrentText[CurrentTextInt].Length > FormattedLine.Length)
+            return CurrentActorState.Talking;
+        else
+            return CurrentActorState.Normal;
+    }
+
+    public CurrentActor GetCurrentActor()
+    {
+        if (CurrentText[CurrentTextInt][0] == 'W')
+            return CurrentActor.Witch;
+        else
+            return CurrentActor.Rapier;
     }
 }
