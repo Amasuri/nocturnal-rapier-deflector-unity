@@ -11,8 +11,8 @@ public class ScoreCounter : MonoBehaviour
     }
     public EntityType entityType;
     public int Hits { get; private set; }
-    static public int WitchHits = 0;
-    static public int RapierHits = 0;
+    static public int WitchTookHits = 0;
+    static public int RapierTookHits = 0;
 
     public AudioSource unsheathe;
     public Sprite TookHit;
@@ -50,9 +50,9 @@ public class ScoreCounter : MonoBehaviour
         }
 
         if (entityType == EntityType.Player)
-            RapierHits = Hits;
+            RapierTookHits = Hits;
         else if (entityType == EntityType.Witch)
-            WitchHits = Hits;
+            WitchTookHits = Hits;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -66,5 +66,27 @@ public class ScoreCounter : MonoBehaviour
                 HitStunMsLeft = MaxHitstun;
                 render.sprite = TookHit;
             }
+    }
+
+    /// <summary>
+    /// The logic as follows: player must score at least a third of the points witch has. < 1 is player loosing, >= 1 is player winning.
+    /// </summary>
+    static public float GetScoreRatio()
+    {
+        float ret = 3 / ((float)RapierTookHits / (float)WitchTookHits);
+        if (float.IsNaN(ret))
+            return 0f;
+        else if (float.IsInfinity(ret))
+            return 99f;
+        else
+            return ret;
+    }
+
+    /// <summary>
+    /// The logic as follows: player must score at least a third of the points witch has. < 1 is player loosing, >= 1 is player winning.
+    /// </summary>
+    static public bool GetIsPlayerWinning()
+    {
+        return GetScoreRatio() >= 1f ? true : false;
     }
 }

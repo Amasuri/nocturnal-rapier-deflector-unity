@@ -25,12 +25,24 @@ public class BattleControl : MonoBehaviour
         TimeLeftSec -= Time.deltaTime;
         if(TimeLeftSec <= 0f)
         {
-            //todo
+            if(ScoreCounter.GetIsPlayerWinning())
+            {
+                //todo
+            }
+            else
+            {
+                //todo
+            }
         }
 
+        //Time & Score line
         string minutes = ((int)TimeLeftSec / 60).ToString();
         string seconds = ((int)TimeLeftSec % 60).ToString();
-        descTextTerminal.text = string.Format("Witch: {0}    {2}:{3}    You: {1}", ScoreCounter.WitchHits, ScoreCounter.RapierHits, minutes, seconds);
+        descTextTerminal.text = string.Format("Witch: {0}    {2}:{3}    You: {1}", ScoreCounter.WitchTookHits, ScoreCounter.RapierTookHits, minutes, seconds);
+
+        //Winning conditions line
+        var append = ScoreCounter.GetIsPlayerWinning() ? "Winning!" : "Loosing...";
+        descTextTerminal.text += string.Format("\nRatio: {0} {1}", ScoreCounter.GetScoreRatio().ToString("0.00"), append);
     }
 
     public void ResetTimer(bool isBoss = false)
