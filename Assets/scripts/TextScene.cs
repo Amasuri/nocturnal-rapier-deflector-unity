@@ -11,7 +11,7 @@ public class TextScene : MonoBehaviour
     private int CurrentTextInt = 0;
     private string[] CurrentText = { };
     private string FormattedLine = "";
-    public SceneType CurrentSceneType;
+    public static SceneType CurrentSceneType = SceneType.First;
     private float CurrentTextMs = 0f;
 
     public TextMeshProUGUI textTerminal;
@@ -34,7 +34,7 @@ public class TextScene : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        InitNewScene(SceneType.First);
+        InitNewScene(CurrentSceneType);
         textTerminal = gameObject.GetComponent<TextMeshProUGUI>();
         UpdateTextLine();
     }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleControl : MonoBehaviour
 {
@@ -11,6 +12,18 @@ public class BattleControl : MonoBehaviour
     public float TimeLeftSec { get; private set; }
 
     public TextMeshProUGUI descTextTerminal;
+
+    /// <summary>
+    /// Various battles has differing: 1. attacks patterns 2. backgrounds 3. music 4. time limits
+    /// </summary>
+    public static BattleType CurrentBattleType = BattleType.First;
+
+    public enum BattleType
+    {
+        First,
+        Second,
+        ThirdBoss
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -27,7 +40,14 @@ public class BattleControl : MonoBehaviour
         {
             if(ScoreCounter.GetIsPlayerWinning())
             {
-                //todo
+                if(TextScene.CurrentSceneType == TextPool.SceneType.First || TextScene.CurrentSceneType == TextPool.SceneType.Second || TextScene.CurrentSceneType == TextPool.SceneType.ThirdBoss)
+                    TextScene.CurrentSceneType++;
+
+                if (BattleControl.CurrentBattleType < BattleType.ThirdBoss)
+                    BattleControl.CurrentBattleType++;
+
+                SceneManager.LoadScene("dialogue");
+                SceneManager.UnloadSceneAsync("battle");
             }
             else
             {
@@ -45,8 +65,10 @@ public class BattleControl : MonoBehaviour
         descTextTerminal.text += string.Format("\nRatio: {0} {1}", ScoreCounter.GetScoreRatio().ToString("0.00"), append);
     }
 
-    public void ResetTimer(bool isBoss = false)
+    public void ResetTimer()
     {
+        var isBoss = CurrentBattleType == BattleType.ThirdBoss ? true : false;
+
         TimeLeftSec = isBoss ? TimeLimitBossSec : TimeLimitSec;
     }
 }

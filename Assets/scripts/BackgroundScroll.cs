@@ -23,6 +23,9 @@ public class BackgroundScroll : MonoBehaviour
     {
         var img = gameObject.GetComponent<SpriteRenderer>();
 
+        //Get different image if loading on different battle scene
+        //img.sprite = Resources.Load<Sprite>("sprite/bg/background2");
+
         lBound = 0f;
         rBound = img.bounds.size.x;
 
