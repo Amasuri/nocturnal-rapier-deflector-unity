@@ -12,6 +12,11 @@ public class TextScene : MonoBehaviour
     private string[] CurrentText = { };
     private string FormattedLine = "";
     public static SceneType CurrentSceneType = SceneType.First;
+
+    /// <summary>
+    /// In case of other scenes, player will be able get back on track with their playthrought
+    /// </summary>
+    public static SceneType LastValidSceneType = SceneType.First;
     private float CurrentTextMs = 0f;
 
     public TextMeshProUGUI textTerminal;
@@ -61,17 +66,46 @@ public class TextScene : MonoBehaviour
         //Scene load
         if (CurrentTextInt >= MaxTextId)
         {
-            CurrentTextInt = MaxTextId;
-            SceneManager.LoadScene("battle");
-            SceneManager.UnloadSceneAsync("dialogue");
+            CorrectTextIDValue();
+
+            if (IsASceneBeforeBattle(CurrentSceneType))
+            {
+                SceneManager.LoadScene("battle");
+                SceneManager.UnloadSceneAsync("dialogue");
+            }
+            else if (CurrentSceneType == SceneType.PlayerLost)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    CurrentSceneType = LastValidSceneType;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+                else if (Input.GetKeyDown(KeyCode.Space))
+                    ;
+            }
+        }
+
+        //In case of other scenes, player will be able get back on track with their playthrought
+        if(IsASceneBeforeBattle(CurrentSceneType))
+        {
+            LastValidSceneType = CurrentSceneType;
         }
     }
 
     private void UpdateTextLine()
     {
+        //Ideally it's corrected in Update cycle. But idk, sometimes Unity doesn't do that. Sometimes the cycle is left with an error before the correction.
+        CorrectTextIDValue();
+
         CurrentTextMs += Time.deltaTime * 1000;
         FormattedLine = TextUtils.GetTimeCharSplitFittedLine(CurrentText[CurrentTextInt], 9999, (int)CurrentTextMs);
         textTerminal.text = FormattedLine;
+    }
+
+    private void CorrectTextIDValue()
+    {
+        if (CurrentTextInt >= MaxTextId)
+            CurrentTextInt = MaxTextId;
     }
 
     public void InitNewScene(SceneType sceneType)
@@ -95,5 +129,10 @@ public class TextScene : MonoBehaviour
             return CurrentActor.Witch;
         else
             return CurrentActor.Rapier;
+    }
+
+    static public bool IsASceneBeforeBattle(SceneType scene)
+    {
+        return scene == SceneType.First || scene == SceneType.Second || scene == SceneType.ThirdBoss;
     }
 }

@@ -10,7 +10,8 @@ public static class TextPool
         First,
         Second,
         ThirdBoss,
-        EndGame,
+        WonGame,
+        PlayerLost,
     }
 
     static public string[] GetPreBattleDialogue(SceneType type)
@@ -82,7 +83,7 @@ public static class TextPool
                     "R: Time to unsheathe my rapier!",
 };
 
-            case SceneType.EndGame:
+            case SceneType.WonGame:
                 return new string[]
 {
                     "R: ...",
@@ -117,14 +118,9 @@ public static class TextPool
                     "W: Thank you..",
                     "W: Thank you so much!",
 };
-        }
 
-        return null;
-    }
-
-    static public string[] GetGameoverDialogue()
-    {
-        return new string[]
+            case SceneType.PlayerLost:
+                return new string[]
 {
             "R: ..She is really strong.",
             "R: But I can do better.",
@@ -132,5 +128,8 @@ public static class TextPool
             "R: Let me take my chance!",
             "R: (Continue? Enter - yes, Backspace - no)",
 };
+        }
+
+        return null;
     }
 }

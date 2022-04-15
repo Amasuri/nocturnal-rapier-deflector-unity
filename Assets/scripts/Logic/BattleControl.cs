@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class BattleControl : MonoBehaviour
 {
-    private const float TimeLimitSec = 90;
-    private const float TimeLimitBossSec = 120;
+    private const float TimeLimitSec = 90 / 10;
+    private const float TimeLimitBossSec = 120 / 10;
     public float TimeLeftSec { get; private set; }
 
     public TextMeshProUGUI descTextTerminal;
@@ -44,14 +44,17 @@ public class BattleControl : MonoBehaviour
                     TextScene.CurrentSceneType++;
 
                 if (BattleControl.CurrentBattleType < BattleType.ThirdBoss)
-                    BattleControl.CurrentBattleType++;
+                    UpdateCurrentBattleTypeToSceneType();
 
                 SceneManager.LoadScene("dialogue");
                 SceneManager.UnloadSceneAsync("battle");
             }
             else
             {
-                //todo
+                TextScene.CurrentSceneType = TextPool.SceneType.PlayerLost;
+
+                SceneManager.LoadScene("dialogue");
+                SceneManager.UnloadSceneAsync("battle");
             }
         }
 
@@ -63,6 +66,16 @@ public class BattleControl : MonoBehaviour
         //Winning conditions line
         var append = ScoreCounter.GetIsPlayerWinning() ? "Winning!" : "Loosing...";
         descTextTerminal.text += string.Format("\nRatio: {0} {1}", ScoreCounter.GetScoreRatio().ToString("0.00"), append);
+    }
+
+    private static void UpdateCurrentBattleTypeToSceneType()
+    {
+        if (TextScene.CurrentSceneType == TextPool.SceneType.First)
+            BattleControl.CurrentBattleType = BattleType.First;
+        else if (TextScene.CurrentSceneType == TextPool.SceneType.Second)
+            BattleControl.CurrentBattleType = BattleType.Second;
+        else if (TextScene.CurrentSceneType == TextPool.SceneType.ThirdBoss)
+            BattleControl.CurrentBattleType = BattleType.ThirdBoss;
     }
 
     public void ResetTimer()
