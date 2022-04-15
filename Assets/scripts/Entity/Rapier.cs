@@ -11,6 +11,11 @@ public class Rapier : MonoBehaviour
     private Vector3 oldPos;
     private Vector3 newPos => this.gameObject.transform.position;
 
+    private int minXpos => Screen.width / 2;
+    private int maxXpos => Screen.width;
+    private int minYpos => 0;
+    private int maxYpos => Screen.height;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -34,6 +39,8 @@ public class Rapier : MonoBehaviour
     private void FixedUpdate()
     {
         var mPos = Input.mousePosition;
+        mPos.x = Mathf.Clamp(mPos.x, minXpos, maxXpos);
+
         var camPos = Camera.main.ScreenToWorldPoint(new Vector3(mPos.x, mPos.y, Camera.main.nearClipPlane));
 
         this.oldPos = this.gameObject.transform.position;

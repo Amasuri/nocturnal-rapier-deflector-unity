@@ -45,7 +45,7 @@ public class ScreenFadeoutController : MonoBehaviour
         currentAlpha -= rateAlpha * Time.deltaTime;
         if (currentAlpha < 0f)
             currentAlpha = minAlpha;
-        float closest = validAlpha.OrderBy(f => Mathf.Abs(currentAlpha - f)).First();
+        float closest = validAlpha.OrderBy(x => Mathf.Abs(currentAlpha - x)).First();
         return closest;
     }
 }
