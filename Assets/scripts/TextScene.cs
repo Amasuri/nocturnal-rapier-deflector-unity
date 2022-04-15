@@ -97,6 +97,10 @@ public class TextScene : MonoBehaviour
         //Ideally it's corrected in Update cycle. But idk, sometimes Unity doesn't do that. Sometimes the cycle is left with an error before the correction.
         CorrectTextIDValue();
 
+        //Wait for fade in finish
+        if (ScreenFadeoutController.IsCurrentlyFading)
+            return;
+
         CurrentTextMs += Time.deltaTime * 1000;
         FormattedLine = TextUtils.GetTimeCharSplitFittedLine(CurrentText[CurrentTextInt], 9999, (int)CurrentTextMs);
         textTerminal.text = FormattedLine;
@@ -117,7 +121,7 @@ public class TextScene : MonoBehaviour
     public CurrentActorState GetCurrentActorState()
     {
         //On the left is raw data of current line. On the right is formatted & time-encoded speech (which means, cut mid-sentence if actor is speaking)
-        if (CurrentText[CurrentTextInt].Length > FormattedLine.Length)
+        if (CurrentText[CurrentTextInt].Length > FormattedLine.Length && !ScreenFadeoutController.IsCurrentlyFading)
             return CurrentActorState.Talking;
         else
             return CurrentActorState.Normal;
