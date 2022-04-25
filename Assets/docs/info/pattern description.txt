@@ -2,10 +2,11 @@
 Easiest pattern. Codename is DIFFERENTIATING (not random, that would be hard)
 Logic:
 1. Attack with direct hits, 5 slow hits.
-2. Attack in arc, 3 slow hits.
-3. Wait a second
-4. Explosion (three arc hits)
-5. Wait a couple of seconds, and repeat
+2. Attack in half-arc, 4 slow hits.
+3. Attack in arc, 3 slow hits.
+4. Wait a second
+5. Explosion (three arc hits)
+6. Wait a couple of seconds, and repeat
 
 ===Second Battle===
 

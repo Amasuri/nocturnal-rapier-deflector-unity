@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class BattleControl : MonoBehaviour
 {
-    private const float TimeLimitSec = 90 / 10;
-    private const float TimeLimitBossSec = 120 / 10;
+    private const float TimeLimitSec = 90;
+    private const float TimeLimitBossSec = 120;
     public float TimeLeftSec { get; private set; }
 
     public TextMeshProUGUI descTextTerminal;

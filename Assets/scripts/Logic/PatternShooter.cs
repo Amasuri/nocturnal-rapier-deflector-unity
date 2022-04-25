@@ -13,20 +13,49 @@ public class PatternShooter : MonoBehaviour
     public float shootingRateAverage = 0.5f;
     public float shootingRateSlow = 1f;
     private float shootCooldown;
+    private int shotsOnCurrentSmallPattern = 0;
 
-    public ShootingPattern currentShootingPattern;
-    public enum ShootingPattern
+    private SmallShootingPattern currentSmallShootingPattern;
+    public BattleShootingPattern currentBattleShootingPattern;
+    public enum SmallShootingPattern
     {
-        Random,
+        SlowDirect,
+        SlowHalfArc,
+        SlowArc,
+        Explosion,
+        SmallWait,
+        MediumWait,
+
         MachineGun,
-        Differentiating,
+    }
+
+    public enum BattleShootingPattern
+    {
+        FirstBattleEasy,
+        SecondBattleMedium,
+        ThirdBattleHard
     }
 
     // Start is called before the first frame update
     private void Start()
     {
         shootCooldown = 0f;
-        currentShootingPattern = ShootingPattern.Random;
+
+        if (BattleControl.CurrentBattleType == BattleControl.BattleType.First)
+        {
+            currentBattleShootingPattern = BattleShootingPattern.FirstBattleEasy;
+            currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
+        }
+        else if (BattleControl.CurrentBattleType == BattleControl.BattleType.Second)
+        {
+            currentBattleShootingPattern = BattleShootingPattern.SecondBattleMedium;
+            currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
+        }
+        else if (BattleControl.CurrentBattleType == BattleControl.BattleType.ThirdBoss)
+        {
+            currentBattleShootingPattern = BattleShootingPattern.ThirdBattleHard;
+            currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
+        }
     }
 
     // Update is called once per frame
@@ -35,20 +64,53 @@ public class PatternShooter : MonoBehaviour
         shootCooldown -= Time.deltaTime;
         if(shootCooldown <= 0f)
         {
-            AttackByCurrentPattern();
+            if (currentBattleShootingPattern == BattleShootingPattern.FirstBattleEasy)
+            {
+                AttackByCurrentSmallPattern();
+
+                if(currentSmallShootingPattern == SmallShootingPattern.SlowDirect && shotsOnCurrentSmallPattern >= 5)
+                {
+                    shotsOnCurrentSmallPattern = 0;
+                    currentSmallShootingPattern = SmallShootingPattern.SlowHalfArc;
+                }
+                else if (currentSmallShootingPattern == SmallShootingPattern.SlowHalfArc && shotsOnCurrentSmallPattern >= 4)
+                {
+                    shotsOnCurrentSmallPattern = 0;
+                    currentSmallShootingPattern = SmallShootingPattern.SlowArc;
+                }
+                else if (currentSmallShootingPattern == SmallShootingPattern.SlowArc && shotsOnCurrentSmallPattern >= 3)
+                {
+                    shotsOnCurrentSmallPattern = 0;
+                    currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
+                }
+            }
         }
     }
 
-    private void AttackByCurrentPattern()
+    private void AttackByCurrentSmallPattern()
     {
-        if (currentShootingPattern == ShootingPattern.Random)
+        if (currentSmallShootingPattern == SmallShootingPattern.SlowDirect)
         {
-            shootCooldown = shootingRateAverage;
+            shootCooldown = shootingRateSlow;
+            var projType = Projectile.Type.Line;
 
-            var projType = (Projectile.Type)Random.Range(0, (int)Projectile.Type.FastLine);
             FireSingleShot(projType);
         }
-        else if (currentShootingPattern == ShootingPattern.MachineGun)
+        else if (currentSmallShootingPattern == SmallShootingPattern.SlowHalfArc)
+        {
+            shootCooldown = shootingRateSlow;
+            var projType = Projectile.Type.Curved;
+
+            FireSingleShot(projType);
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.SlowArc)
+        {
+            shootCooldown = shootingRateSlow;
+            var projType = Projectile.Type.Mortar;
+
+            FireSingleShot(projType);
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.MachineGun)
         {
             shootCooldown = shootingRateFast;
             var projType = Projectile.Type.FastLine;
@@ -70,5 +132,8 @@ public class PatternShooter : MonoBehaviour
         //Spawning shot instance on field w/ tying it to parent for scale
         var shotTransform = Instantiate(shotPrefab, transform.position, new Quaternion(), gameObject.transform) as Transform;
         shotTransform.GetComponent<Projectile>().SetVelocityByType(projType);
+
+        //Update counter for patterns
+        shotsOnCurrentSmallPattern++;
     }
 }
