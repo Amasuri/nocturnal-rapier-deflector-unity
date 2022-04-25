@@ -100,9 +100,11 @@ public class Projectile : MonoBehaviour
         AlreadyHitSomething = true;
     }
 
-    public void SetVelocityByType(Type vel)
+    public void SetVelocityByType(Type vel, bool smallRandomize = false)
     {
         this.type = vel;
         rb.velocity = velocities[(int)type];
+        if (smallRandomize)
+            rb.velocity += new Vector2(UnityEngine.Random.Range(-0.2f, +0.2f), UnityEngine.Random.Range(-0.2f, +0.2f));
     }
 }

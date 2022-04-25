@@ -2,7 +2,7 @@
 ------------NOW----------------
 
 --Different attack patterns in battles. Refer to the OG, but extend it. Left:
-----Stage one
+----(done) Stage one
 ----Stage two
 ----Stage three
 

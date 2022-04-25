@@ -9,6 +9,8 @@ public class PatternShooter : MonoBehaviour
     public Transform shotPrefabNormal;
     public Transform shotPrefabBig;
 
+    public AudioSource explosionSound;
+
     public float shootingRateFast = 0.25f;
     public float shootingRateAverage = 0.5f;
     public float shootingRateSlow = 1f;
@@ -40,6 +42,7 @@ public class PatternShooter : MonoBehaviour
     private void Start()
     {
         shootCooldown = 0f;
+        explosionSound = GetComponents<AudioSource>()[0];
 
         if (BattleControl.CurrentBattleType == BattleControl.BattleType.First)
         {
@@ -66,24 +69,52 @@ public class PatternShooter : MonoBehaviour
         {
             if (currentBattleShootingPattern == BattleShootingPattern.FirstBattleEasy)
             {
-                AttackByCurrentSmallPattern();
-
-                if(currentSmallShootingPattern == SmallShootingPattern.SlowDirect && shotsOnCurrentSmallPattern >= 5)
-                {
-                    shotsOnCurrentSmallPattern = 0;
-                    currentSmallShootingPattern = SmallShootingPattern.SlowHalfArc;
-                }
-                else if (currentSmallShootingPattern == SmallShootingPattern.SlowHalfArc && shotsOnCurrentSmallPattern >= 4)
-                {
-                    shotsOnCurrentSmallPattern = 0;
-                    currentSmallShootingPattern = SmallShootingPattern.SlowArc;
-                }
-                else if (currentSmallShootingPattern == SmallShootingPattern.SlowArc && shotsOnCurrentSmallPattern >= 3)
-                {
-                    shotsOnCurrentSmallPattern = 0;
-                    currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
-                }
+                ActFirstBattlePattern();
             }
+            else if (currentBattleShootingPattern == BattleShootingPattern.SecondBattleMedium)
+            {
+                ActFirstBattlePattern();
+            }
+            else if (currentBattleShootingPattern == BattleShootingPattern.ThirdBattleHard)
+            {
+                ActFirstBattlePattern();
+            }
+        }
+    }
+
+    private void ActFirstBattlePattern()
+    {
+        AttackByCurrentSmallPattern();
+
+        if (currentSmallShootingPattern == SmallShootingPattern.SlowDirect && shotsOnCurrentSmallPattern >= 5)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.SlowHalfArc;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.SlowHalfArc && shotsOnCurrentSmallPattern >= 4)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.SlowArc;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.SlowArc && shotsOnCurrentSmallPattern >= 3)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.SmallWait;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.SmallWait && shotsOnCurrentSmallPattern >= 1)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.Explosion;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.Explosion && shotsOnCurrentSmallPattern >= 3)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.MediumWait;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.MediumWait && shotsOnCurrentSmallPattern >= 2)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
         }
     }
 
@@ -110,6 +141,24 @@ public class PatternShooter : MonoBehaviour
 
             FireSingleShot(projType);
         }
+        else if (currentSmallShootingPattern == SmallShootingPattern.SmallWait || currentSmallShootingPattern == SmallShootingPattern.MediumWait)
+        {
+            shootCooldown = shootingRateSlow;
+
+            //No projectiles, simply wait
+            shotsOnCurrentSmallPattern++;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.Explosion)
+        {
+            shootCooldown = shootingRateSlow;
+            var projType = Projectile.Type.Mortar;
+
+            explosionSound.Play();
+
+            FireSingleShot(projType, explosionRandomize: true);
+            FireSingleShot(projType, explosionRandomize: true);
+            FireSingleShot(projType, explosionRandomize: true);
+        }
         else if (currentSmallShootingPattern == SmallShootingPattern.MachineGun)
         {
             shootCooldown = shootingRateFast;
@@ -119,7 +168,7 @@ public class PatternShooter : MonoBehaviour
         }
     }
 
-    private void FireSingleShot(Projectile.Type projType)
+    private void FireSingleShot(Projectile.Type projType, bool explosionRandomize = false)
     {
         //Selecting shot from three different types, 33% chance each
         var rand = Random.Range(0, 100);
@@ -131,7 +180,7 @@ public class PatternShooter : MonoBehaviour
 
         //Spawning shot instance on field w/ tying it to parent for scale
         var shotTransform = Instantiate(shotPrefab, transform.position, new Quaternion(), gameObject.transform) as Transform;
-        shotTransform.GetComponent<Projectile>().SetVelocityByType(projType);
+        shotTransform.GetComponent<Projectile>().SetVelocityByType(projType, smallRandomize: explosionRandomize);
 
         //Update counter for patterns
         shotsOnCurrentSmallPattern++;
