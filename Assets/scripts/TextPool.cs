@@ -40,6 +40,7 @@ public static class TextPool
                     "R: (You can press W to turn your rapier for either easier hitting or deflecting)",
                     "R: (The faster you move your mouse before the impact, the more energy is communicated to the deflected item)",
                     "R: (But don't move too fast if you want the hit to be registered)",
+                    "R: (Study witch's patterns, because she attacks differently in each battle)",
                     "R: (Good luck!)",
 };
 
