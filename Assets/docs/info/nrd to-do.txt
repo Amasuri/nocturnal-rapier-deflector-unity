@@ -1,0 +1,17 @@
+
+------------NOW----------------
+
+--Different attack patterns in battles. Refer to the OG, but extend it.
+
+--Music tied to particular scene. Different music on last instance of battle scene.
+
+--Title screen!!!!
+
+--High score system from the original
+
+-----------LATER----------------
+
+
+--Update Sprites once you get all the new ones. Try to just replace the actual assets under same name, so no setting the same things again. You'll also have to update resolution by scale and new BG dimension.
+
+--Maybe add some visual / sound to mouse limiter?
