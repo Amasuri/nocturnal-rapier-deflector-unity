@@ -9,5 +9,13 @@ Logic:
 6. (done) Wait a couple of seconds, and repeat
 
 ===Second Battle===
+1. (done) Explosion
+2. (done) Two fast direct hits
+3. (done) Wait a second
+4. (done) Four slow half-arc shots
+5. (done) Explosion
+6. (done) Small wait
+7. (done) Machine gun
 
 ===Third Battle===
+Explosion, shotgun, machinegun... as in the original; maybe big explosion (not 3 but 7 tiles) and machinegun arc and ultrafast shots
