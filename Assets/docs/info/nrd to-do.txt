@@ -1,11 +1,6 @@
 
 ------------NOW----------------
 
---Different attack patterns in battles. Refer to the OG, but extend it. Left:
-----(done) Stage one
-----(done) Stage two
-----Stage three
-
 --First battle 1:30 -> 1:00; second battle as well
 --Correct the damn attack vectors! Arc attacks all miss!
 --Endgame screen

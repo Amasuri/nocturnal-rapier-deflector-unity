@@ -27,7 +27,7 @@ Logic:
 8. (done) 1s wait
 7. (done) Differentiating (arc / straight) slow/med speed
 8. (done) Differentiating fast
-8. Shotgun slow
-9. Shotgun fast
-10. 1s wait
-11. Laser beam (short but incredibly fast forward attack)
+8. (done) Shotgun slow
+9. (done) Shotgun fast
+10. (done) 3s wait
+11. (done) Laser beam (short but incredibly fast forward attack)
