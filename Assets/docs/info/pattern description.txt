@@ -18,4 +18,16 @@ Logic:
 7. (done) Machine gun
 
 ===Third Battle===
-Explosion, shotgun, machinegun... as in the original; maybe big explosion (not 3 but 7 tiles) and machinegun arc and ultrafast shots
+1. (done) Big explosion
+2. (done) 3s wait
+3. (done) Machine gun short
+4. (done) Three small slow explosions
+5. (done) Machine gun short
+6. (done) Three small slow explosions
+8. (done) 1s wait
+7. (done) Differentiating (arc / straight) slow/med speed
+8. (done) Differentiating fast
+8. Shotgun slow
+9. Shotgun fast
+10. 1s wait
+11. Laser beam (short but incredibly fast forward attack)

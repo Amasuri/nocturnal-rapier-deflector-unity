@@ -22,16 +22,24 @@ public class PatternShooter : MonoBehaviour
     public BattleShootingPattern currentBattleShootingPattern;
     public enum SmallShootingPattern
     {
-        SlowDirect,
-        SlowHalfArc,
-        SlowArc,
-        ExplosionSmall,
-        FirstWait,
-        SecondWait,
+        DirectSlow,
+        DirectFast,
+        HalfArcSlow,
+        ArcSlow,
 
-        MachineGun,
-        FastDirect,
+        AlternatingArcDirectSlow,
+        AlternatingArcDirectFast,
+
+        WaitFirst,
+        WaitSecond,
+
+        MachineGunFirst,
+        MachineGunSecond,
+
+        ExplosionSmallFirst,
+        ExplosionSmallSecond,
         ExplosionMedium,
+        ExplosionLarge,
     }
 
     public enum BattleShootingPattern
@@ -50,17 +58,17 @@ public class PatternShooter : MonoBehaviour
         if (BattleControl.CurrentBattleType == BattleControl.BattleType.First)
         {
             currentBattleShootingPattern = BattleShootingPattern.FirstBattleEasy;
-            currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
+            currentSmallShootingPattern = SmallShootingPattern.DirectSlow;
         }
         else if (BattleControl.CurrentBattleType == BattleControl.BattleType.Second)
         {
             currentBattleShootingPattern = BattleShootingPattern.SecondBattleMedium;
-            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmall;
+            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmallFirst;
         }
         else if (BattleControl.CurrentBattleType == BattleControl.BattleType.ThirdBoss)
         {
             currentBattleShootingPattern = BattleShootingPattern.ThirdBattleHard;
-            currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
+            currentSmallShootingPattern = SmallShootingPattern.ExplosionLarge;
         }
     }
 
@@ -80,8 +88,59 @@ public class PatternShooter : MonoBehaviour
             }
             else if (currentBattleShootingPattern == BattleShootingPattern.ThirdBattleHard)
             {
-                ActFirstBattlePattern();
+                ActThirdBattlePattern();
             }
+        }
+    }
+
+    private void ActThirdBattlePattern()
+    {
+        AttackByCurrentSmallPattern();
+
+        if (currentSmallShootingPattern == SmallShootingPattern.ExplosionLarge && shotsOnCurrentSmallPattern >= 7)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.WaitFirst;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.WaitFirst && shotsOnCurrentSmallPattern >= 3)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.MachineGunFirst;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.MachineGunFirst && shotsOnCurrentSmallPattern >= 10)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmallFirst;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmallFirst && shotsOnCurrentSmallPattern >= 3 * 3)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.MachineGunSecond;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.MachineGunSecond && shotsOnCurrentSmallPattern >= 10)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmallSecond;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmallSecond && shotsOnCurrentSmallPattern >= 3 * 3)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.WaitSecond;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.WaitSecond && shotsOnCurrentSmallPattern >= 1)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.AlternatingArcDirectSlow;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.AlternatingArcDirectSlow && shotsOnCurrentSmallPattern >= 6)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.AlternatingArcDirectFast;
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.AlternatingArcDirectFast && shotsOnCurrentSmallPattern >= 10)
+        {
+            shotsOnCurrentSmallPattern = 0;
+            currentSmallShootingPattern = SmallShootingPattern.ExplosionLarge;
         }
     }
 
@@ -89,22 +148,22 @@ public class PatternShooter : MonoBehaviour
     {
         AttackByCurrentSmallPattern();
 
-        if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmall && shotsOnCurrentSmallPattern >= 3)
+        if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmallFirst && shotsOnCurrentSmallPattern >= 3)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.FastDirect;
+            currentSmallShootingPattern = SmallShootingPattern.DirectFast;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.FastDirect && shotsOnCurrentSmallPattern >= 2)
+        else if (currentSmallShootingPattern == SmallShootingPattern.DirectFast && shotsOnCurrentSmallPattern >= 2)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.FirstWait;
+            currentSmallShootingPattern = SmallShootingPattern.WaitFirst;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.FirstWait && shotsOnCurrentSmallPattern >= 1)
+        else if (currentSmallShootingPattern == SmallShootingPattern.WaitFirst && shotsOnCurrentSmallPattern >= 1)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.SlowHalfArc;
+            currentSmallShootingPattern = SmallShootingPattern.HalfArcSlow;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.SlowHalfArc && shotsOnCurrentSmallPattern >= 4)
+        else if (currentSmallShootingPattern == SmallShootingPattern.HalfArcSlow && shotsOnCurrentSmallPattern >= 4)
         {
             shotsOnCurrentSmallPattern = 0;
             currentSmallShootingPattern = SmallShootingPattern.ExplosionMedium;
@@ -112,17 +171,17 @@ public class PatternShooter : MonoBehaviour
         else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionMedium && shotsOnCurrentSmallPattern >= 5)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.SecondWait;
+            currentSmallShootingPattern = SmallShootingPattern.WaitSecond;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.SecondWait && shotsOnCurrentSmallPattern >= 1)
+        else if (currentSmallShootingPattern == SmallShootingPattern.WaitSecond && shotsOnCurrentSmallPattern >= 1)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.MachineGun;
+            currentSmallShootingPattern = SmallShootingPattern.MachineGunFirst;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.MachineGun && shotsOnCurrentSmallPattern >= 20)
+        else if (currentSmallShootingPattern == SmallShootingPattern.MachineGunFirst && shotsOnCurrentSmallPattern >= 20)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmall;
+            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmallFirst;
         }
     }
 
@@ -130,76 +189,76 @@ public class PatternShooter : MonoBehaviour
     {
         AttackByCurrentSmallPattern();
 
-        if (currentSmallShootingPattern == SmallShootingPattern.SlowDirect && shotsOnCurrentSmallPattern >= 5)
+        if (currentSmallShootingPattern == SmallShootingPattern.DirectSlow && shotsOnCurrentSmallPattern >= 5)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.SlowHalfArc;
+            currentSmallShootingPattern = SmallShootingPattern.HalfArcSlow;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.SlowHalfArc && shotsOnCurrentSmallPattern >= 4)
+        else if (currentSmallShootingPattern == SmallShootingPattern.HalfArcSlow && shotsOnCurrentSmallPattern >= 4)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.SlowArc;
+            currentSmallShootingPattern = SmallShootingPattern.ArcSlow;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.SlowArc && shotsOnCurrentSmallPattern >= 3)
+        else if (currentSmallShootingPattern == SmallShootingPattern.ArcSlow && shotsOnCurrentSmallPattern >= 3)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.FirstWait;
+            currentSmallShootingPattern = SmallShootingPattern.WaitFirst;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.FirstWait && shotsOnCurrentSmallPattern >= 1)
+        else if (currentSmallShootingPattern == SmallShootingPattern.WaitFirst && shotsOnCurrentSmallPattern >= 1)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmall;
+            currentSmallShootingPattern = SmallShootingPattern.ExplosionSmallFirst;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmall && shotsOnCurrentSmallPattern >= 3)
+        else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmallFirst && shotsOnCurrentSmallPattern >= 3)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.SecondWait;
+            currentSmallShootingPattern = SmallShootingPattern.WaitSecond;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.SecondWait && shotsOnCurrentSmallPattern >= 2)
+        else if (currentSmallShootingPattern == SmallShootingPattern.WaitSecond && shotsOnCurrentSmallPattern >= 2)
         {
             shotsOnCurrentSmallPattern = 0;
-            currentSmallShootingPattern = SmallShootingPattern.SlowDirect;
+            currentSmallShootingPattern = SmallShootingPattern.DirectSlow;
         }
     }
 
     private void AttackByCurrentSmallPattern()
     {
-        if (currentSmallShootingPattern == SmallShootingPattern.SlowDirect)
+        if (currentSmallShootingPattern == SmallShootingPattern.DirectSlow)
         {
             shootCooldown = shootingRateSlow;
             var projType = Projectile.Type.Line;
 
             FireSingleShot(projType);
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.FastDirect)
+        else if (currentSmallShootingPattern == SmallShootingPattern.DirectFast)
         {
             shootCooldown = shootingRateFast;
             var projType = Projectile.Type.Line;
 
             FireSingleShot(projType);
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.SlowHalfArc)
+        else if (currentSmallShootingPattern == SmallShootingPattern.HalfArcSlow)
         {
             shootCooldown = shootingRateSlow;
             var projType = Projectile.Type.Curved;
 
             FireSingleShot(projType);
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.SlowArc)
+        else if (currentSmallShootingPattern == SmallShootingPattern.ArcSlow)
         {
             shootCooldown = shootingRateSlow;
             var projType = Projectile.Type.Mortar;
 
             FireSingleShot(projType);
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.FirstWait || currentSmallShootingPattern == SmallShootingPattern.SecondWait)
+        else if (currentSmallShootingPattern == SmallShootingPattern.WaitFirst || currentSmallShootingPattern == SmallShootingPattern.WaitSecond)
         {
             shootCooldown = shootingRateSlow;
 
             //No projectiles, simply wait
             shotsOnCurrentSmallPattern++;
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmall)
+        else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionSmallFirst || currentSmallShootingPattern == SmallShootingPattern.ExplosionSmallSecond)
         {
             shootCooldown = shootingRateSlow;
             var projType = Projectile.Type.Mortar;
@@ -217,16 +276,43 @@ public class PatternShooter : MonoBehaviour
 
             explosionSound.Play();
 
-            FireSingleShot(projType, explosionRandomize: true);
-            FireSingleShot(projType, explosionRandomize: true);
-            FireSingleShot(projType, explosionRandomize: true);
-            FireSingleShot(projType, explosionRandomize: true);
-            FireSingleShot(projType, explosionRandomize: true);
+            for (int i = 0; i < 5; i++)
+                FireSingleShot(projType, explosionRandomize: true);
         }
-        else if (currentSmallShootingPattern == SmallShootingPattern.MachineGun)
+        else if (currentSmallShootingPattern == SmallShootingPattern.ExplosionLarge)
+        {
+            shootCooldown = shootingRateSlow;
+            var projType = Projectile.Type.Mortar;
+
+            explosionSound.Play();
+
+            for (int i = 0; i < 7; i++)
+                FireSingleShot(projType, explosionRandomize: true);
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.MachineGunFirst || currentSmallShootingPattern == SmallShootingPattern.MachineGunSecond)
         {
             shootCooldown = shootingRateVeryFast;
             var projType = Projectile.Type.FastLine;
+
+            FireSingleShot(projType);
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.AlternatingArcDirectSlow)
+        {
+            shootCooldown = shootingRateSlow;
+
+            var projType = Projectile.Type.Line;
+            if (shotsOnCurrentSmallPattern % 2 == 0)
+                projType = Projectile.Type.Mortar;
+
+            FireSingleShot(projType);
+        }
+        else if (currentSmallShootingPattern == SmallShootingPattern.AlternatingArcDirectFast)
+        {
+            shootCooldown = shootingRateFast;
+
+            var projType = Projectile.Type.Line;
+            if (shotsOnCurrentSmallPattern % 2 == 0)
+                projType = Projectile.Type.Mortar;
 
             FireSingleShot(projType);
         }
