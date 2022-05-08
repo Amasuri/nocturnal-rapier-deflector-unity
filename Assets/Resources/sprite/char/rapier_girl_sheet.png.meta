@@ -123,10 +123,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 24
+        width: 18
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: rapier_girl_sheet_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 19
         y: 0
-        width: 16
-        height: 24
+        width: 18
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: rapier_girl_sheet_2
       rect:
         serializedVersion: 2
-        x: 34
+        x: 38
         y: 0
-        width: 16
-        height: 24
+        width: 18
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: rapier_girl_sheet_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 57
         y: 0
-        width: 16
-        height: 24
+        width: 18
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: rapier_girl_sheet_4
       rect:
         serializedVersion: 2
-        x: 68
+        x: 76
         y: 0
-        width: 16
-        height: 24
+        width: 18
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
