@@ -6,6 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public BoxCollider2D collider;
     public AudioSource hit1;
     public AudioSource hit2;
 
@@ -41,7 +42,6 @@ public class Projectile : MonoBehaviour
     {
         //Auto-destroy after 20 seconds
         Destroy(gameObject, 20);
-        NoStartCollideTimer = NoStartCollideMaxSec;
 
         AlreadyHitSomething = false;
 
@@ -49,6 +49,11 @@ public class Projectile : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+        //Temporarily disable collision while the projectile is flying out of witch
+        collider = GetComponent<BoxCollider2D>();
+        collider.isTrigger = true;
+        NoStartCollideTimer = NoStartCollideMaxSec;
 
         hit1 = GetComponents<AudioSource>()[0];
         hit2 = GetComponents<AudioSource>()[1];
@@ -91,8 +96,10 @@ public class Projectile : MonoBehaviour
         {
             NoStartCollideTimer -= Time.deltaTime;
         }
-
-        //this.gameObject.transform.Rotate(0, 0, 1f);
+        else if (collider.isTrigger)
+        {
+            collider.isTrigger = false;
+        }
     }
 
     public void DoHit()
