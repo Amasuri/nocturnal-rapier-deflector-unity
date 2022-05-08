@@ -2,7 +2,6 @@
 ------------NOW----------------
 
 --First battle 1:30 -> 1:00; second battle as well
---Correct the damn attack vectors! Arc attacks all miss!
 --Endgame screen
 --High score system from the original
 

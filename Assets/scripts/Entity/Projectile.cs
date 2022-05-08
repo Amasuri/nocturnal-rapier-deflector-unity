@@ -30,10 +30,10 @@ public class Projectile : MonoBehaviour
 
     public static List<Vector2> velocities = new List<Vector2>
     {
-        new Vector2(2.3f, 0.3f), //hits
-        new Vector2(0.5f, 2.65f), //hits
-        new Vector2(1.15f, 1.15f), //hits
-        new Vector2(2.8f, 0.3f), //hits
+        new Vector2(2.3f, 0.4f), //hits
+        new Vector2(0.45f, 2.65f), //hits
+        new Vector2(1.05f, 1.15f), //hits
+        new Vector2(2.8f, 0.4f), //hits
     };
 
     // Start is called before the first frame update
