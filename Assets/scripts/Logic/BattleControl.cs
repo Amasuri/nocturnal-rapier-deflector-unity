@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class BattleControl : MonoBehaviour
 {
-    private const float TimeLimitSec = 90;
-    private const float TimeLimitBossSec = 120;
+    private const float TimeLimitSecFirst = 70;
+    private const float TimeLimitSecSecond = 90;
+    private const float TimeLimitSecBoss = 120;
     public float TimeLeftSec { get; private set; }
 
     public TextMeshProUGUI descTextTerminal;
@@ -80,8 +81,11 @@ public class BattleControl : MonoBehaviour
 
     public void ResetTimer()
     {
-        var isBoss = CurrentBattleType == BattleType.ThirdBoss ? true : false;
-
-        TimeLeftSec = isBoss ? TimeLimitBossSec : TimeLimitSec;
+        if (CurrentBattleType == BattleType.First)
+            TimeLeftSec = TimeLimitSecFirst;
+        else if (CurrentBattleType == BattleType.Second)
+            TimeLeftSec = TimeLimitSecSecond;
+        else if (CurrentBattleType == BattleType.ThirdBoss)
+            TimeLeftSec = TimeLimitSecBoss;
     }
 }
