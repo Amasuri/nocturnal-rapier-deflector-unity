@@ -37,9 +37,12 @@ public static class TextPool
                     "R: (SHORT TUTORIAL)",
                     "R: (You have to deflect enemy attacks to hit them using your rapier with a mouse)",
                     "R: (You have 90 seconds to score a 3 to 1 hits ratio by deflecting attacks)",
+                    "R: (Don't worry about counting, the interface already tells you if you're winning or loosing, and how much)",
                     "R: (You can press W to turn your rapier for either easier hitting or deflecting)",
+                    "R: (That's important! Certain attacks have different angle, so it's better to act on them accordingly)",
                     "R: (The faster you move your mouse before the impact, the more energy is communicated to the deflected item)",
-                    "R: (But don't move too fast if you want the hit to be registered)",
+                    "R: (But don't move too fast if you want the hit to be registered!)",
+                    "R: (Move your sword gently, like a true master of the craft, unless you want your hits to backfire on you)",
                     "R: (Study witch's patterns, because she attacks differently in each battle)",
                     "R: (Good luck!)",
 };
