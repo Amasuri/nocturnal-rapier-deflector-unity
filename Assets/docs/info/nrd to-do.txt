@@ -1,8 +1,18 @@
 
 ------------NOW----------------
 
+--Start screen
+----Black screen where you select language; that's all
+----Possibly in the future make a link to highscore screen
+
 --Endgame screen
+----Credits (sounds)
+----High score
+
 --High score system from the original
+----(Done) It's counted
+----Make it displayed on game end screen
+----Write to file for future use
 
 -----------LATER----------------
 
@@ -11,4 +21,3 @@
 
 --Maybe add some visual / sound to mouse limiter?
 
---Title screen (language and high score)!!!!

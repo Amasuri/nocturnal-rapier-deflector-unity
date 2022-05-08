@@ -41,7 +41,9 @@ public class BattleControl : MonoBehaviour
         {
             if(ScoreCounter.GetIsPlayerWinning())
             {
-                if(TextScene.CurrentSceneType == TextPool.SceneType.First || TextScene.CurrentSceneType == TextPool.SceneType.Second || TextScene.CurrentSceneType == TextPool.SceneType.ThirdBoss)
+                ScoreCounter.RememberCurrentScores();
+
+                if (TextScene.CurrentSceneType == TextPool.SceneType.First || TextScene.CurrentSceneType == TextPool.SceneType.Second || TextScene.CurrentSceneType == TextPool.SceneType.ThirdBoss)
                     TextScene.CurrentSceneType++;
 
                 if (BattleControl.CurrentBattleType < BattleType.ThirdBoss)
@@ -53,6 +55,8 @@ public class BattleControl : MonoBehaviour
             else
             {
                 TextScene.CurrentSceneType = TextPool.SceneType.PlayerLost;
+
+                ScoreCounter.IncreaseRetries();
 
                 SceneManager.LoadScene("dialogue");
                 SceneManager.UnloadSceneAsync("battle");

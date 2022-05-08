@@ -1,0 +1,16 @@
+High score is counted from amount of hits taken and hits successfully deflected into the witch; as well as retries by square
+
+First level (it's an easy level, so each hit counts):
+--Score + (Hits you give * 100)
+--Score - (Hits you take * 70)
+
+Second level (moderate level):
+--Score + (Hits you give * 50)
+--Score - (Hits you take * 25)
+
+Third level (dakka level, so individual hits don't mean as much):
+--Score + (Hits you give * 30)
+--Score - (Hits you take * 12)
+
+Each retry costs 500 points, but the amount of retries is in square
+--Score - (Retries * Retries * 500)
