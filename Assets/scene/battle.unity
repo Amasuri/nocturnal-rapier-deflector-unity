@@ -1015,7 +1015,7 @@ MonoBehaviour:
   entityType: 1
   unsheathe: {fileID: 0}
   TookHit: {fileID: 7666907097779730062, guid: 41151fa4164ad2f4dac7ac456092a625, type: 3}
-  Normal: {fileID: -3701829538281625625, guid: 41151fa4164ad2f4dac7ac456092a625, type: 3}
+  Normal: {fileID: -8932518503882233549, guid: 41151fa4164ad2f4dac7ac456092a625, type: 3}
 --- !u!82 &1151314563
 AudioSource:
   m_ObjectHideFlags: 0
