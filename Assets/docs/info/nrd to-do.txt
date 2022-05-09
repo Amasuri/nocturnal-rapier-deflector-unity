@@ -1,6 +1,8 @@
 
 ------------NOW----------------
 
+--Implement new GUI system for scoring
+
 --Start screen
 ----Black screen where you select language; that's all
 ----Possibly in the future make a link to highscore screen
@@ -14,10 +16,9 @@
 ----Make it displayed on game end screen
 ----Write to file for future use
 
+
 -----------LATER----------------
 
-
---Update Sprites once you get all the new ones. Try to just replace the actual assets under same name, so no setting the same things again. You'll also have to update resolution by scale and new BG dimension.
-
 --Maybe add some visual / sound to mouse limiter?
+--Some sound / visual when sword moves too quickly...
 
