@@ -68,11 +68,10 @@ public class BattleControl : MonoBehaviour
         //Time & Score line
         string minutes = ((int)TimeLeftSec / 60).ToString();
         string seconds = ((int)TimeLeftSec % 60).ToString();
-        descTextTerminal.text = string.Format("Witch: {0}    {2}:{3}    You: {1}", ScoreCounter.WitchTookHits, ScoreCounter.RapierTookHits, minutes, seconds);
+        descTextTerminal.text = string.Format("{0}                      {1}", ScoreCounter.WitchTookHits.ToString("000"), ScoreCounter.RapierTookHits.ToString("000"));
 
         //Winning conditions line
-        var append = ScoreCounter.GetIsPlayerWinning() ? "Winning!" : "Loosing...";
-        descTextTerminal.text += string.Format("\nRatio: {0} {1}", ScoreCounter.GetScoreRatio().ToString("0.00"), append);
+        descTextTerminal.text += string.Format("\nRatio: {0}", ScoreCounter.GetScoreRatio().ToString("0.00"));
 
         TimeLeftSecLast = TimeLeftSec;
     }
