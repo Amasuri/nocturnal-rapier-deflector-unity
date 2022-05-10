@@ -12,6 +12,8 @@ public class BattleControl : MonoBehaviour
     private const float TimeLimitSecBoss = 120;
     public float TimeLeftSec { get; private set; }
 
+    public static float TimeLeftSecLast { get; private set; }
+
     public TextMeshProUGUI descTextTerminal;
 
     /// <summary>
@@ -71,6 +73,8 @@ public class BattleControl : MonoBehaviour
         //Winning conditions line
         var append = ScoreCounter.GetIsPlayerWinning() ? "Winning!" : "Loosing...";
         descTextTerminal.text += string.Format("\nRatio: {0} {1}", ScoreCounter.GetScoreRatio().ToString("0.00"), append);
+
+        TimeLeftSecLast = TimeLeftSec;
     }
 
     private static void UpdateCurrentBattleTypeToSceneType()
