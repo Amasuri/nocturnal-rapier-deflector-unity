@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ScoreGaugeController : MonoBehaviour
 {
-    private const float posDefaultWin = 0.6155f;
-    private const float posMiddle = 0.5f;
-    private const float posMaxLeft = 0f;
-    private const float posMaxRight = 1f;
+    private const float posDefaultWin = 1.145f;
+    private const float posMaxLeft = 0.53f;
+    private const float posMaxRight = 1.53f;
 
     private float xPos;
 
@@ -48,6 +47,6 @@ public class ScoreGaugeController : MonoBehaviour
 
         xPos = Mathf.Clamp(xPos, posMaxLeft, posMaxRight);
 
-        obj.position = new Vector3(xPos, obj.position.y, obj.position.z);
+        //obj.position = new Vector3(xPos, obj.position.y, obj.position.z);
     }
 }
