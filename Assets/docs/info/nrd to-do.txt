@@ -1,12 +1,6 @@
 
 ------------NOW----------------
 
---Implement new GUI system for scoring
-----(Done) Flashing indicator
-----(Done) Dynamic gauge
-----(Done) Numbers left and right
-----Timer to the right
-
 --Start screen
 ----Black screen where you select language; that's all
 ----Possibly in the future make a link to highscore screen

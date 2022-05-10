@@ -80,8 +80,10 @@ public class TextScene : MonoBehaviour
                     CurrentSceneType = LastValidSceneType;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
-                else if (Input.GetKeyDown(KeyCode.Space))
-                    ;
+                else if (Input.GetKeyDown(KeyCode.Backspace))
+                {
+                    Application.Quit();
+                }
             }
         }
 
