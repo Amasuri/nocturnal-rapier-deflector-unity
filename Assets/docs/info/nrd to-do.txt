@@ -22,3 +22,6 @@
 --Maybe add some visual / sound to mouse limiter?
 --Some sound / visual when sword moves too quickly...
 
+--Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; swipe for blade control. You'll need mobile port experience for making these anyway.
+--HTML5 itch port?
+
