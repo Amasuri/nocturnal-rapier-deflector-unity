@@ -38,9 +38,9 @@ public class ScoreGaugeController : MonoBehaviour
 
         xPos = posDefaultWin * ratio;
 
-        //Making the gauge appear less dramatic
-        if (xPos > posDefaultWin)
-            xPos = posDefaultWin + xPos / 10;
+        ////Making the gauge appear less dramatic
+        //if (xPos > posDefaultWin)
+        //    xPos = posDefaultWin + xPos / 10;
 
         //if (xPos < posDefaultWin)
         //    xPos = posDefaultWin - xPos / 10;
