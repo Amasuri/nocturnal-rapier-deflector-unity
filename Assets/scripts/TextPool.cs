@@ -54,6 +54,7 @@ public static class TextPool
                     "R: (Move your sword gently, like a true master of the craft, unless you want your hits to backfire on you)",
                     "R: (Study witch's patterns, because she attacks differently in each battle)",
                     "R: (Good luck!)",
+                    "R: ",
                     }
             },
             { SceneType.Second, new string[]
@@ -69,6 +70,7 @@ public static class TextPool
                     "W: NO IT DOESN'T STINK!",
                     "W: Go awayyyyyy!",
                     "R: Another one..!",
+                    "R: ",
                     }
             },
             { SceneType.ThirdBoss, new string[]
@@ -92,6 +94,7 @@ public static class TextPool
                     "W: I take that as a yes, so here we go!",
                     "R: Ack! She is serious!",
                     "R: Time to unsheathe my rapier!",
+                    "R: ",
                     }
             },
             { SceneType.WonGame, new string[]
@@ -170,6 +173,7 @@ public static class TextPool
                     "R: („D„r„y„s„p„z„„„u „}„u„‰ „p„{„{„…„‚„p„„„~„€, „{„p„{ „~„p„ƒ„„„€„‘„‹„y„z „}„p„ƒ„„„u„‚ „ƒ„r„€„u„s„€ „t„u„|„p, „u„ƒ„|„y „~„u „‡„€„„„y„„„u, „‰„„„€„q„ „r„p„Š„y „p„„„p„{„y „…„t„p„‚„y„|„y „„€ „r„p„} „w„u)",
                     "R: („I„x„…„‰„p„z„„„u „|„€„s„y„{„… „p„„„p„{„y „r„u„t„„}„, „„„p„{ „{„p„{ „€„~„p „p„„„p„{„…„u„„ „„€-„‚„p„x„~„€„}„… „r „{„p„w„t„€„} „ƒ„‚„p„w„u„~„y„y)",
                     "R: („T„t„p„‰„y!)",
+                    "R: ",
                     }
             },
             { SceneType.Second, new string[]
@@ -185,6 +189,7 @@ public static class TextPool
                     "W: „N„E„S „O„N„O „N„E „B„O„N„`„E„S!",
                     "W: „T„‡„€„t„y„y„y„y„y„y„y!",
                     "R: „O„„‘„„„..!",
+                    "R: ",
                     }
             },
             { SceneType.ThirdBoss, new string[]
@@ -208,6 +213,7 @@ public static class TextPool
                     "W: „B„y„t„y„}„€ „„„ „ƒ„€„s„|„p„ƒ„~„p, „„„p„{ „‰„„„€ „„€„|„…„‰„p„z!",
                     "R: „@„z! „K„p„{„€„z „ƒ„u„‚„„v„x„~„„z „~„p„ƒ„„„‚„€„z!",
                     "R: „C„t„u „}„€„‘ „‚„p„„y„‚„p..!",
+                    "R: ",
                     }
             },
             { SceneType.WonGame, new string[]

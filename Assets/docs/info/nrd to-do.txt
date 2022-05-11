@@ -23,3 +23,5 @@
 --Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; swipe for blade control. You'll need mobile port experience for making these anyway.
 --HTML5 itch port?
 
+--Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >
+
