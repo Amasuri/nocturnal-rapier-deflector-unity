@@ -2,7 +2,7 @@
 ------------NOW----------------
 
 --Start screen
-----Black screen where you select language; that's all
+----(Done) Black screen where you select language; that's all
 ----Possibly in the future make a link to highscore screen
 
 --Endgame screen

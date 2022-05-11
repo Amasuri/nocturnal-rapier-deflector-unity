@@ -266,4 +266,9 @@ public static class TextPool
 
         return ScenesByLanguage[sceneLang][type];
     }
+
+    static public void SetSceneLanguage(SceneLanguage language)
+    {
+        sceneLang = language;
+    }
 }
