@@ -116,7 +116,7 @@ public class TextScene : MonoBehaviour
 
     public void InitNewScene(SceneType sceneType)
     {
-        CurrentText = TextPool.GetPreBattleDialogue(sceneType);
+        CurrentText = TextPool.GetDialogue(sceneType);
         CurrentTextInt = 0;
     }
 

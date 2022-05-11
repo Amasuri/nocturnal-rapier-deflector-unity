@@ -66,8 +66,6 @@ public class BattleControl : MonoBehaviour
         }
 
         //Time & Score line
-        string minutes = ((int)TimeLeftSec / 60).ToString();
-        string seconds = ((int)TimeLeftSec % 60).ToString();
         descTextTerminal.text = string.Format("{0}                      {1}", ScoreCounter.WitchTookHits.ToString("000"), ScoreCounter.RapierTookHits.ToString("000"));
 
         //Winning conditions line
