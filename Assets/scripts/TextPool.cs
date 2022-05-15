@@ -130,6 +130,7 @@ public static class TextPool
                     "R: We will make a new castle together.",
                     "W: Thank you..",
                     "W: Thank you so much!",
+                    "R: ",
                     }
             },
             { SceneType.PlayerLost, new string[]
@@ -249,6 +250,7 @@ public static class TextPool
                     "R: „M„ „ƒ„t„u„|„p„u„} „~„€„r„„z „x„p„}„€„{ „r„}„u„ƒ„„„u.",
                     "W: „R„„p„ƒ„y„q„€..",
                     "W: „R„„p„ƒ„y„q„€ „€„s„‚„€„}„~„€„u!",
+                    "R: ",
                     }
             },
             { SceneType.PlayerLost, new string[]

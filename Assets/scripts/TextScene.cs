@@ -85,6 +85,11 @@ public class TextScene : MonoBehaviour
                     Application.Quit();
                 }
             }
+            else if (CurrentSceneType == SceneType.WonGame)
+            {
+                SceneManager.LoadScene("credits");
+                SceneManager.UnloadSceneAsync("dialogue");
+            }
         }
 
         //In case of other scenes, player will be able get back on track with their playthrought
