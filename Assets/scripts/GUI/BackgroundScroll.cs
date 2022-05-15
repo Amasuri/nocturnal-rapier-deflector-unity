@@ -54,11 +54,11 @@ public class BackgroundScroll : MonoBehaviour
 
         //Scene 3 Parallax 1-3
         else if (BattleControl.CurrentBattleType == BattleControl.BattleType.ThirdBoss && relativeDepth == RelativeDepth.Base)
-            rend.sprite = Resources.Load<Sprite>("sprite/bg/background2");
+            rend.sprite = Resources.Load<Sprite>("sprite/bg/background0");
         else if (BattleControl.CurrentBattleType == BattleControl.BattleType.ThirdBoss && relativeDepth == RelativeDepth.Parallax1)
-            rend.sprite = Resources.Load<Sprite>("sprite/bg/background2_1");
+            rend.sprite = Resources.Load<Sprite>("sprite/bg/background0_1");
         else if (BattleControl.CurrentBattleType == BattleControl.BattleType.ThirdBoss && relativeDepth == RelativeDepth.Parallax2)
-            rend.sprite = Resources.Load<Sprite>("sprite/bg/background2_2");
+            rend.sprite = Resources.Load<Sprite>("sprite/bg/background0_2");
 
         lBound = 0f;
         rBound = rend.bounds.size.x;
