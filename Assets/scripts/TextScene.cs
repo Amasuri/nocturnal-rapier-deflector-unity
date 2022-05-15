@@ -36,7 +36,6 @@ public class TextScene : MonoBehaviour
         Shocked
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         InitNewScene(CurrentSceneType);
@@ -44,26 +43,32 @@ public class TextScene : MonoBehaviour
         UpdateTextLine();
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        //Text related
+        //Text bug related
         if (MaxTextId <= 0)
             return;
 
+        //This line
         UpdateTextLine();
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        {
-            CurrentTextInt++;
-            CurrentTextMs = 0;
-        }
+        CheckForNextLineAction();
 
         //Text state related
         currentActor = GetCurrentActor();
         currentActorState = GetCurrentActorState();
 
         //Scene load
+        CheckForSceneLoadOnLastLine();
+
+        //In case of other scenes, player will be able get back on track with their playthrought
+        if (IsASceneBeforeBattle(CurrentSceneType))
+        {
+            LastValidSceneType = CurrentSceneType;
+        }
+    }
+
+    private void CheckForSceneLoadOnLastLine()
+    {
         if (CurrentTextInt >= MaxTextId)
         {
             CorrectTextIDValue();
@@ -91,14 +96,34 @@ public class TextScene : MonoBehaviour
                 SceneManager.UnloadSceneAsync("dialogue");
             }
         }
+    }
 
-        //In case of other scenes, player will be able get back on track with their playthrought
-        if(IsASceneBeforeBattle(CurrentSceneType))
+    /// <summary>
+    /// Check for LMB or Space to advance to next line. Which also works as line length maximizer, if line isn't full length yet.
+    /// </summary>
+    private void CheckForNextLineAction()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            LastValidSceneType = CurrentSceneType;
+            var maxText = TextUtils.GetTimeCharSplitFittedLine(CurrentText[CurrentTextInt], 9999, 100000);
+            var currText = textTerminal.text;
+
+            //If not all text displayed yet, display all text. Else, click to next slide
+            if (currText.Length >= maxText.Length - 3)
+            {
+                CurrentTextInt++;
+                CurrentTextMs = 0;
+            }
+            else
+            {
+                CurrentTextMs = 100000;
+            }
         }
     }
 
+    /// <summary>
+    /// Since lines are dynamical, each line is updated every tick. Mainly for timed text & text data correction
+    /// </summary>
     private void UpdateTextLine()
     {
         //Ideally it's corrected in Update cycle. But idk, sometimes Unity doesn't do that. Sometimes the cycle is left with an error before the correction.
