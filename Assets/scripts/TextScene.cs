@@ -105,7 +105,11 @@ public class TextScene : MonoBehaviour
 
         CurrentTextMs += Time.deltaTime * 1000;
         FormattedLine = TextUtils.GetTimeCharSplitFittedLine(CurrentText[CurrentTextInt], 9999, (int)CurrentTextMs);
-        textTerminal.text = FormattedLine;
+
+        if (FormattedLine.Length > 3)
+            textTerminal.text = FormattedLine.Substring(3);
+        else
+            textTerminal.text = "";
     }
 
     private void CorrectTextIDValue()
