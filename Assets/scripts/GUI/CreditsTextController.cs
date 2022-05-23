@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +12,8 @@ public class CreditsTextController : MonoBehaviour
     private float textStepSec;
     private const float textStepSecMax = 0.1f;
     private float originalY;
+
+    private bool clickedToScore = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -40,10 +44,11 @@ public class CreditsTextController : MonoBehaviour
         if(pos.y <= -0.1f)
             transform.position = new Vector3(pos.x, pos.y + scroll, pos.z);
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && !clickedToScore)
         {
-            textTerminal.text = GetScoreText();
+            textTerminal.text = GetScoreTextAndWriteToScoreFile();
             transform.position = new Vector3(pos.x, originalY, pos.z);
+            clickedToScore = true;
         }
     }
 
@@ -77,7 +82,7 @@ public class CreditsTextController : MonoBehaviour
             "\n(Click for your score or check the score.txt)\n";
     }
 
-    private string GetScoreText()
+    private string GetScoreTextAndWriteToScoreFile()
     {
         //Took means took hit, witch took hits == players dealt that much hits
         //Meanwhile player took hits is damage to score
@@ -110,6 +115,15 @@ public class CreditsTextController : MonoBehaviour
             + Stage1Score
             + Stage2Score
             + Stage3Score;
+
+        //Writing it down with a stamp
+        var fileS = "score.txt";
+        if (!File.Exists(fileS))
+        {
+            var stream = File.Create(fileS);
+            stream.Close();
+        }
+        File.AppendAllText(fileS, "\n" + DateTime.Now.ToString("g") + "\nScore: " + TotalScore.ToString() + "\n");
 
         return
             $"\nHighscore" +

@@ -1,23 +1,21 @@
 
 ------------NOW----------------
 
---Start screen
-----(Done) Black screen where you select language; that's all
-----Possibly in the future make a link to highscore screen
+--Redraw some of graphics since Youkai is ded
+----Lang icons (remove the edges)
+----Add tentacles to WIP dialogue background
+----Took damage sprites instead of white flashes (tho...)
 
---High score system from the original
-----(Done) It's counted
-----(Done) Make it displayed on game end screen
-----Write to file for future use
+--Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; swipe for blade control. You'll need mobile port experience for making these anyway.
 
+--HTML5 itch port?
+
+--Mac/Linux port?
 
 -----------LATER----------------
 
 --Maybe add some visual / sound to mouse limiter?
 --Some sound / visual when sword moves too quickly...
-
---Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; swipe for blade control. You'll need mobile port experience for making these anyway.
---HTML5 itch port?
 
 --Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >. Пока что решён костыльно присоединением пустой фразы к тексту
 
