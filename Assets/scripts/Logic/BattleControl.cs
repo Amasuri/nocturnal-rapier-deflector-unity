@@ -69,7 +69,8 @@ public class BattleControl : MonoBehaviour
         descTextTerminal.text = string.Format("{0}                      {1}", ScoreCounter.WitchTookHits.ToString("000"), ScoreCounter.RapierTookHits.ToString("000"));
 
         //Winning conditions line
-        descTextTerminal.text += string.Format("\nRatio: {0}", ScoreCounter.GetScoreRatio().ToString("0.00"));
+        //DEBUG
+        //descTextTerminal.text += string.Format("\nRatio: {0}", ScoreCounter.GetScoreRatio().ToString("0.00"));
 
         TimeLeftSecLast = TimeLeftSec;
     }
