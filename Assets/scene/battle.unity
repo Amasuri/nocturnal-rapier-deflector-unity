@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 1
   unsheathe: {fileID: 0}
-  TookHit: {fileID: 7666907097779730062, guid: 41151fa4164ad2f4dac7ac456092a625, type: 3}
+  TookHit: {fileID: -8363821797292737719, guid: 41151fa4164ad2f4dac7ac456092a625, type: 3}
   Normal: {fileID: -8932518503882233549, guid: 41151fa4164ad2f4dac7ac456092a625, type: 3}
 --- !u!82 &1151314563
 AudioSource:

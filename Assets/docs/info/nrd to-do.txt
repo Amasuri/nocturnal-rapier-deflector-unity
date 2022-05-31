@@ -1,12 +1,6 @@
 
 ------------NOW----------------
 
---Redraw some of graphics since Youkai is ded
-----(Done) Lang icons (remove the edges)
-----(Done) Add tentacles to WIP dialogue background
-----Took damage sprites instead of white flashes (tho...)
-----(Done) Redraw some particles, esp tiny brown ones because they hide too well in the background
-
 --Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; swipe for blade control. You'll need mobile port experience for making these anyway.
 
 --HTML5 itch port?
