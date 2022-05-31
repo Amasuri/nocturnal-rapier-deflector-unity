@@ -2,9 +2,10 @@
 ------------NOW----------------
 
 --Redraw some of graphics since Youkai is ded
-----Lang icons (remove the edges)
-----Add tentacles to WIP dialogue background
+----(Done) Lang icons (remove the edges)
+----(Done) Add tentacles to WIP dialogue background
 ----Took damage sprites instead of white flashes (tho...)
+----(Done) Redraw some particles, esp tiny brown ones because they hide too well in the background
 
 --Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; swipe for blade control. You'll need mobile port experience for making these anyway.
 
@@ -12,10 +13,14 @@
 
 --Mac/Linux port?
 
+--When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri
+
 -----------LATER----------------
 
 --Maybe add some visual / sound to mouse limiter?
 --Some sound / visual when sword moves too quickly...
 
 --Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >. Пока что решён костыльно присоединением пустой фразы к тексту
+
+--Ползунок звука и музыки? Без понятия, где его запилить, меню только под это делать не очень...
 
