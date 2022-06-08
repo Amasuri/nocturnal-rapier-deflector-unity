@@ -29,7 +29,7 @@ public class LangSelector : MonoBehaviour
         if (thisLanguage != TextPool.sceneLang)
             rend.sprite = inactive;
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || TouchUtils.IsDoubleTap())
         {
             SceneManager.LoadScene("dialogue");
             SceneManager.UnloadSceneAsync("title");

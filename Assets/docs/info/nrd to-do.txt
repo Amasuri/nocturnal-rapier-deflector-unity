@@ -7,7 +7,7 @@
 
 --Mac/Linux port?
 
---When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri
+--When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
 
 -----------LATER----------------
 
