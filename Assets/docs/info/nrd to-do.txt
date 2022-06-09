@@ -1,7 +1,12 @@
 
 ------------NOW----------------
 
---Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; swipe for blade control. You'll need mobile port experience for making these anyway.
+--Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; finger follow for blade control. You'll need mobile port experience for making these anyway.
+----(Done) Port actually launches and works. Yay!
+----Game is beatable but doubletap for blade rotation kinda sucks. Either a) made a delay for second rotation or b) made swipe for blade rotation instead
+----(Done) No indication on controls in Tutorial and Lang screen yet. Make it dammit!
+----(Done) Remove touch limit on mobile only, cuz you'll also have to track Mac OS too
+----Actually publish it lol!
 
 --HTML5 itch port?
 
@@ -10,6 +15,8 @@
 --When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
 
 -----------LATER----------------
+
+--Make a proper button to confirm selection on Lang screen that doesn't require Rus/Eng language promt
 
 --Maybe add some visual / sound to mouse limiter?
 --Some sound / visual when sword moves too quickly...
