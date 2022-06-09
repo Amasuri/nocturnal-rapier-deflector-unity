@@ -80,7 +80,7 @@ public class TextScene : MonoBehaviour
             }
             else if (CurrentSceneType == SceneType.PlayerLost)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) || TouchUtils.IsDoubleTap())
                 {
                     CurrentSceneType = LastValidSceneType;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

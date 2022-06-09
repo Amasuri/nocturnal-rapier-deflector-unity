@@ -139,7 +139,7 @@ public static class TextPool
                     "R: But I can do better.",
                     "R: Let me do better.",
                     "R: Let me take my chance!",
-                    "R: (Continue? Enter - yes, Backspace - no)",
+                    "R: (Continue? Enter or double-tap - yes, Backspace - no)",
                     }
             }
             }
@@ -259,7 +259,7 @@ public static class TextPool
                     "R: „N„€ „‘ „ƒ„„€„ƒ„€„q„~„p „~„p „q„€„|„„Š„u„u.",
                     "R: „P„€„x„r„€„|„ „}„~„u „ƒ„t„u„|„p„„„ „q„€„|„„Š„u„u.",
                     "R: „D„p„z „}„~„u „Š„p„~„ƒ!",
-                    "R: („P„‚„€„t„€„|„w„y„„„? Enter - „t„p, Backspace - „~„u„„)",
+                    "R: („P„‚„€„t„€„|„w„y„„„? Enter „y„|„y „t„r„€„z„~„€„z „„„„ - „t„p, Backspace - „~„u„„)",
                     }
             }
             }
