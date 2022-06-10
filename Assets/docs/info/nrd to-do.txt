@@ -11,6 +11,8 @@
 ----Game is beatable but doubletap for blade rotation kinda sucks. Either a) made a delay for second rotation or b) made swipe for blade rotation instead
 ----Actually publish it lol!
 
+--Game's already limiting rapier position by X, but also limit it by Y to avoid any weird position bugs & uncomfortablies
+
 --HTML5 itch port?
 
 --Mac/Linux port?

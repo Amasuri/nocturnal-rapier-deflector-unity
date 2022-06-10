@@ -17,6 +17,7 @@ public class Rapier : MonoBehaviour
     private int maxYpos => Screen.height;
 
     private Vector3 mPosOld = new Vector3();
+    private TouchPhase oldTouchPhase;
 
     private bool firstCycle;
 
@@ -29,6 +30,8 @@ public class Rapier : MonoBehaviour
         switchMode = GetComponents<AudioSource>()[0];
 
         mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        oldTouchPhase = Input.GetTouch(0).phase;
+
         this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
         firstCycle = true;
     }
@@ -67,20 +70,27 @@ public class Rapier : MonoBehaviour
         }
 
         //But touch has rapier move by delta pos on screen (doesn't matter where finger is)
-        else if (Input.touchSupported && Input.GetTouch(0).phase == TouchPhase.Moved)
+        else if (Input.touchSupported)
         {
-            //Old rapier in-game position
-            this.oldRapPos = this.gameObject.transform.position;
+            var touch = Input.GetTouch(0);
+            bool isSuddenTouch = touch.phase == TouchPhase.Began;
 
-            //Get mouse (touch) position delta
-            var mPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            var mPosDelta = mPos - mPosOld;
+            //Don't update deltas on sudden touches
+            if (!isSuddenTouch)
+            {
+                //Old rapier in-game position
+                this.oldRapPos = this.gameObject.transform.position;
 
-            if (Mathf.Abs(mPosDelta.x) >= 0.3f || Mathf.Abs(mPosDelta.y) >= 0.3f)
-                mPosDelta = new Vector3(0, 0, 0);
+                //Get mouse (touch) position delta
+                var mPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                var mPosDelta = mPos - mPosOld;
 
-            //Add position delta to rapier
-            this.gameObject.transform.position += mPosDelta;
+                //if (Mathf.Abs(mPosDelta.x) >= 0.3f || Mathf.Abs(mPosDelta.y) >= 0.3f)
+                //    mPosDelta = new Vector3(0, 0, 0);
+
+                //Add position delta to rapier
+                this.gameObject.transform.position += mPosDelta;
+            }
 
             //Limit the pos so that it doesn't come into witch field, but have to convert it from world to screen units and back first (for ease)
             var rapPos = this.gameObject.transform.position;
@@ -96,6 +106,7 @@ public class Rapier : MonoBehaviour
 
             //Update old mouse position
             mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            oldTouchPhase = Input.GetTouch(0).phase;
         }
 
         //Resets rapier position after first update cycle, because it's prone to flying offscreen due to accident extreme touch deltas
