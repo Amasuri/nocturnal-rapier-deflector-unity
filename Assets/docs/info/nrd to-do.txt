@@ -7,6 +7,7 @@
 ----(Done) Remove touch limit on mobile only, cuz you'll also have to track Mac OS too
 ----(Done) Insert re-run on mobile on enter
 ----(Done) Make rapier NOT follow the finger on mobile. Instead; make it move by the same px that finger was moved (so it's not under the finger)
+----(Done) Score screen doesn't click on mobile? +It's not saved anywhere (due to writing permissions)
 ----Game is beatable but doubletap for blade rotation kinda sucks. Either a) made a delay for second rotation or b) made swipe for blade rotation instead
 ----Actually publish it lol!
 

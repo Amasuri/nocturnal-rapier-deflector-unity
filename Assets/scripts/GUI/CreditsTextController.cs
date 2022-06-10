@@ -84,6 +84,13 @@ public class CreditsTextController : MonoBehaviour
 
     private string GetScoreTextAndWriteToScoreFile()
     {
+        //Mobile workaround: initially planned to write scoreboards somewhere, but idk, writing permission makes the app kinda sus, right?
+        var writeScore = true;
+        if (SystemInfo.operatingSystem.Contains("Android"))
+        {
+            writeScore = false;
+        }
+
         //Took means took hit, witch took hits == players dealt that much hits
         //Meanwhile player took hits is damage to score
 
@@ -116,14 +123,17 @@ public class CreditsTextController : MonoBehaviour
             + Stage2Score
             + Stage3Score;
 
-        //Writing it down with a stamp
-        var fileS = "score.txt";
-        if (!File.Exists(fileS))
+        //Writing it down with a time stamp
+        if (writeScore)
         {
-            var stream = File.Create(fileS);
-            stream.Close();
+            var fileS = "score.txt";
+            if (!File.Exists(fileS))
+            {
+                var stream = File.Create(fileS);
+                stream.Close();
+            }
+            File.AppendAllText(fileS, "\n" + DateTime.Now.ToString("g") + "\nScore: " + TotalScore.ToString() + "\n");
         }
-        File.AppendAllText(fileS, "\n" + DateTime.Now.ToString("g") + "\nScore: " + TotalScore.ToString() + "\n");
 
         return
             $"\nHighscore" +
