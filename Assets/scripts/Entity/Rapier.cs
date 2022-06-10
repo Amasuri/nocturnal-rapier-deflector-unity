@@ -39,7 +39,7 @@ public class Rapier : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || TouchUtils.IsDoubleTap())
+        if (Input.GetKeyDown(KeyCode.W) || (TouchUtils.IsUniqueDoubleTap()))
         {
             this.gameObject.transform.Rotate(0, 0, 90);
             switchMode.Play();
