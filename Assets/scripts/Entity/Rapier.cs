@@ -28,7 +28,7 @@ public class Rapier : MonoBehaviour
 
         switchMode = GetComponents<AudioSource>()[0];
 
-        mPosOld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
         firstCycle = true;
     }
@@ -67,14 +67,17 @@ public class Rapier : MonoBehaviour
         }
 
         //But touch has rapier move by delta pos on screen (doesn't matter where finger is)
-        else if (Input.touchSupported)
+        else if (Input.touchSupported && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             //Old rapier in-game position
             this.oldRapPos = this.gameObject.transform.position;
 
             //Get mouse (touch) position delta
-            var mPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var mPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             var mPosDelta = mPos - mPosOld;
+
+            if (Mathf.Abs(mPosDelta.x) >= 0.3f || Mathf.Abs(mPosDelta.y) >= 0.3f)
+                mPosDelta = new Vector3(0, 0, 0);
 
             //Add position delta to rapier
             this.gameObject.transform.position += mPosDelta;
@@ -92,7 +95,7 @@ public class Rapier : MonoBehaviour
             RapierVelocity = newPos - oldRapPos;
 
             //Update old mouse position
-            mPosOld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         }
 
         //Resets rapier position after first update cycle, because it's prone to flying offscreen due to accident extreme touch deltas
