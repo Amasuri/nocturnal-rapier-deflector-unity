@@ -49,65 +49,10 @@ public class Rapier : MonoBehaviour
     // High-perfomance Update
     private void FixedUpdate()
     {
-        //Mouse has rapier snap to mouse pos
-        if (Input.mousePresent)//(SystemInfo.deviceType == DeviceType.Desktop && SystemInfo.operatingSystemFamily != OperatingSystemFamily.MacOSX)
-        {
-            //Old rapier in-game position
-            this.oldRapPos = this.gameObject.transform.position;
-
-            //Get new mouse position & limit it, so that it doesn't come into the witch territory
-            var mPos = Input.mousePosition;
-            mPos.x = Mathf.Clamp(mPos.x, minXpos, maxXpos);
-
-            //Adapt mouse position to world position
-            var camPos = Camera.main.ScreenToWorldPoint(new Vector3(mPos.x, mPos.y, Camera.main.nearClipPlane));
-
-            //Update rapier position
-            this.gameObject.transform.position = new Vector3(camPos.x, camPos.y, this.gameObject.transform.position.z);
-
-            //Update velocity
-            RapierVelocity = newPos - oldRapPos;
-        }
-
-        //But touch has rapier move by delta pos on screen (doesn't matter where finger is)
+        if (Input.mousePresent)
+            UpdateRapierPosByMouse();
         else if (Input.touchSupported)
-        {
-            var touch = Input.GetTouch(0);
-            bool isSuddenTouch = touch.phase == TouchPhase.Began;
-
-            //Don't update deltas on sudden touches
-            if (!isSuddenTouch)
-            {
-                //Old rapier in-game position
-                this.oldRapPos = this.gameObject.transform.position;
-
-                //Get mouse (touch) position delta
-                var mPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                var mPosDelta = mPos - mPosOld;
-
-                //if (Mathf.Abs(mPosDelta.x) >= 0.3f || Mathf.Abs(mPosDelta.y) >= 0.3f)
-                //    mPosDelta = new Vector3(0, 0, 0);
-
-                //Add position delta to rapier
-                this.gameObject.transform.position += mPosDelta;
-            }
-
-            //Limit the pos so that it doesn't come into witch field, but have to convert it from world to screen units and back first (for ease)
-            var rapPos = this.gameObject.transform.position;
-            rapPos = Camera.main.WorldToScreenPoint(rapPos);
-            rapPos.x = Mathf.Clamp(rapPos.x, minXpos, maxXpos);
-            rapPos = Camera.main.ScreenToWorldPoint(rapPos);
-
-            //Update actual position
-            this.gameObject.transform.position = rapPos;
-
-            //Update velocity
-            RapierVelocity = newPos - oldRapPos;
-
-            //Update old mouse position
-            mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            oldTouchPhase = Input.GetTouch(0).phase;
-        }
+            UpdateRapierPosByTouch();
 
         //Resets rapier position after first update cycle, because it's prone to flying offscreen due to accident extreme touch deltas
         if (firstCycle)
@@ -115,5 +60,70 @@ public class Rapier : MonoBehaviour
             firstCycle = false;
             this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
         }
+    }
+
+    /// <summary>
+    /// Uses touch logic to update by delta pos on screen (doesn't matter where finger is + cut out finger "teleports")
+    /// </summary>
+    private void UpdateRapierPosByTouch()
+    {
+        var touch = Input.GetTouch(0);
+        bool isSuddenTouch = touch.phase == TouchPhase.Began;
+
+        //Don't update deltas on sudden touches
+        if (!isSuddenTouch)
+        {
+            //Old rapier in-game position
+            this.oldRapPos = this.gameObject.transform.position;
+
+            //Get mouse (touch) position delta
+            var mPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            var mPosDelta = mPos - mPosOld;
+
+            //Not needed as far as I tested but in case further testing will make it useful...
+            //if (Mathf.Abs(mPosDelta.x) >= 0.3f || Mathf.Abs(mPosDelta.y) >= 0.3f)
+            //    mPosDelta = new Vector3(0, 0, 0);
+
+            //Add position delta to rapier
+            this.gameObject.transform.position += mPosDelta;
+        }
+
+        //Limit the pos so that it doesn't come into witch field, but have to convert it from world to screen units and back first (for ease)
+        var rapPos = this.gameObject.transform.position;
+        rapPos = Camera.main.WorldToScreenPoint(rapPos);
+        rapPos.x = Mathf.Clamp(rapPos.x, minXpos, maxXpos);
+        rapPos = Camera.main.ScreenToWorldPoint(rapPos);
+
+        //Update actual position
+        this.gameObject.transform.position = rapPos;
+
+        //Update velocity
+        RapierVelocity = newPos - oldRapPos;
+
+        //Update old mouse position
+        mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        oldTouchPhase = Input.GetTouch(0).phase;
+    }
+
+    /// <summary>
+    /// Use "snap rapier to mouse" rapier position update logic
+    /// </summary>
+    private void UpdateRapierPosByMouse()
+    {
+        //Old rapier in-game position
+        this.oldRapPos = this.gameObject.transform.position;
+
+        //Get new mouse position & limit it, so that it doesn't come into the witch territory
+        var mPos = Input.mousePosition;
+        mPos.x = Mathf.Clamp(mPos.x, minXpos, maxXpos);
+
+        //Adapt mouse position to world position
+        var camPos = Camera.main.ScreenToWorldPoint(new Vector3(mPos.x, mPos.y, Camera.main.nearClipPlane));
+
+        //Update rapier position
+        this.gameObject.transform.position = new Vector3(camPos.x, camPos.y, this.gameObject.transform.position.z);
+
+        //Update velocity
+        RapierVelocity = newPos - oldRapPos;
     }
 }
