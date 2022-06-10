@@ -8,13 +8,17 @@ public class Rapier : MonoBehaviour
     public AudioSource switchMode;
 
     static public Vector3 RapierVelocity; // => new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-    private Vector3 oldPos;
+    private Vector3 oldRapPos;
     private Vector3 newPos => this.gameObject.transform.position;
 
     private int minXpos => Screen.width / 2;
     private int maxXpos => Screen.width;
     private int minYpos => 0;
     private int maxYpos => Screen.height;
+
+    private Vector3 mPosOld = new Vector3();
+
+    private bool firstCycle;
 
     // Start is called before the first frame update
     private void Start()
@@ -23,6 +27,10 @@ public class Rapier : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
         switchMode = GetComponents<AudioSource>()[0];
+
+        mPosOld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
+        firstCycle = true;
     }
 
     // Update is called once per frame
@@ -38,14 +46,60 @@ public class Rapier : MonoBehaviour
     // High-perfomance Update
     private void FixedUpdate()
     {
-        var mPos = Input.mousePosition;
-        mPos.x = Mathf.Clamp(mPos.x, minXpos, maxXpos);
+        //Mouse has rapier snap to mouse pos
+        if (Input.mousePresent)//(SystemInfo.deviceType == DeviceType.Desktop && SystemInfo.operatingSystemFamily != OperatingSystemFamily.MacOSX)
+        {
+            //Old rapier in-game position
+            this.oldRapPos = this.gameObject.transform.position;
 
-        var camPos = Camera.main.ScreenToWorldPoint(new Vector3(mPos.x, mPos.y, Camera.main.nearClipPlane));
+            //Get new mouse position & limit it, so that it doesn't come into the witch territory
+            var mPos = Input.mousePosition;
+            mPos.x = Mathf.Clamp(mPos.x, minXpos, maxXpos);
 
-        this.oldPos = this.gameObject.transform.position;
-        this.gameObject.transform.position = new Vector3(camPos.x, camPos.y, this.gameObject.transform.position.z);
+            //Adapt mouse position to world position
+            var camPos = Camera.main.ScreenToWorldPoint(new Vector3(mPos.x, mPos.y, Camera.main.nearClipPlane));
 
-        RapierVelocity = newPos - oldPos;
+            //Update rapier position
+            this.gameObject.transform.position = new Vector3(camPos.x, camPos.y, this.gameObject.transform.position.z);
+
+            //Update velocity
+            RapierVelocity = newPos - oldRapPos;
+        }
+
+        //But touch has rapier move by delta pos on screen (doesn't matter where finger is)
+        else if (Input.touchSupported)
+        {
+            //Old rapier in-game position
+            this.oldRapPos = this.gameObject.transform.position;
+
+            //Get mouse (touch) position delta
+            var mPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var mPosDelta = mPos - mPosOld;
+
+            //Add position delta to rapier
+            this.gameObject.transform.position += mPosDelta;
+
+            //Limit the pos so that it doesn't come into witch field, but have to convert it from world to screen units and back first (for ease)
+            var rapPos = this.gameObject.transform.position;
+            rapPos = Camera.main.WorldToScreenPoint(rapPos);
+            rapPos.x = Mathf.Clamp(rapPos.x, minXpos, maxXpos);
+            rapPos = Camera.main.ScreenToWorldPoint(rapPos);
+
+            //Update actual position
+            this.gameObject.transform.position = rapPos;
+
+            //Update velocity
+            RapierVelocity = newPos - oldRapPos;
+
+            //Update old mouse position
+            mPosOld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        //Resets rapier position after first update cycle, because it's prone to flying offscreen due to accident extreme touch deltas
+        if (firstCycle)
+        {
+            firstCycle = false;
+            this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
+        }
     }
 }
