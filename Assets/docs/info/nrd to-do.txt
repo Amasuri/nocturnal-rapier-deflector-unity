@@ -2,16 +2,8 @@
 ------------NOW----------------
 
 --Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; finger follow for blade control. You'll need mobile port experience for making these anyway.
-----(Done) Port actually launches and works. Yay!
-----(Done) No indication on controls in Tutorial and Lang screen yet. Make it dammit!
-----(Done) Remove touch limit on mobile only, cuz you'll also have to track Mac OS too
-----(Done) Insert re-run on mobile on enter
-----(Done) Make rapier NOT follow the finger on mobile. Instead; make it move by the same px that finger was moved (so it's not under the finger)
-----(Done) Score screen doesn't click on mobile? +It's not saved anywhere (due to writing permissions)
-----(Done) Game is beatable but doubletap for blade rotation kinda sucks. Either a) made a delay for second rotation or b) made swipe for blade rotation instead
+----(Done) A lot of steps. Check commit history if you're interested.
 ----Actually publish it lol!
-
---Game's already limiting rapier position by X, but also limit it by Y to avoid any weird position bugs & uncomfortablies
 
 --HTML5 itch port?
 

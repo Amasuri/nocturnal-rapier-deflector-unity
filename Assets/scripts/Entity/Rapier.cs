@@ -14,7 +14,7 @@ public class Rapier : MonoBehaviour
     private int minXpos => Screen.width / 2;
     private int maxXpos => Screen.width;
     private int minYpos => 0;
-    private int maxYpos => Screen.height;
+    private int maxYpos => Screen.height - 16;
 
     private Vector3 mPosOld = new Vector3();
     private TouchPhase oldTouchPhase;
@@ -92,6 +92,7 @@ public class Rapier : MonoBehaviour
         var rapPos = this.gameObject.transform.position;
         rapPos = Camera.main.WorldToScreenPoint(rapPos);
         rapPos.x = Mathf.Clamp(rapPos.x, minXpos, maxXpos);
+        rapPos.y = Mathf.Clamp(rapPos.y, minYpos, maxYpos);
         rapPos = Camera.main.ScreenToWorldPoint(rapPos);
 
         //Update actual position
@@ -116,6 +117,7 @@ public class Rapier : MonoBehaviour
         //Get new mouse position & limit it, so that it doesn't come into the witch territory
         var mPos = Input.mousePosition;
         mPos.x = Mathf.Clamp(mPos.x, minXpos, maxXpos);
+        mPos.y = Mathf.Clamp(mPos.y, minYpos, maxYpos);
 
         //Adapt mouse position to world position
         var camPos = Camera.main.ScreenToWorldPoint(new Vector3(mPos.x, mPos.y, Camera.main.nearClipPlane));
