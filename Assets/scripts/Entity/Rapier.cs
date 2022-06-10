@@ -80,9 +80,9 @@ public class Rapier : MonoBehaviour
             var mPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             var mPosDelta = mPos - mPosOld;
 
-            //Not needed as far as I tested but in case further testing will make it useful...
-            //if (Mathf.Abs(mPosDelta.x) >= 0.3f || Mathf.Abs(mPosDelta.y) >= 0.3f)
-            //    mPosDelta = new Vector3(0, 0, 0);
+            //Not needed 99% of the cases, but sometimes user can graze the finger or use two, and TouchPhase won't be ended, but finger will be "teleported"
+            if (Mathf.Abs(mPosDelta.x) >= 0.3f || Mathf.Abs(mPosDelta.y) >= 0.3f)
+                mPosDelta = new Vector3(0, 0, 0);
 
             //Add position delta to rapier
             this.gameObject.transform.position += mPosDelta;
