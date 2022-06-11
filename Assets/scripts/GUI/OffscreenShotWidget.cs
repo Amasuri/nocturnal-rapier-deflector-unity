@@ -22,6 +22,9 @@ public class OffscreenShotWidget : MonoBehaviour
         //Add newly polled ones to batch of projectiles above
         foreach (var p in PatternShooter.shotList)
         {
+            if (p == null)
+                continue;
+
             var screenPos = Camera.main.WorldToScreenPoint(p.position);
             if (screenPos.y > Screen.height && !offscreenProj.ContainsKey(p))
             {
@@ -45,6 +48,12 @@ public class OffscreenShotWidget : MonoBehaviour
         var pendingRemoval = new List<Transform>();
         foreach (var p in offscreenProj.Keys)
         {
+            if (p.gameObject == null || p == null)
+            {
+                pendingRemoval.Add(p);
+                continue;
+            }
+
             var screenPos = Camera.main.WorldToScreenPoint(p.position);
             if (screenPos.y < Screen.height)
                 pendingRemoval.Add(p);
