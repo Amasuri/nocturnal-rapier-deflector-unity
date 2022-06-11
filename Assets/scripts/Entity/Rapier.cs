@@ -29,8 +29,11 @@ public class Rapier : MonoBehaviour
 
         switchMode = GetComponents<AudioSource>()[0];
 
-        mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-        oldTouchPhase = Input.GetTouch(0).phase;
+        if (Input.touchCount > 0)
+        {
+            mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            oldTouchPhase = Input.GetTouch(0).phase;
+        }
 
         this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
         firstCycle = true;

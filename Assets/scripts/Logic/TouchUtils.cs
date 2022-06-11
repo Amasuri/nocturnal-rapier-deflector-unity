@@ -29,6 +29,9 @@ public class TouchUtils : MonoBehaviour
     /// </summary>
     static public bool IsDoubleTap()
     {
+        if (Input.touchCount <= 0)
+            return false;
+
         //Originally intended to be handhelds only, but i'm thinking of Mac OS port too. Need to debug that later
         //to see if Mac OS supports the same API
         bool isMobile = true;
