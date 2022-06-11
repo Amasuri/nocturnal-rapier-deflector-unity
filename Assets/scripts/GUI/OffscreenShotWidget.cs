@@ -30,10 +30,15 @@ public class OffscreenShotWidget : MonoBehaviour
             }
         }
 
-        //Sync arrow positions with their projectiles
+        //Sync arrow positions with their projectiles & update color notification (that is dependent on pos)
         foreach (var p in offscreenProj.Keys)
         {
             offscreenProj[p].position = new Vector3(p.position.x, arrowYpos, p.position.z);
+
+            var posDiff = Camera.main.WorldToScreenPoint(p.position).y - Screen.height;
+            var clrAspect = 1f - Mathf.Clamp(posDiff / Screen.height, 0, 1f);
+
+            offscreenProj[p].GetComponent<SpriteRenderer>().color = new Color(clrAspect, 0.2f + 0.05f * clrAspect, 0.2f + 0.25f * clrAspect);
         }
 
         //Poll for removal: either if key/val gets destroyed or if key pos.Y no longer above screen
@@ -46,7 +51,7 @@ public class OffscreenShotWidget : MonoBehaviour
         }
         foreach (var key in pendingRemoval)
         {
-            Destroy(offscreenProj[key].gameObject);
+            Destroy(offscreenProj[key].gameObject, 0.5f);
             offscreenProj.Remove(key);
         }
 
