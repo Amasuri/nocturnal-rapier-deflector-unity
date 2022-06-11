@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OffscreenShotWidget : MonoBehaviour
 {
-    private const float arrowYpos = 0.85f;
+    private const float arrowYpos = 0.88f;
     public Transform arrowPrefab;
 
     private Dictionary<Transform, Transform> offscreenProj;
