@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PatternShooter : MonoBehaviour
 {
+    public static List<Transform> shotList = new List<Transform>();
+
     public Transform shotPrefabSmall;
     public Transform shotPrefabNormal;
     public Transform shotPrefabBig;
@@ -84,18 +86,14 @@ public class PatternShooter : MonoBehaviour
         if(shootCooldown <= 0f)
         {
             if (currentBattleShootingPattern == BattleShootingPattern.FirstBattleEasy)
-            {
                 ActFirstBattlePattern();
-            }
             else if (currentBattleShootingPattern == BattleShootingPattern.SecondBattleMedium)
-            {
                 ActSecondBattlePattern();
-            }
             else if (currentBattleShootingPattern == BattleShootingPattern.ThirdBattleHard)
-            {
                 ActThirdBattlePattern();
-            }
         }
+
+        PollCurrentShots();
     }
 
     private void ActThirdBattlePattern()
@@ -384,5 +382,20 @@ public class PatternShooter : MonoBehaviour
 
         //Update counter for patterns
         shotsOnCurrentSmallPattern++;
+    }
+
+    private void PollCurrentShots()
+    {
+        var projList = new List<Transform>();
+        var transf = gameObject.transform;
+
+        for (int i = 0; i < transf.childCount; i++)
+        {
+            var ch = transf.GetChild(i);
+            if (ch.GetComponent<Projectile>() != null)
+                projList.Add(ch);
+        }
+
+        shotList = projList;
     }
 }

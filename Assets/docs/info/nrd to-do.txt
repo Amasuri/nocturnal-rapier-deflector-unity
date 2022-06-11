@@ -3,13 +3,17 @@
 
 --Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; finger follow for blade control. You'll need mobile port experience for making these anyway.
 ----(Done) A lot of steps. Check commit history if you're interested.
+----Look in VK for more info on double touch
 ----Actually publish it lol!
 
---HTML5 itch port?
-
---Mac/Linux port?
+--HTML5 itch port? Mac/Linux port?
 
 --When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
+
+--Add small pixel arrows above with drawpos y=0 and x=projectile.X that are drawn when there is a projectile outside screen Rect by Y. Do look up how to poll all the projectiles from prefabs (maybe on spot where they're called). Possibly add colouring to them based on their height
+
+--я бы сделал что-нибудь прикольное на переходы между экранами чтобы не чисто хуяк джамп кат в бой + на начало/конец боя что-нибудь, хотя бы какое нибудь you ain't from michigan if you ain't done this before в начало и какое-нибудь you the winner в конец
+----Enough to simply add "no shoot" variable to witch instead of stopping the whole simulation
 
 -----------LATER----------------
 
