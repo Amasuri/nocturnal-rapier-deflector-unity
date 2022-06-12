@@ -10,11 +10,11 @@
 ----можно сделать белый ободок у новой присевшей позы (просто белым делать не так эстетично, но в то же время паша прав)
 
 --я бы сделал что-нибудь прикольное на переходы между экранами чтобы не чисто хуяк джамп кат в бой + на начало/конец боя что-нибудь, хотя бы какое нибудь you ain't from michigan if you ain't done this before в начало и какое-нибудь you the winner в конец
-----Enough to simply add "no shoot" variable to witch && timer instead of stopping the whole simulation
-----Cut-ins can be borrowed & adapted from altale blacktransparent interface. 
+----(Done) Enough to simply add "no shoot" variable to witch && timer instead of stopping the whole simulation
+----(Done) Cut-ins can be borrowed & adapted from altale blacktransparent interface. 
 ----Simple one-liner: witch at top right & rapier at bottom left. One rolls, then the other rolls.
-----Portraits reused from dialogue scene. No talking animations either.
-----The whole thing is like 1-2 seconds; also make a pool of rus & eng phrases for three scenes
+----(Done) Portraits reused from dialogue scene. No talking animations either.
+----(Done) The whole thing is like 1-2 seconds; also make a pool of rus & eng phrases for three scenes
 
 -----------LATER----------------
 

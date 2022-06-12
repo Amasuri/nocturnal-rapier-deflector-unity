@@ -38,6 +38,9 @@ public class BattleControl : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (CutInOverlayController.CutInEnabled)
+            return;
+
         TimeLeftSec -= Time.deltaTime;
         if(TimeLeftSec <= 0f)
         {

@@ -82,6 +82,9 @@ public class PatternShooter : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (CutInOverlayController.CutInEnabled)
+            return;
+
         shootCooldown -= Time.deltaTime;
         if(shootCooldown <= 0f)
         {
