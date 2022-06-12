@@ -7,6 +7,8 @@ public static class TextPool
 {
     static public SceneLanguage sceneLang = SceneLanguage.Russian;
     static private Dictionary<SceneLanguage, Dictionary<SceneType, string[]>> ScenesByLanguage;
+    static private Dictionary<SceneLanguage, Dictionary<SceneType, string[]>> CutInsByLanguage;
+
     public enum SceneLanguage
     {
         English,
@@ -265,6 +267,55 @@ public static class TextPool
             }
             },
         };
+
+        CutInsByLanguage = new Dictionary<SceneLanguage, Dictionary<SceneType, string[]>>
+        {
+            //----English----
+             { SceneLanguage.English, new Dictionary<SceneType, string[]>{
+                { SceneType.First, new string[]
+                    {
+                    "R: Wait! Stop! A-agh!",
+                    "W: Take this! No trespassing!"
+                    }
+                },
+                { SceneType.Second, new string[]
+                    {
+                    "R: Can we talk??",
+                    "W: Did you call my castle stinky? Take this!"
+                    }
+                },
+                { SceneType.ThirdBoss, new string[]
+                    {
+                    "R: Fine! I accept your challenge!",
+                    "W: I won't go easy on you!"
+                    }
+                },
+             }
+             },
+
+             //----Russian----
+             { SceneLanguage.Russian, new Dictionary<SceneType, string[]>{
+                { SceneType.First, new string[]
+                    {
+                    "R: ÑPÑÄÑsÑÄÑtÑy. ÑRÑÑÑÄÑz! Ñ@Ñz!",
+                    "W: ÑPÑÄÑ|ÑÖÑâÑpÑz! No trespassing!"
+                    }
+                },
+                { SceneType.Second, new string[]
+                    {
+                    "R: ÑMÑÄÑwÑuÑÑ ÑqÑçÑÑÑé ÑÄÑqÑÉÑÖÑtÑyÑ}??",
+                    "W: Did you call my castle stinky? Take this!"
+                    }
+                },
+                { SceneType.ThirdBoss, new string[]
+                    {
+                    "R: Fine! I accept your challenge!",
+                    "W: I won't go easy on you!"
+                    }
+                },
+             }
+             }
+        };
     }
 
     static public string[] GetDialogue(SceneType type)
@@ -273,6 +324,14 @@ public static class TextPool
             return null;
 
         return ScenesByLanguage[sceneLang][type];
+    }
+
+    static public string[] GetCutInLines(SceneType type)
+    {
+        if (!CutInsByLanguage[sceneLang].ContainsKey(type))
+            return null;
+
+        return CutInsByLanguage[sceneLang][type];
     }
 
     static public void SetSceneLanguage(SceneLanguage language)

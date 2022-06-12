@@ -1,21 +1,28 @@
 
 ------------NOW----------------
 
---Make a mobile port and post to Google Play. Possible controls: double tap / tap for rotating blade; finger follow for blade control. You'll need mobile port experience for making these anyway.
+--Make a mobile port and post to Google Play.
 ----(Done) A lot of steps. Check commit history if you're interested.
-----Look in VK for more info on double touch
+----Button for sword rotation if no mouse and touch supported. for(i=0, i< input.TouchCount) --->check gettouch(i) rect box on button
+----on mobile say screenshot this score 
 ----Actually publish it lol!
 
---HTML5 itch port? Mac/Linux port?
-
---When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
+----можно сделать белый ободок у новой присевшей позы (просто белым делать не так эстетично, но в то же время паша прав)
 
 --я бы сделал что-нибудь прикольное на переходы между экранами чтобы не чисто хуяк джамп кат в бой + на начало/конец боя что-нибудь, хотя бы какое нибудь you ain't from michigan if you ain't done this before в начало и какое-нибудь you the winner в конец
-----Enough to simply add "no shoot" variable to witch instead of stopping the whole simulation
+----Enough to simply add "no shoot" variable to witch && timer instead of stopping the whole simulation
+----Cut-ins can be borrowed & adapted from altale blacktransparent interface. 
+----Simple one-liner: witch at top right & rapier at bottom left. One rolls, then the other rolls.
+----Portraits reused from dialogue scene. No talking animations either.
+----The whole thing is like 1-2 seconds; also make a pool of rus & eng phrases for three scenes
 
 -----------LATER----------------
 
 --Make a proper button to confirm selection on Lang screen that doesn't require Rus/Eng language promt
+
+--HTML5 itch port? Mac/Linux port?
+
+--When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
 
 --Maybe add some visual / sound to mouse limiter?
 --Some sound / visual when sword moves too quickly...
