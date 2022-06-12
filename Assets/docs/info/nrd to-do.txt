@@ -15,6 +15,7 @@
 ----Simple one-liner: witch at top right & rapier at bottom left. One rolls, then the other rolls.
 ----(Done) Portraits reused from dialogue scene. No talking animations either.
 ----(Done) The whole thing is like 1-2 seconds; also make a pool of rus & eng phrases for three scenes
+----It's done, but it looks funky. I'll leave this line until I'm satisfied with the aesthetics. Experiment with speed, sprites, etc...
 
 -----------LATER----------------
 

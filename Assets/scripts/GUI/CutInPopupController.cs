@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CutInPopupController : MonoBehaviour
@@ -21,10 +22,18 @@ public class CutInPopupController : MonoBehaviour
         RapierBoxArrived = false;
         WitchBoxArrived = false;
 
+        var phrases = TextPool.GetCutInLines(TextScene.CurrentSceneType);
+
         if (side == Side.RapierLeftDown)
+        {
             transform.position = new Vector3(-4, transform.position.y, transform.position.z);
+            transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = phrases[0].Remove(0, 3);
+        }
         else if (side == Side.WitchRightUp)
+        {
             transform.position = new Vector3(+4, transform.position.y, transform.position.z);
+            transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = phrases[1].Remove(0, 3);
+        }
     }
 
     // Update is called once per frame
