@@ -13,6 +13,7 @@ public class BattleControl : MonoBehaviour
     public float TimeLeftSec { get; private set; }
 
     private bool HasFinishedBattle = false;
+    static public bool HasLostCurrentBattle = false;
 
     public static float TimeLeftSecLast { get; private set; }
 
@@ -53,6 +54,11 @@ public class BattleControl : MonoBehaviour
         TimeLeftSec -= Time.deltaTime;
         if(TimeLeftSec <= 0f)
         {
+            if (ScoreCounter.GetIsPlayerWinning())
+                HasLostCurrentBattle = false;
+            else
+                HasLostCurrentBattle = true;
+
             CutInOverlayController.IsAtBattleStart = false;
             CutInOverlayController.refToCutInOverlay.SetActive(true);
             CutInOverlayController.refToCutInOverlay.GetComponent<CutInOverlayController>().Reload();
@@ -109,6 +115,7 @@ public class BattleControl : MonoBehaviour
     public void ResetTimer()
     {
         HasFinishedBattle = false;
+        HasLostCurrentBattle = false;
 
         if (CurrentBattleType == BattleType.First)
             TimeLeftSec = TimeLimitSecFirst;

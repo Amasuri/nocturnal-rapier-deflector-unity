@@ -336,16 +336,32 @@ public static class TextPool
 
     static public string[] GetCutInLinesEndBattle(bool playerLost)
     {
-        if (playerLost)
-            return new string[] {
+        if (TextPool.sceneLang == SceneLanguage.English)
+        {
+            if (playerLost)
+                return new string[] {
                 "R: Ouch! That hurts...",
                 "W: Game over for you!",
                 };
-        else
-            return new string[] {
+            else
+                return new string[] {
                 "R: Whew! What a battle.",
                 "W: Tsk. Fine! If you say so.",
                 };
+        }
+        else
+        {
+            if (playerLost)
+                return new string[] {
+                "R: „@„z! „A„€„|„„~„€...",
+                "W: „I„s„‚„p „€„{„€„~„‰„u„~„p „t„|„‘ „„„u„q„‘!",
+                };
+            else
+                return new string[] {
+                "R: „T„‡, „~„… „y „q„y„„„r„p!",
+                "W: „U„y! „V„€„‚„€„Š„€. „P„…„ƒ„„„ „q„…„t„u„„ „„€-„„„r„€„u„}„….",
+                };
+        }
     }
 
     static public void SetSceneLanguage(SceneLanguage language)

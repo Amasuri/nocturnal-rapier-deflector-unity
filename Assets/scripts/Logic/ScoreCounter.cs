@@ -24,6 +24,7 @@ public class ScoreCounter : MonoBehaviour
     static public int TotalRetries = 0;
 
     public AudioSource unsheathe;
+    private bool unsheathePlayed;
     public Sprite TookHit;
     public Sprite Normal;
 
@@ -44,14 +45,20 @@ public class ScoreCounter : MonoBehaviour
         if(entityType == EntityType.Player)
         {
             unsheathe = GetComponents<AudioSource>()[0];
-            unsheathe.Play();
+            unsheathePlayed = false;
         }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if(HitStunMsLeft > 0)
+        if (!unsheathePlayed && !CutInOverlayController.CutInEnabled)
+        {
+            unsheathe.Play();
+            unsheathePlayed = true;
+        }
+
+        if (HitStunMsLeft > 0)
         {
             HitStunMsLeft -= Time.deltaTime * 1000f;
             if (HitStunMsLeft <= 0)

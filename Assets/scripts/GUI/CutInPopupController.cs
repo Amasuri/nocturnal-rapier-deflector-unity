@@ -29,7 +29,7 @@ public class CutInPopupController : MonoBehaviour
 
         var phrases = TextPool.GetCutInLinesStartBattle(TextScene.CurrentSceneType);
         if (!CutInOverlayController.IsAtBattleStart)
-            phrases = TextPool.GetCutInLinesEndBattle(false);
+            phrases = TextPool.GetCutInLinesEndBattle(BattleControl.HasLostCurrentBattle);
 
         if (side == Side.RapierLeftDown)
         {

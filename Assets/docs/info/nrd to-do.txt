@@ -3,15 +3,10 @@
 
 --Make a mobile port and post to Google Play.
 ----(Done) A lot of steps. Check commit history if you're interested.
-----(Done) on mobile say screenshot this score 
 ----Button for sword rotation if no mouse and touch supported. for(i=0, i< input.TouchCount) --->check gettouch(i) rect box on button: (edit: nah, simple Input.MouseButton(0) works as touch perfectly)
 ----Actually publish it lol!
 
 ----можно сделать белый ободок у новой присевшей позы (просто белым делать не так эстетично, но в то же время паша прав)
-
---я бы сделал что-нибудь прикольное на конец боя, хотя бы какое нибудь you the winner в конец
-----Offset *thinnn* battle start sound until battle actually starts
-----It's done, but it looks funky. I'll leave this line until I'm satisfied with the aesthetics. Experiment with speed, sprites, etc...
 
 -----------LATER----------------
 
