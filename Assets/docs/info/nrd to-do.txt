@@ -6,6 +6,8 @@
 ----Button for sword rotation if no mouse and touch supported. for(i=0, i< input.TouchCount) --->check gettouch(i) rect box on button: (edit: nah, simple Input.MouseButton(0) works as touch perfectly)
 ----Actually publish it lol!
 
+--Make ads on title screen
+
 -----------LATER----------------
 
 --Make a proper button to confirm selection on Lang screen that doesn't require Rus/Eng language promt
