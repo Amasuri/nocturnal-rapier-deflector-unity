@@ -24,7 +24,7 @@ public class CutInOverlayController : MonoBehaviour
         if(LastPhraseTimer<=0f)
         {
             CutInEnabled = false;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
