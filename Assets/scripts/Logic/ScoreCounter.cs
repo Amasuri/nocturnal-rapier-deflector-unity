@@ -52,7 +52,7 @@ public class ScoreCounter : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!unsheathePlayed && !CutInOverlayController.CutInEnabled)
+        if (entityType == EntityType.Player && !unsheathePlayed && !CutInOverlayController.CutInEnabled)
         {
             unsheathe.Play();
             unsheathePlayed = true;
