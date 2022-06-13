@@ -133,9 +133,9 @@ TextureImporter:
       name: witch_sheet_1
       rect:
         serializedVersion: 2
-        x: 25
+        x: 24
         y: 0
-        width: 24
+        width: 26
         height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

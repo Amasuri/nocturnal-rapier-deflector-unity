@@ -163,9 +163,9 @@ TextureImporter:
       name: rapier_girl_sheet_2
       rect:
         serializedVersion: 2
-        x: 38
+        x: 37
         y: 0
-        width: 26
+        width: 28
         height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
