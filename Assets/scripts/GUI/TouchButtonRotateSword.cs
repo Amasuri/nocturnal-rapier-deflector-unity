@@ -20,8 +20,8 @@ public class TouchButtonRotateSword : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         currentTouchDelay = 0f;
 
-        //if (Input.mousePresent)
-        //    gameObject.SetActive(false);
+        if (Input.mousePresent)
+            gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,6 +44,7 @@ public class TouchButtonRotateSword : MonoBehaviour
         {
             currentTouchDelay = maxTouchDelay;
             rend.sprite = pressed;
+            Rapier.refToCurrentRapier.RotateRapier();
         }
     }
 }

@@ -7,6 +7,8 @@ public class Rapier : MonoBehaviour
     public Rigidbody2D rb;
     public AudioSource switchMode;
 
+    static public Rapier refToCurrentRapier;
+
     static public Vector3 RapierVelocity; // => new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     private Vector3 oldRapPos;
     private Vector3 newPos => this.gameObject.transform.position;
@@ -24,6 +26,8 @@ public class Rapier : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        refToCurrentRapier = gameObject.GetComponent<Rapier>();
+
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
@@ -42,11 +46,14 @@ public class Rapier : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || (TouchUtils.IsUniqueDoubleTap()))
-        {
-            this.gameObject.transform.Rotate(0, 0, 90);
-            switchMode.Play();
-        }
+        if (Input.GetKeyDown(KeyCode.W))// || (TouchUtils.IsUniqueDoubleTap())) ----> Not as convenient
+            RotateRapier();
+    }
+
+    public void RotateRapier()
+    {
+        this.gameObject.transform.Rotate(0, 0, 90);
+        switchMode.Play();
     }
 
     // High-perfomance Update
