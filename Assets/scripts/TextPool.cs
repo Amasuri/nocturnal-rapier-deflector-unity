@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class TextPool
 {
-    static public SceneLanguage sceneLang = SceneLanguage.Russian;
+    static public SceneLanguage sceneLang = SceneLanguage.English;
     static private Dictionary<SceneLanguage, Dictionary<SceneType, string[]>> ScenesByLanguage;
     static private Dictionary<SceneLanguage, Dictionary<SceneType, string[]>> CutInsByLanguage;
 
@@ -326,12 +326,26 @@ public static class TextPool
         return ScenesByLanguage[sceneLang][type];
     }
 
-    static public string[] GetCutInLines(SceneType type)
+    static public string[] GetCutInLinesStartBattle(SceneType type)
     {
         if (!CutInsByLanguage[sceneLang].ContainsKey(type))
             return null;
 
         return CutInsByLanguage[sceneLang][type];
+    }
+
+    static public string[] GetCutInLinesEndBattle(bool playerLost)
+    {
+        if (playerLost)
+            return new string[] {
+                "R: Ouch! That hurts...",
+                "W: Game over for you!",
+                };
+        else
+            return new string[] {
+                "R: Whew! What a battle.",
+                "W: Tsk. Fine! If you say so.",
+                };
     }
 
     static public void SetSceneLanguage(SceneLanguage language)

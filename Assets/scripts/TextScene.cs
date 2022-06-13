@@ -77,6 +77,7 @@ public class TextScene : MonoBehaviour
             {
                 SceneManager.LoadScene("battle");
                 SceneManager.UnloadSceneAsync("dialogue");
+                CutInOverlayController.IsAtBattleStart = true;
             }
             else if (CurrentSceneType == SceneType.PlayerLost)
             {

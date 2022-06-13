@@ -12,6 +12,8 @@ public class BattleControl : MonoBehaviour
     private const float TimeLimitSecBoss = 120;
     public float TimeLeftSec { get; private set; }
 
+    private bool HasFinishedBattle = false;
+
     public static float TimeLeftSecLast { get; private set; }
 
     public TextMeshProUGUI descTextTerminal;
@@ -38,34 +40,24 @@ public class BattleControl : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (CutInOverlayController.CutInEnabled)
+        if (CutInOverlayController.CutInEnabled && !HasFinishedBattle)
             return;
+
+        if(HasFinishedBattle)
+        {
+            if (!CutInOverlayController.CutInEnabled)
+                RememberScoreAndSwitchToDialogueScene();
+            return;
+        }
 
         TimeLeftSec -= Time.deltaTime;
         if(TimeLeftSec <= 0f)
         {
-            if(ScoreCounter.GetIsPlayerWinning())
-            {
-                ScoreCounter.RememberCurrentScores();
+            CutInOverlayController.IsAtBattleStart = false;
+            CutInOverlayController.refToCutInOverlay.SetActive(true);
+            CutInOverlayController.refToCutInOverlay.GetComponent<CutInOverlayController>().Reload();
 
-                if (TextScene.CurrentSceneType == TextPool.SceneType.First || TextScene.CurrentSceneType == TextPool.SceneType.Second || TextScene.CurrentSceneType == TextPool.SceneType.ThirdBoss)
-                    TextScene.CurrentSceneType++;
-
-                if (BattleControl.CurrentBattleType < BattleType.ThirdBoss)
-                    UpdateCurrentBattleTypeToSceneType();
-
-                SceneManager.LoadScene("dialogue");
-                SceneManager.UnloadSceneAsync("battle");
-            }
-            else
-            {
-                TextScene.CurrentSceneType = TextPool.SceneType.PlayerLost;
-
-                ScoreCounter.IncreaseRetries();
-
-                SceneManager.LoadScene("dialogue");
-                SceneManager.UnloadSceneAsync("battle");
-            }
+            HasFinishedBattle = true;
         }
 
         //Time & Score line
@@ -76,6 +68,32 @@ public class BattleControl : MonoBehaviour
         //descTextTerminal.text += string.Format("\nRatio: {0}", ScoreCounter.GetScoreRatio().ToString("0.00"));
 
         TimeLeftSecLast = TimeLeftSec;
+    }
+
+    private static void RememberScoreAndSwitchToDialogueScene()
+    {
+        if (ScoreCounter.GetIsPlayerWinning())
+        {
+            ScoreCounter.RememberCurrentScores();
+
+            if (TextScene.CurrentSceneType == TextPool.SceneType.First || TextScene.CurrentSceneType == TextPool.SceneType.Second || TextScene.CurrentSceneType == TextPool.SceneType.ThirdBoss)
+                TextScene.CurrentSceneType++;
+
+            if (BattleControl.CurrentBattleType < BattleType.ThirdBoss)
+                UpdateCurrentBattleTypeToSceneType();
+
+            SceneManager.LoadScene("dialogue");
+            SceneManager.UnloadSceneAsync("battle");
+        }
+        else
+        {
+            TextScene.CurrentSceneType = TextPool.SceneType.PlayerLost;
+
+            ScoreCounter.IncreaseRetries();
+
+            SceneManager.LoadScene("dialogue");
+            SceneManager.UnloadSceneAsync("battle");
+        }
     }
 
     private static void UpdateCurrentBattleTypeToSceneType()
@@ -90,6 +108,8 @@ public class BattleControl : MonoBehaviour
 
     public void ResetTimer()
     {
+        HasFinishedBattle = false;
+
         if (CurrentBattleType == BattleType.First)
             TimeLeftSec = TimeLimitSecFirst;
         else if (CurrentBattleType == BattleType.Second)

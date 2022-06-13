@@ -19,10 +19,17 @@ public class CutInPopupController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Reload();
+    }
+
+    public void Reload()
+    {
         RapierBoxArrived = false;
         WitchBoxArrived = false;
 
-        var phrases = TextPool.GetCutInLines(TextScene.CurrentSceneType);
+        var phrases = TextPool.GetCutInLinesStartBattle(TextScene.CurrentSceneType);
+        if (!CutInOverlayController.IsAtBattleStart)
+            phrases = TextPool.GetCutInLinesEndBattle(false);
 
         if (side == Side.RapierLeftDown)
         {
