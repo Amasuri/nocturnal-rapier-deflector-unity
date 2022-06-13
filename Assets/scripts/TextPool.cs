@@ -298,19 +298,19 @@ public static class TextPool
                 { SceneType.First, new string[]
                     {
                     "R: „P„€„s„€„t„y. „R„„„€„z! „@„z!",
-                    "W: „P„€„|„…„‰„p„z! No trespassing!"
+                    "W: „^„z! „B„‡„€„t „r„€„ƒ„„‚„u„‹„v„~. „P„€„|„…„‰„p„z!"
                     }
                 },
                 { SceneType.Second, new string[]
                     {
                     "R: „M„€„w„u„„ „q„„„„ „€„q„ƒ„…„t„y„}??",
-                    "W: Did you call my castle stinky? Take this!"
+                    "W: „S„ „~„p„x„r„p„|„p „}„€„z „x„p„}„€„{ „x„|„€„r„€„~„~„„}? „P„€„|„…„‰„p„z!!"
                     }
                 },
                 { SceneType.ThirdBoss, new string[]
                     {
-                    "R: Fine! I accept your challenge!",
-                    "W: I won't go easy on you!"
+                    "R: „L„p„t„~„€. „` „ƒ„€„s„|„p„ƒ„~„p „~„p „t„…„„|„!",
+                    "W: „` „„€„t„t„p„r„p„„„„ƒ„‘ „~„u „q„…„t„…!"
                     }
                 },
              }
