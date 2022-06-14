@@ -3,10 +3,15 @@
 
 --Make a mobile port and post to Google Play.
 ----(Done) A lot of steps. Check commit history if you're interested.
-----Button for sword rotation if no mouse and touch supported. for(i=0, i< input.TouchCount) --->check gettouch(i) rect box on button: (edit: nah, simple Input.MouseButton(0) works as touch perfectly)
 ----Actually publish it lol!
 
 --Make ads on title screen
+
+--Update tutorials because you don't have a double touch anymore, you have button now
+
+--Update visuals: buttons (lang + touch rapier) & possibly dialogue screen
+
+--fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 
 -----------LATER----------------
 
