@@ -1,21 +1,25 @@
 
 ------------NOW----------------
 
---Make a mobile port and post to Google Play.
-----(Done) A lot of steps. Check commit history if you're interested.
-----Actually publish it lol!
+--Actually publish it on Google Play lol!
 
---Make ads on title screen
+--Update tutorial text because you don't have a double touch anymore, you have button now
+----And finally, add differentiation between mouse and touch controls tutorials (depending on IsMouseAvailable)
 
---Update tutorials because you don't have a double touch anymore, you have button now
+--Update visuals: 
+----Rapier touch button is semi-ok, but could be better
+----Lang button could be re-stylized as the battle interface
+----Add trees and some details to the left part of the scene, could use some on that barren lands
+----Try to find a way to dynamically widen the dialogue pop-ups on the mobile. They look good on PC, but these edges on mobile....
 
---Update visuals: buttons (lang + touch rapier) & possibly dialogue screen
-
---fix bug with only first touch working on both sword and touch button; instead, make poll all touches
+--Make a proper button to confirm selection on Lang screen that doesn't require Rus/Eng language promt (and remove double touch)
 
 -----------LATER----------------
 
---Make a proper button to confirm selection on Lang screen that doesn't require Rus/Eng language promt
+--Make ads on title screen
+
+--fix bug with only first touch working on both sword and touch button; instead, make poll all touches
+----not critical, but nasty to fix, so imma put it later
 
 --HTML5 itch port? Mac/Linux port?
 
