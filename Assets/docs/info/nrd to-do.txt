@@ -12,6 +12,8 @@
 ----Add trees and some details to the left part of the scene, could use some on that barren lands
 ----Try to find a way to dynamically widen the dialogue pop-ups on the mobile. They look good on PC, but these edges on mobile....
 
+(adaptive UI idea: cut in three parts: icon edge, opposite edge and middle part; icon edge is drawn at ScreenToWorld(0), meanwhile opposite edge is Screen.Width - Part.Width; middle part is stretchable by changing Transform.Scale.X by the amount of (Screen.Width.X - bothEdges.X) / Middle.Width)
+
 --Make a proper button to confirm selection on Lang screen that doesn't require Rus/Eng language promt (and remove double touch)
 
 -----------LATER----------------
