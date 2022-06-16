@@ -1051,6 +1051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 679670360}
   - component: {fileID: 679670361}
+  - component: {fileID: 679670362}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1123,6 +1124,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &679670362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679670359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85d65b65b82186418ed4f6ead41b684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPart: 0
 --- !u!1 &691773204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703998095}
   - component: {fileID: 703998096}
+  - component: {fileID: 703998097}
   m_Layer: 0
   m_Name: player_1
   m_TagString: Untagged
@@ -1305,6 +1320,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &703998097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703998094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85d65b65b82186418ed4f6ead41b684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPart: 1
 --- !u!1 &726224528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 900461695}
   - component: {fileID: 900461696}
+  - component: {fileID: 900461697}
   m_Layer: 0
   m_Name: witch_1
   m_TagString: Untagged
@@ -1914,6 +1943,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &900461697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900461694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85d65b65b82186418ed4f6ead41b684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPart: 2
 --- !u!1 &1107465639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,6 +3569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1692813265}
   - component: {fileID: 1692813266}
+  - component: {fileID: 1692813267}
   m_Layer: 0
   m_Name: witch_2
   m_TagString: Untagged
@@ -3599,6 +3642,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1692813267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692813264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85d65b65b82186418ed4f6ead41b684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPart: 1
 --- !u!1 &1696230309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,6 +3665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696230310}
   - component: {fileID: 1696230311}
+  - component: {fileID: 1696230312}
   m_Layer: 0
   m_Name: witch
   m_TagString: Untagged
@@ -3681,6 +3738,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1696230312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696230309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85d65b65b82186418ed4f6ead41b684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPart: 0
 --- !u!1 &1777470119
 GameObject:
   m_ObjectHideFlags: 0
@@ -4504,6 +4574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2048575799}
   - component: {fileID: 2048575800}
+  - component: {fileID: 2048575801}
   m_Layer: 0
   m_Name: player_2
   m_TagString: Untagged
@@ -4576,6 +4647,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2048575801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048575798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85d65b65b82186418ed4f6ead41b684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPart: 2
 --- !u!1 &2056821163
 GameObject:
   m_ObjectHideFlags: 0
