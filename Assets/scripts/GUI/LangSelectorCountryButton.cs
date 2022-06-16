@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LangSelector : MonoBehaviour
+public class LangSelectorCountryButton : MonoBehaviour
 {
     public TextPool.SceneLanguage thisLanguage;
     public SpriteRenderer rend;
@@ -31,8 +31,10 @@ public class LangSelector : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) || TouchUtils.IsDoubleTap())
         {
-            SceneManager.LoadScene("dialogue");
-            SceneManager.UnloadSceneAsync("title");
+            //It's job of another button now...
+
+            //SceneManager.LoadScene("dialogue");
+            //SceneManager.UnloadSceneAsync("title");
         }
     }
 

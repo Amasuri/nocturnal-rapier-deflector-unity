@@ -8,10 +8,8 @@
 
 --Update visuals: 
 ----Rapier touch button is semi-ok, but could be better
-----Lang button could be re-stylized as the battle interface
+----(Done) Lang button could be re-stylized as the battle interface
 ----Add trees and some details to the left part of the scene, could use some on that barren lands
-
---Make a proper button to confirm selection on Lang screen that doesn't require Rus/Eng language promt (and remove double touch)
 
 -----------LATER----------------
 
