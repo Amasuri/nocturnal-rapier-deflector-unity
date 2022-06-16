@@ -9,7 +9,7 @@
 --Update visuals: 
 ----Rapier touch button is semi-ok, but could be better
 ----(Done) Lang button could be re-stylized as the battle interface
-----Add trees and some details to the left part of the scene, could use some on that barren lands
+----(Done) Add trees and some details to the left part of the scene, could use some on that barren lands
 
 -----------LATER----------------
 
