@@ -2,6 +2,7 @@
 ------------NOW----------------
 
 --Actually publish it on Google Play lol!
+----Find out how to sign the AAB file for testers
 
 --Update tutorial text because you don't have a double touch anymore, you have button now
 ----And finally, add differentiation between mouse and touch controls tutorials (depending on IsMouseAvailable)
