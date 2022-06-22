@@ -2,7 +2,7 @@
 ------------NOW----------------
 
 --Actually publish it on Google Play lol!
-----Find out how to sign the AAB file for testers
+----(Done) Find out how to sign the AAB file for testers
 
 --Update tutorial text because you don't have a double touch anymore, you have button now
 ----And finally, add differentiation between mouse and touch controls tutorials (depending on IsMouseAvailable)
@@ -15,6 +15,12 @@
 -----------LATER----------------
 
 --Make ads on title screen
+----Two variants: small banner above language change, or fullscreen banner before you enter the lang select (or both)
+----Unity ads in Project Settings -> Ads
+----Figure out how to separate two versions: paid and free, in Google Console
+----Change privacy policy https://app-privacy-policy-generator.firebaseapp.com/
+----Change Play Console settings: ads => yes I have them (and maaaaaybe something else too)
+------https://play.google.com/console/u/0/developers/6317034115179196057/app/4975878961747405980/app-content/summary
 
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
