@@ -51,6 +51,7 @@ public class LangSelectorAdvertFullscreen : MonoBehaviour, IUnityAdsLoadListener
         Debug.Log($"Error loading Ad Unit: {adUnitId} - {error.ToString()} - {message}");
 
         // Optionally execute code if the Ad Unit fails to load, such as attempting to try again.
+        LangSelectorAdvertBanner.banner.ShowBannerAd();
     }
 
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
@@ -58,6 +59,7 @@ public class LangSelectorAdvertFullscreen : MonoBehaviour, IUnityAdsLoadListener
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
 
         // Optionally execute code if the Ad Unit fails to show, such as loading another ad.
+        LangSelectorAdvertBanner.banner.ShowBannerAd();
     }
 
     public void OnUnityAdsShowStart(string adUnitId) { }

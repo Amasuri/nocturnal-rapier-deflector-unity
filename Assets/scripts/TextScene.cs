@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using static TextPool;
 
@@ -45,6 +46,9 @@ public class TextScene : MonoBehaviour
 
     private void Update()
     {
+        //In case if somehow async load postpones too much, finish ad there
+        Advertisement.Banner.Hide();
+
         //Text bug related
         if (MaxTextId <= 0)
             return;

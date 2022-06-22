@@ -12,15 +12,18 @@
 ----(Done) Lang button could be re-stylized as the battle interface
 ----(Done) Add trees and some details to the left part of the scene, could use some on that barren lands
 
------------LATER----------------
-
 --Make ads on title screen
+----It's possible to bypass ads completely if you click "select" fast enough. So add total black screen before ad and after show (or on fail, or etc...) fade into language select screen
 ----(Done) Both variants: small banner above language change + fullscreen banner before you enter the lang select
 ----(Done) Unity ads in Project Settings -> Ads
 ----Figure out how to separate two versions: paid and free, in Google Console
 ----Change privacy policy https://app-privacy-policy-generator.firebaseapp.com/
 ----Change Play Console settings: ads => yes I have them (and maaaaaybe something else too)
 ------https://play.google.com/console/u/0/developers/6317034115179196057/app/4975878961747405980/app-content/summary
+
+-----------LATER----------------
+
+
 
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
