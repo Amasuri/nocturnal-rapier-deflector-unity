@@ -22,6 +22,12 @@ public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationList
             if (!Advertisement.Banner.isLoaded)
                 LangSelectorAdvertBanner.banner.LoadBanner();
         }
+
+        if (Advertisement.isInitialized && LangSelectorAdvertFullscreen.fullscreen != null)
+        {
+            if (!LangSelectorAdvertFullscreen.Loaded)
+                LangSelectorAdvertFullscreen.fullscreen.LoadAd();
+        }
     }
 
     public void InitializeAds()

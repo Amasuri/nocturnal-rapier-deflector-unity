@@ -43,7 +43,8 @@ public class LangSelectorAdvertBanner : MonoBehaviour
     private void OnBannerLoaded()
     {
         Debug.Log("Banner loaded");
-        ShowBannerAd();
+
+        //ShowBannerAd();
     }
 
     // Implement code to execute when the load errorCallback event triggers:
@@ -55,7 +56,7 @@ public class LangSelectorAdvertBanner : MonoBehaviour
     }
 
     // Implement a method to call when the Show Banner button is clicked:
-    private void ShowBannerAd()
+    public void ShowBannerAd()
     {
         // Show the loaded Banner Ad Unit:
         Advertisement.Banner.Show(_adUnitId);
