@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class LangSelectorAcceptButton : MonoBehaviour
@@ -27,6 +28,11 @@ public class LangSelectorAcceptButton : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            LangSelectorAdvertBanner.banner.HideBannerAd();
+
+            Destroy(LangSelectorAdvertBanner.banner);
+            Destroy(LangSelectorAdvertFullscreen.fullscreen);
+
             SceneManager.LoadScene("dialogue");
             SceneManager.UnloadSceneAsync("title");
         }

@@ -15,8 +15,8 @@
 -----------LATER----------------
 
 --Make ads on title screen
-----Two variants: small banner above language change, or fullscreen banner before you enter the lang select (or both)
-----Unity ads in Project Settings -> Ads
+----(Done) Both variants: small banner above language change + fullscreen banner before you enter the lang select
+----(Done) Unity ads in Project Settings -> Ads
 ----Figure out how to separate two versions: paid and free, in Google Console
 ----Change privacy policy https://app-privacy-policy-generator.firebaseapp.com/
 ----Change Play Console settings: ads => yes I have them (and maaaaaybe something else too)

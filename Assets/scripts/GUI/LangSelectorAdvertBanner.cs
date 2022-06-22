@@ -63,7 +63,7 @@ public class LangSelectorAdvertBanner : MonoBehaviour
     }
 
     // Implement a method to call when the Hide Banner button is clicked:
-    private void HideBannerAd()
+    public void HideBannerAd()
     {
         // Hide the banner:
         Advertisement.Banner.Hide();
