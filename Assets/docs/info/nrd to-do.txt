@@ -9,11 +9,16 @@
 
 --Update visuals: 
 ----Rapier touch button is semi-ok, but could be better
+----(Done) mayyyyybeeeee widen the dialogue background for mobile phones? it's the only one "unscaled" yet; if you'll do it, then
+----Change the google play screenshots too!
+----Add some kinda 1-2x edge around dialogue portraits area. Same color as battle GUI white edges
 ----(Done) Lang button could be re-stylized as the battle interface
 ----(Done) Add trees and some details to the left part of the scene, could use some on that barren lands
 
 --Make ads on title screen
 ----It's possible to bypass ads completely if you click "select" fast enough. So add total black screen before ad and after show (or on fail, or etc...) fade into language select screen
+------Solution A: Add 3-5 second delay on that scene, so it's pitch black before it starts unrolling (you should support no-ad case to)
+------Solution B: Add another scene entirely that switches to lang select either after several seconds or on Ad fail / showing finish
 ----(Done) Both variants: small banner above language change + fullscreen banner before you enter the lang select
 ----(Done) Unity ads in Project Settings -> Ads
 ----Figure out how to separate two versions: paid and free, in Google Console
@@ -23,7 +28,7 @@
 
 -----------LATER----------------
 
-
+--Maaaaaaaaaybe add Rewarded Ad to retry screen? Like, you can only retry if you watch it (only in Free version of course)
 
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
