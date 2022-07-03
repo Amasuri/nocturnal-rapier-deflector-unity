@@ -26,6 +26,9 @@ public class LangSelectorAcceptButton : MonoBehaviour
     {
         rend.sprite = pressed;
 
+        if (ScreenFadeoutController.IsInPreLoadNow)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             LangSelectorAdvertBanner.banner.HideBannerAd();

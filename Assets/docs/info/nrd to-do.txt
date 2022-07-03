@@ -7,9 +7,6 @@
 ----Change the google play BG screenshots to wider versions!
 
 --Make ads on title screen
-----It's possible to bypass ads completely if you click "select" fast enough. So add total black screen before ad and after show (or on fail, or etc...) fade into language select screen
-------Solution A: Add 3-5 second delay on that scene, so it's pitch black before it starts unrolling (you should support no-ad case to)
-------Solution B: Add another scene entirely that switches to lang select either after several seconds or on Ad fail / showing finish
 ----Figure out how to separate two versions: paid and free, in Google Console
 ----Change privacy policy https://app-privacy-policy-generator.firebaseapp.com/
 ----Change Play Console settings: ads => yes I have them (and maaaaaybe something else too)
