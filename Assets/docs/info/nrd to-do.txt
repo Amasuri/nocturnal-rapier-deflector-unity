@@ -1,27 +1,31 @@
 
 ------------DO IT NOW----------------
 
+--Maybe add some visual / sound to mouse limiter?
+----Slight faint effect could work, or barrier hit effect like in FF IX on Iifa tree
+----Could be a "wall" to-pierce animation when the rapier is withing 25px from the edge
+
+--Some sound / visual when sword moves too quickly...
+----Sword "heating" or fainting
+----The main issue is not in effect, but how to count for quick moving; as there's no way to tell for limits of unity collision. So you'll have to experiment with it. Also refer to World Units and not pixels, because they're different from device to device
+
 --Actually publish it on Google Play lol!
+----Upload the updated AAB package
+----Once you wrap up with setting up both for Free and Paid versions, actually publish!
 
 --Figure out how to separate two versions: paid and free, in Google Console
 ----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version
 ----https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
 ----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading
 
---When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
-
 -----------LATER / POSSIBLE----------------
 
 --Trailer? Lol. I mean, it's the kind of game that's wins too much from video over the screenshots. Simple 30 sec gameplay footage, with 4-5 sec each stage + text scene and maybe a few words would be enough
+----Making the trailer itself is not hard (just record your playthrough, cut several times, blackscreens, ovar) but to make it look GOOD it'll probably take some more time; e.g. fonts, intermediary screens, etc.
+----You may go with the simplest route of just recording the gameplay and cutting it, no writings. Just one scene; cut, another scene, cut
+----Set up Youtube account and publish here. May later work as a dev vlog account
 
---Maybe add some visual / sound to mouse limiter?
-----Slight faint effect could work, or barrier hit effect like in FF IX on Iifa tree
-
---Some sound / visual when sword moves too quickly...
-----Sword "heating" or fainting
-
---Maaaaaaaaaybe add Rewarded Ad to retry screen? Like, you can only retry if you watch it (only in Free version of course)
-----The problem here is as with title screen ads: some countries may not support ads (eg Russia) && coding the engine for "try load ads for 10 seconds, but if failed, do it automatically" is a bit of a pain cuz there's no way to make gameplay smooth enough so that in worst case user won't have to wait. There's not enough API in Unity ads to check for .IsCountryAdSupported and .IsAdTypeSupportedAndShowing (e.g. Unity Mediation Banner is "showing", but in reality it's not supported) and such and such; so the workaround would always be to implement some kinda delay to have a middle ground between all the cases
+--When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
 
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
@@ -38,3 +42,6 @@
 --Rapier touch button is semi-ok, but could be better
 
 --Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >. Пока что решён костыльно присоединением пустой фразы к тексту
+
+--Maaaaaaaaaybe add Rewarded Ad to retry screen? Like, you can only retry if you watch it (only in Free version of course)
+----The problem here is as with title screen ads: some countries may not support ads (eg Russia) && coding the engine for "try load ads for 10 seconds, but if failed, do it automatically" is a bit of a pain cuz there's no way to make gameplay smooth enough so that in worst case user won't have to wait. There's not enough API in Unity ads to check for .IsCountryAdSupported and .IsAdTypeSupportedAndShowing (e.g. Unity Mediation Banner is "showing", but in reality it's not supported) and such and such; so the workaround would always be to implement some kinda delay to have a middle ground between all the cases
