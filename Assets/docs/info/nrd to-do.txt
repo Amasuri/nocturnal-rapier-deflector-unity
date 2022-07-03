@@ -1,35 +1,40 @@
 
-------------NOW----------------
+------------DO IT NOW----------------
 
 --Actually publish it on Google Play lol!
 
---Update visuals: 
-----Change the google play BG screenshots to wider versions!
+--Figure out how to separate two versions: paid and free, in Google Console
+----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version
+----https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
+----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading
 
---Make ads on title screen
-----Figure out how to separate two versions: paid and free, in Google Console
-----Change privacy policy https://app-privacy-policy-generator.firebaseapp.com/
-----Change Play Console settings: ads => yes I have them (and maaaaaybe something else too)
-------https://play.google.com/console/u/0/developers/6317034115179196057/app/4975878961747405980/app-content/summary
+--When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
 
------------LATER----------------
+-----------LATER / POSSIBLE----------------
+
+--Trailer? Lol. I mean, it's the kind of game that's wins too much from video over the screenshots. Simple 30 sec gameplay footage, with 4-5 sec each stage + text scene and maybe a few words would be enough
+
+--Maybe add some visual / sound to mouse limiter?
+----Slight faint effect could work, or barrier hit effect like in FF IX on Iifa tree
+
+--Some sound / visual when sword moves too quickly...
+----Sword "heating" or fainting
 
 --Maaaaaaaaaybe add Rewarded Ad to retry screen? Like, you can only retry if you watch it (only in Free version of course)
+----The problem here is as with title screen ads: some countries may not support ads (eg Russia) && coding the engine for "try load ads for 10 seconds, but if failed, do it automatically" is a bit of a pain cuz there's no way to make gameplay smooth enough so that in worst case user won't have to wait. There's not enough API in Unity ads to check for .IsCountryAdSupported and .IsAdTypeSupportedAndShowing (e.g. Unity Mediation Banner is "showing", but in reality it's not supported) and such and such; so the workaround would always be to implement some kinda delay to have a middle ground between all the cases
 
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
 
 --HTML5 itch port? Mac/Linux port?
+----Should be pretty easy to make an HTML5 version
 
---When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
+-----------IF YOU'RE LOOKING TO WASTE TIME----------------
 
---Maybe add some visual / sound to mouse limiter?
---Some sound / visual when sword moves too quickly...
-
---Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >. Пока что решён костыльно присоединением пустой фразы к тексту
-
---Rapier touch button is semi-ok, but could be better
+--Try to find a way to dynamically widen the dialogue pop-ups on the mobile. They look good on PC, but these edges on mobile.... (okay, this worked finely on PC, but turned out to be way harder than it seemed on mobile)
 
 --Ползунок звука и музыки? Без понятия, где его запилить, меню только под это делать не очень...
 
---Try to find a way to dynamically widen the dialogue pop-ups on the mobile. They look good on PC, but these edges on mobile.... (okay, this worked finely on PC, but turned out to be way harder than it seemed on mobile)
+--Rapier touch button is semi-ok, but could be better
+
+--Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >. Пока что решён костыльно присоединением пустой фразы к тексту
