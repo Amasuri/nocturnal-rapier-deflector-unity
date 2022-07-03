@@ -5,19 +5,25 @@ using UnityEngine.Advertisements;
 
 public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationListener
 {
-    /*[SerializeField] */private string _androidGameId = "4801407";
-    /*[SerializeField] */private string _iOSGameId = "4801406";
-    /*[SerializeField] */private bool _testMode = false;
+    private string _androidGameId = "4801407";
+    private string _iOSGameId = "4801406";
+    private bool _testMode = false;
     private string _gameId;
 
     private void Awake()
     {
+        if (!SystemInfo.operatingSystem.Contains("Android"))
+            return;
+
         InitializeAds();
     }
 
     private void Update()
     {
-        if(Advertisement.isInitialized && LangSelectorAdvertBanner.banner != null)
+        if (!SystemInfo.operatingSystem.Contains("Android"))
+            return;
+
+        if (Advertisement.isInitialized && LangSelectorAdvertBanner.banner != null)
         {
             if (!Advertisement.Banner.isLoaded)
                 LangSelectorAdvertBanner.banner.LoadBanner();
