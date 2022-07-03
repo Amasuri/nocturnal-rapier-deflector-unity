@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Rapier : MonoBehaviour
 {
+    public SpriteRenderer sprite;
     public Rigidbody2D rb;
     public AudioSource switchMode;
 
     static public Rapier refToCurrentRapier;
+
+    private bool IsNearEdge;
+    private int NearEdgeLastPx;
+    private const int NearEdgeThresholdPx = 25;
 
     static public Vector3 RapierVelocity; // => new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     private Vector3 oldRapPos;
@@ -31,6 +36,8 @@ public class Rapier : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
+        sprite = GetComponent<SpriteRenderer>();
+
         switchMode = GetComponents<AudioSource>()[0];
 
         if (Input.touchCount > 0)
@@ -39,7 +46,7 @@ public class Rapier : MonoBehaviour
             oldTouchPhase = Input.GetTouch(0).phase;
         }
 
-        this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
+        this.gameObject.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(minXpos + NearEdgeThresholdPx, 0, 0)).x, 0, this.gameObject.transform.position.z);
         firstCycle = true;
     }
 
@@ -48,6 +55,17 @@ public class Rapier : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))// || (TouchUtils.IsUniqueDoubleTap())) ----> Not as convenient
             RotateRapier();
+
+        UpdateRapierTransparency();
+    }
+
+    private void UpdateRapierTransparency()
+    {
+        var alpha = 0.1f + (1f * (float)((float)NearEdgeLastPx / (float)NearEdgeThresholdPx));
+        if (IsNearEdge)
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
+        else
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1f);
     }
 
     public void RotateRapier()
@@ -68,7 +86,7 @@ public class Rapier : MonoBehaviour
         if (firstCycle)
         {
             firstCycle = false;
-            this.gameObject.transform.position = new Vector3(0, 0, this.gameObject.transform.position.z);
+            this.gameObject.transform.position = new Vector3(Camera.main.ScreenToWorldPoint( new Vector3(minXpos + NearEdgeThresholdPx,0,0)).x, 0, this.gameObject.transform.position.z);
         }
     }
 
@@ -111,6 +129,10 @@ public class Rapier : MonoBehaviour
         //Update velocity
         RapierVelocity = newPos - oldRapPos;
 
+        //See if rapier is near the edge. Needed for a visual effect
+        IsNearEdge = Mathf.Abs(Camera.main.WorldToScreenPoint(rapPos).x - minXpos) < NearEdgeThresholdPx;
+        NearEdgeLastPx = (int)Mathf.Abs(Camera.main.WorldToScreenPoint(rapPos).x - minXpos);
+
         //Update old mouse position
         mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         oldTouchPhase = Input.GetTouch(0).phase;
@@ -134,6 +156,10 @@ public class Rapier : MonoBehaviour
 
         //Update rapier position
         this.gameObject.transform.position = new Vector3(camPos.x, camPos.y, this.gameObject.transform.position.z);
+
+        //See if rapier is near the edge. Needed for a visual effect
+        IsNearEdge = Mathf.Abs(mPos.x - minXpos) < NearEdgeThresholdPx;
+        NearEdgeLastPx = (int)Mathf.Abs(mPos.x - minXpos);
 
         //Update velocity
         RapierVelocity = newPos - oldRapPos;

@@ -1,10 +1,6 @@
 
 ------------DO IT NOW----------------
 
---Maybe add some visual / sound to mouse limiter?
-----Slight faint effect could work, or barrier hit effect like in FF IX on Iifa tree
-----Could be a "wall" to-pierce animation when the rapier is withing 25px from the edge
-
 --Some sound / visual when sword moves too quickly...
 ----Sword "heating" or fainting
 ----The main issue is not in effect, but how to count for quick moving; as there's no way to tell for limits of unity collision. So you'll have to experiment with it. Also refer to World Units and not pixels, because they're different from device to device

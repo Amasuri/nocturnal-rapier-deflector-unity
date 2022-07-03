@@ -1593,6 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1201aff1f090546b6453b77cb62876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   rb: {fileID: 779416179}
   switchMode: {fileID: 0}
 --- !u!50 &779416179
