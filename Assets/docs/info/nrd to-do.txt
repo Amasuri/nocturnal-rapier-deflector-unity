@@ -2,13 +2,8 @@
 ------------NOW----------------
 
 --Actually publish it on Google Play lol!
-----(Done) Find out how to sign the AAB file for testers
-
---Update tutorial text because you don't have a double touch anymore, you have button now
-----And finally, add differentiation between mouse and touch controls tutorials (depending on IsMouseAvailable)
 
 --Update visuals: 
-----Rapier touch button is semi-ok, but could be better
 ----Change the google play BG screenshots to wider versions!
 
 --Make ads on title screen
@@ -35,6 +30,8 @@
 --Some sound / visual when sword moves too quickly...
 
 --Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >. Пока что решён костыльно присоединением пустой фразы к тексту
+
+--Rapier touch button is semi-ok, but could be better
 
 --Ползунок звука и музыки? Без понятия, где его запилить, меню только под это делать не очень...
 

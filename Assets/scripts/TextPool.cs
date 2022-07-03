@@ -46,12 +46,22 @@ public static class TextPool
                     "R: They're throwing something at me!",
                     "R: There you go, my beloved rapier.. Let's get their attack right back at them!",
                     "R: (SHORT TUTORIAL)",
-                    "R: (You have to deflect enemy attacks to hit them using your rapier with a mouse or your finger)",
+#if UNITY_ANDROID //it's BUILD SETTINGS; technically this also includes the "debug" editor build; but PC compiled version should be different
+                    "R: (You have to deflect enemy attacks to hit them using your rapier with your finger)",
                     "R: (You have one minute to score a 3 to 1 hits ratio by deflecting attacks)",
                     "R: (Don't worry about counting, the interface already tells you if you're winning or loosing, and how much)",
-                    "R: (You can press W, or make a double tap to turn your rapier for easier deflecting)",
+                    "R: (You tap the button on bottom left to turn your rapier for easier deflecting)",
                     "R: (That's important! Certain attacks have a different angle, so it's better to act on them accordingly)",
-                    "R: (The faster you move your mouse (or finger) before the impact, the more energy is communicated to the deflected item)",
+                    "R: (The faster you move your finger before the impact, the more energy is communicated to the deflected item)",
+#else
+
+                    "R: (You have to deflect enemy attacks to hit them using your rapier with a mouse)",
+                    "R: (You have one minute to score a 3 to 1 hits ratio by deflecting attacks)",
+                    "R: (Don't worry about counting, the interface already tells you if you're winning or loosing, and how much)",
+                    "R: (You can press W to turn your rapier for easier deflecting)",
+                    "R: (That's important! Certain attacks have a different angle, so it's better to act on them accordingly)",
+                    "R: (The faster you move your mouse before the impact, the more energy is communicated to the deflected item)",
+#endif
                     "R: (But don't move too fast if you want the hit to be registered!)",
                     "R: (Move your sword gently, like a true master of the craft, unless you want your hits to backfire on you)",
                     "R: (Study witch's patterns, because she attacks differently in each battle)",
@@ -141,7 +151,11 @@ public static class TextPool
                     "R: But I can do better.",
                     "R: Let me do better.",
                     "R: Let me take my chance!",
-                    "R: (Continue? Enter or double-tap - yes, Backspace - no)",
+#if UNITY_ANDROID //it's BUILD SETTINGS; technically this also includes the "debug" editor build; but PC compiled version should be different
+                    "R: (Continue? Double-tap - yes)",
+#else
+                    "R: (Continue? Enter - yes, Backspace - no)",
+#endif
                     }
             }
             }
@@ -166,13 +180,23 @@ public static class TextPool
                     "R: „K„y„t„p„„„„ƒ„‘ „~„u„‡„€„‚„€„Š„€!",
                     "R: „S„p„{, „s„t„u „„„p„} „}„€„‘ „‚„p„„y„‚„p.. „B„‚„u„}„‘ „€„„„‚„p„w„p„„„ „p„„„p„{„y!",
                     "R: („P„@„Q„@ „R„O„B„E„S„O„B)",
-                    "R: („X„„„€„q„ „€„„„‚„p„x„y„„„ „p„„„p„{„y „r„‚„p„s„p, „t„r„y„s„p„z„„„u „}„u„‰ „}„„Š„{„€„z, „|„y„q„€ „„p„|„„ˆ„u„})",
+#if UNITY_ANDROID //it's BUILD SETTINGS; technically this also includes the "debug" editor build; but PC compiled version should be different
+                    "R: („X„„„€„q„ „€„„„‚„p„x„y„„„ „p„„„p„{„y „r„‚„p„s„p, „t„r„y„s„p„z„„„u „}„u„‰ „„p„|„„ˆ„u„})",
                     "R: („T „r„p„ƒ „u„ƒ„„„ „€„{„€„|„€ „}„y„~„…„„„, „‰„„„€„q„ „~„p„q„‚„p„„„ „ƒ„€„€„„„~„€„Š„u„~„y„u „€„‰„{„€„r 3 „{ 1)",
                     "R: („N„u „q„u„ƒ„„€„{„€„z„„„u„ƒ„ „„€ „„€„r„€„t„… „„€„t„ƒ„‰„v„„„p „€„‰„{„€„r! „Y„{„p„|„p „r„~„y„x„… „„€„{„p„w„u„„, „r„„y„s„‚„„r„p„u„„„u „|„y „r„ „y„|„y „~„u„„, „y „~„p„ƒ„{„€„|„„{„€)",
-                    "R: („N„p„w„}„y„„„u W „y„|„y „„„p„„~„y„„„u „t„r„p „‚„p„x„p, „‰„„„€„q„ „„€„r„u„‚„~„…„„„ „}„u„‰ „y „|„u„s„‰„u „€„„„‚„p„w„p„„„ „p„„„p„{„y „ƒ „t„‚„…„s„€„s„€ „…„s„|„p)",
+                    "R: („S„p„„~„y„„„u „{„~„€„„{„… „ƒ„~„y„x„… „ƒ„|„u„r„p, „‰„„„€„q„ „„€„r„u„‚„~„…„„„ „}„u„‰ „y „|„u„s„‰„u „€„„„‚„p„w„p„„„ „p„„„p„{„y „ƒ „t„‚„…„s„€„s„€ „…„s„|„p)",
                     "R: („^„„„€ „r„p„w„~„€! „K „~„u„{„€„„„€„‚„„} „p„„„p„{„p„} „~„…„w„u„~ „ƒ„r„€„z „„€„t„‡„€„t)",
-                    "R: („X„u„} „q„„ƒ„„„‚„u„u „r„ „t„r„y„s„p„u„„„u „}„„Š„{„€„z „y„|„y „„p„|„„ˆ„u„}, „„„u„} „ƒ„y„|„„~„u„u „€„„„‚„p„x„y„„„ƒ„‘ „ƒ„~„p„‚„‘„t)",
+                    "R: („X„u„} „q„„ƒ„„„‚„u„u „r„ „t„r„y„s„p„u„„„u „„p„|„„ˆ„u„}, „„„u„} „ƒ„y„|„„~„u„u „€„„„‚„p„x„y„„„ƒ„‘ „ƒ„~„p„‚„‘„t)",
                     "R: („N„€ „~„u „t„r„y„s„p„z„„„u „ƒ„|„y„Š„{„€„} „q„„ƒ„„„‚„€, „y„~„p„‰„u „…„t„p„‚ „~„u „x„p„ƒ„‰„y„„„p„u„„„ƒ„‘!)",
+#else
+                    "R: („X„„„€„q„ „€„„„‚„p„x„y„„„ „p„„„p„{„y „r„‚„p„s„p, „t„r„y„s„p„z„„„u „}„u„‰ „}„„Š„{„€„z)",
+                    "R: („T „r„p„ƒ „u„ƒ„„„ „€„{„€„|„€ „}„y„~„…„„„, „‰„„„€„q„ „~„p„q„‚„p„„„ „ƒ„€„€„„„~„€„Š„u„~„y„u „€„‰„{„€„r 3 „{ 1)",
+                    "R: („N„u „q„u„ƒ„„€„{„€„z„„„u„ƒ„ „„€ „„€„r„€„t„… „„€„t„ƒ„‰„v„„„p „€„‰„{„€„r! „Y„{„p„|„p „r„~„y„x„… „„€„{„p„w„u„„, „r„„y„s„‚„„r„p„u„„„u „|„y „r„ „y„|„y „~„u„„, „y „~„p„ƒ„{„€„|„„{„€)",
+                    "R: („N„p„w„}„y„„„u W, „‰„„„€„q„ „„€„r„u„‚„~„…„„„ „}„u„‰ „y „|„u„s„‰„u „€„„„‚„p„w„p„„„ „p„„„p„{„y „ƒ „t„‚„…„s„€„s„€ „…„s„|„p)",
+                    "R: („^„„„€ „r„p„w„~„€! „K „~„u„{„€„„„€„‚„„} „p„„„p„{„p„} „~„…„w„u„~ „ƒ„r„€„z „„€„t„‡„€„t)",
+                    "R: („X„u„} „q„„ƒ„„„‚„u„u „r„ „t„r„y„s„p„u„„„u „}„„Š„{„€„z, „„„u„} „ƒ„y„|„„~„u„u „€„„„‚„p„x„y„„„ƒ„‘ „ƒ„~„p„‚„‘„t)",
+                    "R: („N„€ „~„u „t„r„y„s„p„z„„„u „ƒ„|„y„Š„{„€„} „q„„ƒ„„„‚„€, „y„~„p„‰„u „…„t„p„‚ „~„u „x„p„ƒ„‰„y„„„p„u„„„ƒ„‘!)",
+#endif
                     "R: („D„r„y„s„p„z„„„u „}„u„‰ „p„{„{„…„‚„p„„„~„€, „{„p„{ „~„p„ƒ„„„€„‘„‹„y„z „}„p„ƒ„„„u„‚ „ƒ„r„€„u„s„€ „t„u„|„p, „u„ƒ„|„y „~„u „‡„€„„„y„„„u, „‰„„„€„q„ „r„p„Š„y „p„„„p„{„y „…„t„p„‚„y„|„y „„€ „r„p„} „w„u)",
                     "R: („I„x„…„‰„p„z„„„u „|„€„s„y„{„… „p„„„p„{„y „r„u„t„„}„, „„„p„{ „{„p„{ „€„~„p „p„„„p„{„…„u„„ „„€-„‚„p„x„~„€„}„… „r „{„p„w„t„€„} „ƒ„‚„p„w„u„~„y„y)",
                     "R: („T„t„p„‰„y!)",
@@ -261,7 +285,11 @@ public static class TextPool
                     "R: „N„€ „‘ „ƒ„„€„ƒ„€„q„~„p „~„p „q„€„|„„Š„u„u.",
                     "R: „P„€„x„r„€„|„ „}„~„u „ƒ„t„u„|„p„„„ „q„€„|„„Š„u„u.",
                     "R: „D„p„z „}„~„u „Š„p„~„ƒ!",
-                    "R: („P„‚„€„t„€„|„w„y„„„? Enter „y„|„y „t„r„€„z„~„€„z „„„„ - „t„p, Backspace - „~„u„„)",
+#if UNITY_ANDROID //it's BUILD SETTINGS; technically this also includes the "debug" editor build; but PC compiled version should be different
+                    "R: („P„‚„€„t„€„|„w„y„„„? „D„r„€„z„~„€„z „„„„ - „t„p)",
+#else
+                    "R: („P„‚„€„t„€„|„w„y„„„? Enter - „t„p, Backspace - „~„u„„)",
+#endif
                     }
             }
             }
