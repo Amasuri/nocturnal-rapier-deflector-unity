@@ -1112,6 +1112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1992635179}
   - component: {fileID: 1992635180}
+  - component: {fileID: 1992635181}
   m_Layer: 0
   m_Name: map_background
   m_TagString: Untagged
@@ -1173,7 +1174,7 @@ SpriteRenderer:
   m_SortingLayerID: 467429017
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 68b7c9f59d05ea549ab164c98641774f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1181,9 +1182,25 @@ SpriteRenderer:
   m_Size: {x: 1.92, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1992635181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992635178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7813ba6023a5c9e4a91dad7293922e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 0}
+  tutorialPicLeft: {fileID: 21300000, guid: 870bf823d7507344584baf453aa96e67, type: 3}
+  tutorialPicRight: {fileID: 21300000, guid: 5e747fd4d6a85f3409d27f966fc5915b, type: 3}
+  defaultBg: {fileID: 21300000, guid: 68b7c9f59d05ea549ab164c98641774f, type: 3}
 --- !u!1 &2071867472
 GameObject:
   m_ObjectHideFlags: 0

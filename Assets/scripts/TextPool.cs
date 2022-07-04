@@ -49,8 +49,8 @@ public static class TextPool
 #if UNITY_ANDROID //it's BUILD SETTINGS; technically this also includes the "debug" editor build; but PC compiled version should be different
                     "R: (You have to deflect enemy attacks to hit them using your rapier with your finger)",
                     "R: (You have one minute to score a 3 to 1 hits ratio by deflecting attacks)",
-                    "R: (Don't worry about counting, the interface already tells you if you're winning or loosing, and how much)",
-                    "R: (You tap the button on bottom left to turn your rapier for easier deflecting)",
+                    "R: (Don't worry about counting, the gauge below will tell if you're winning or loosing, and how much)",
+                    "R: (You can tap the left part of the screen to turn your rapier for easier deflecting)",
                     "R: (That's important! Certain attacks have a different angle, so it's better to act on them accordingly)",
                     "R: (The faster you move your finger before the impact, the more energy is communicated to the deflected item)",
 #else
@@ -184,7 +184,7 @@ public static class TextPool
                     "R: („X„„„€„q„ „€„„„‚„p„x„y„„„ „p„„„p„{„y „r„‚„p„s„p, „t„r„y„s„p„z„„„u „}„u„‰ „„p„|„„ˆ„u„})",
                     "R: („T „r„p„ƒ „u„ƒ„„„ „€„{„€„|„€ „}„y„~„…„„„, „‰„„„€„q„ „~„p„q„‚„p„„„ „ƒ„€„€„„„~„€„Š„u„~„y„u „€„‰„{„€„r 3 „{ 1)",
                     "R: („N„u „q„u„ƒ„„€„{„€„z„„„u„ƒ„ „„€ „„€„r„€„t„… „„€„t„ƒ„‰„v„„„p „€„‰„{„€„r! „Y„{„p„|„p „r„~„y„x„… „„€„{„p„w„u„„, „r„„y„s„‚„„r„p„u„„„u „|„y „r„ „y„|„y „~„u„„, „y „~„p„ƒ„{„€„|„„{„€)",
-                    "R: („S„p„„~„y„„„u „{„~„€„„{„… „ƒ„~„y„x„… „ƒ„|„u„r„p, „‰„„„€„q„ „„€„r„u„‚„~„…„„„ „}„u„‰ „y „|„u„s„‰„u „€„„„‚„p„w„p„„„ „p„„„p„{„y „ƒ „t„‚„…„s„€„s„€ „…„s„|„p)",
+                    "R: („S„p„„~„y„„„u „|„u„r„…„ „‰„p„ƒ„„„ „„{„‚„p„~„p, „‰„„„€„q„ „„€„r„u„‚„~„…„„„ „}„u„‰ „y „|„u„s„‰„u „€„„„‚„p„w„p„„„ „p„„„p„{„y „ƒ „t„‚„…„s„€„s„€ „…„s„|„p)",
                     "R: („^„„„€ „r„p„w„~„€! „K „~„u„{„€„„„€„‚„„} „p„„„p„{„p„} „~„…„w„u„~ „ƒ„r„€„z „„€„t„‡„€„t)",
                     "R: („X„u„} „q„„ƒ„„„‚„u„u „r„ „t„r„y„s„p„u„„„u „„p„|„„ˆ„u„}, „„„u„} „ƒ„y„|„„~„u„u „€„„„‚„p„x„y„„„ƒ„‘ „ƒ„~„p„‚„‘„t)",
                     "R: („N„€ „~„u „t„r„y„s„p„z„„„u „ƒ„|„y„Š„{„€„} „q„„ƒ„„„‚„€, „y„~„p„‰„u „…„t„p„‚ „~„u „x„p„ƒ„‰„y„„„p„u„„„ƒ„‘!)",

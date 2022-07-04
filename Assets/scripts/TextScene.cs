@@ -14,6 +14,11 @@ public class TextScene : MonoBehaviour
     private string FormattedLine = "";
     public static SceneType CurrentSceneType = SceneType.First;
 
+    public bool TutorialIsShowingLeftSide => CurrentTextInt >= 17 && CurrentTextInt <= 18;
+    public bool TutorialIsShowingRightSide => CurrentTextInt >= 14 && CurrentTextInt <= 16 || CurrentTextInt >= 19 && CurrentTextInt <= 21;
+
+    static public TextScene current;
+
     /// <summary>
     /// In case of other scenes, player will be able get back on track with their playthrought
     /// </summary>
@@ -39,6 +44,8 @@ public class TextScene : MonoBehaviour
 
     private void Start()
     {
+        current = this;
+
         InitNewScene(CurrentSceneType);
         textTerminal = gameObject.GetComponent<TextMeshProUGUI>();
         UpdateTextLine();
