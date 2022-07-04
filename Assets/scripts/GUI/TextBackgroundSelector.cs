@@ -19,6 +19,8 @@ public class TextBackgroundSelector : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        renderer.sprite = defaultBg;
+
 #if UNITY_ANDROID //touch controls tutorial is only relevant to touch devices. I might do same kinda tutor for mouse on PC, but idk
         if (TextScene.CurrentSceneType != TextPool.SceneType.First)
             return;
