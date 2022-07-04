@@ -7,7 +7,13 @@
 
 --Actually publish it on Google Play lol!
 ----Upload the updated AAB package
+----Silently release the itch version before the Google one (it'll be easier to sync)
 ----Once you wrap up with setting up both for Free and Paid versions, actually publish!
+----Don't forget to make Youtube video public (and include links) + make a Twitter & VK announcement!
+
+--When you release on Itch, update links in the profile and on old game page AND make repo public at
+----https://github.com/Amasuri
+----Also update the Youtube trailer link to the new itch.io version
 
 --Figure out how to separate two versions: paid and free, in Google Console
 ----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version. Reference: https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
@@ -15,13 +21,6 @@
 ----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading (it's there, but double-check later cuz I don't want to change code too much for multi-platform debug) 
 
 -----------LATER / POSSIBLE----------------
-
---Trailer? Lol. I mean, it's the kind of game that's wins too much from video over the screenshots. Simple 30 sec gameplay footage, with 4-5 sec each stage + text scene and maybe a few words would be enough
-----Making the trailer itself is not hard (just record your playthrough, cut several times, blackscreens, ovar) but to make it look GOOD it'll probably take some more time; e.g. fonts, intermediary screens, etc.
-----You may go with the simplest route of just recording the gameplay and cutting it, no writings. Just one scene; cut, another scene, cut
-----Set up Youtube account and publish here. May later work as a dev vlog account
-
---When you release on Itch, update links in the profile and on old game page AND make repo public at https://github.com/Amasuri ; also maybe pixelsynth?
 
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
@@ -34,8 +33,6 @@
 --Try to find a way to dynamically widen the dialogue pop-ups on the mobile. They look good on PC, but these edges on mobile.... (okay, this worked finely on PC, but turned out to be way harder than it seemed on mobile)
 
 --Ползунок звука и музыки? Без понятия, где его запилить, меню только под это делать не очень...
-
---Rapier touch button is semi-ok, but could be better
 
 --Странный баг, при котором обрезается последняя фраза если стоит >= макс длины, но лупится текст при >. Пока что решён костыльно присоединением пустой фразы к тексту
 
