@@ -1,17 +1,20 @@
 
 ------------DO IT NOW----------------
 
+--Switch to PC / HTML5 build and wrap it up there. I suspect you'll have to change some compression settings on sprites
+----You can also slightly modify the mobile tutorial to have W instead of tap animation (otherwise the same)
+----Fill out the page & ready to pre-publish. Should be easy since it's not Google Play and you've done it many times
+----When you release on Itch, update links in the profile and on old game page AND make repo public at
+----https://github.com/Amasuri can also add "you can compile it yourself if you want, here's the source code" in itch
+----Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
+
 --Actually publish it on Google Play lol!
-----Upload the updated AAB package
+----(Done) Upload the updated AAB package
 ----Silently release the itch version before the Google one (it'll be easier to sync)
 ----Once you wrap up with setting up both for Free and Paid versions, actually publish!
 ----Don't forget to make Youtube video public (and include links) + make a Twitter & VK (amasuri) announcement!
 ----Might upload to Google Play a screenshot with Highscore (already on the phone!) and make a #NRDscore first post && Twitter incentive post (like "hey!") so that people'd post it too!
 ----If Klaas agrees to made a video, give him a link! ;)
-
---When you release on Itch, update links in the profile and on old game page AND make repo public at
-----https://github.com/Amasuri can also add "you can compile it yourself if you want, here's the source code" in itch
-----Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
 
 --Figure out how to separate two versions: paid and free, in Google Console
 ----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version. Reference: https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
