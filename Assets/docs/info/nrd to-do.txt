@@ -10,9 +10,9 @@
 ----Once you wrap up with setting up both for Free and Paid versions, actually publish!
 
 --Figure out how to separate two versions: paid and free, in Google Console
-----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version
-----https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
-----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading
+----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version. Reference: https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
+----Paid version should have different package name & signature key (merchant account has been set up btw)
+----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading (it's there, but double-check later cuz I don't want to change code too much for multi-platform debug) 
 
 -----------LATER / POSSIBLE----------------
 

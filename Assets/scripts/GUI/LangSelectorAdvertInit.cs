@@ -10,9 +10,12 @@ public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationList
     private bool _testMode = false;
     private string _gameId;
 
+    //Internal variable for easier compilation of Free and Paid builds
+    public const bool ADS_DISABLED__BUILD_PAID = false;
+
     private void Awake()
     {
-        if (!SystemInfo.operatingSystem.Contains("Android"))
+        if (!SystemInfo.operatingSystem.Contains("Android") || ADS_DISABLED__BUILD_PAID)
             return;
 
         InitializeAds();
@@ -20,7 +23,7 @@ public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationList
 
     private void Update()
     {
-        if (!SystemInfo.operatingSystem.Contains("Android"))
+        if (!SystemInfo.operatingSystem.Contains("Android") || ADS_DISABLED__BUILD_PAID)
             return;
 
         if (Advertisement.isInitialized && LangSelectorAdvertBanner.banner != null)
