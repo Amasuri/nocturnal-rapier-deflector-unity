@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TouchButtonRotateSword : MonoBehaviour
 {
-    public SpriteRenderer rend;
+    public SpriteRenderer renderer;
 
     public Sprite normal;
     public Sprite pressed;
@@ -17,7 +17,8 @@ public class TouchButtonRotateSword : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        rend = GetComponent<SpriteRenderer>();
+        renderer = GetComponent<SpriteRenderer>();
+        renderer.enabled = false; //Currently this works the same, but instead of button, there's half of screen
         currentTouchDelay = 0f;
 
         if (Input.mousePresent)
@@ -31,7 +32,7 @@ public class TouchButtonRotateSword : MonoBehaviour
         {
             currentTouchDelay -= Time.deltaTime;
             if (currentTouchDelay <= 0f)
-                rend.sprite = normal;
+                ;//renderer.sprite = normal; //Currently this works the same, but instead of button, there's half of screen
         }
     }
 
@@ -68,7 +69,7 @@ public class TouchButtonRotateSword : MonoBehaviour
     private void PressRapierButton()
     {
         currentTouchDelay = maxTouchDelay;
-        rend.sprite = pressed;
+        ;//renderer.sprite = pressed; //Currently this works the same, but instead of button, there's half of screen
         Rapier.refToCurrentRapier.RotateRapier();
     }
 }
