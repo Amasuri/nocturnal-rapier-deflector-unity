@@ -12,7 +12,7 @@ public class Rapier : MonoBehaviour
 
     private bool IsNearEdge;
     private int NearEdgeLastPx;
-    private const int NearEdgeThresholdPx = 25;
+    private const int NearEdgeThresholdPx = 10;
 
     static public Vector3 RapierVelocity; // => new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     private Vector3 oldRapPos;
