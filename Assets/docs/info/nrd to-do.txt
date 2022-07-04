@@ -1,19 +1,17 @@
 
 ------------DO IT NOW----------------
 
---Some sound / visual when sword moves too quickly...
-----Sword "heating" or fainting
-----The main issue is not in effect, but how to count for quick moving; as there's no way to tell for limits of unity collision. So you'll have to experiment with it. Also refer to World Units and not pixels, because they're different from device to device
-
 --Actually publish it on Google Play lol!
 ----Upload the updated AAB package
 ----Silently release the itch version before the Google one (it'll be easier to sync)
 ----Once you wrap up with setting up both for Free and Paid versions, actually publish!
-----Don't forget to make Youtube video public (and include links) + make a Twitter & VK announcement!
+----Don't forget to make Youtube video public (and include links) + make a Twitter & VK (amasuri) announcement!
+----Might upload to Google Play a screenshot with Highscore (already on the phone!) and make a #NRDscore first post && Twitter incentive post (like "hey!") so that people'd post it too!
+----If Klaas agrees to made a video, give him a link! ;)
 
 --When you release on Itch, update links in the profile and on old game page AND make repo public at
-----https://github.com/Amasuri
-----Also update the Youtube trailer link to the new itch.io version
+----https://github.com/Amasuri can also add "you can compile it yourself if you want, here's the source code" in itch
+----Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
 
 --Figure out how to separate two versions: paid and free, in Google Console
 ----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version. Reference: https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
@@ -31,6 +29,11 @@
 -----------IF YOU'RE LOOKING TO WASTE TIME----------------
 
 --Try to find a way to dynamically widen the dialogue pop-ups on the mobile. They look good on PC, but these edges on mobile.... (okay, this worked finely on PC, but turned out to be way harder than it seemed on mobile)
+
+--Some sound / visual when sword moves too quickly...
+----Sword "heating" or fainting
+----The main issue is not in effect, but how to count for quick moving; as there's no way to tell for limits of unity collision. So you'll have to experiment with it. Also refer to World Units and not pixels, because they're different from device to device
+----Actually there's an effect issue too. Heating up idk (might be hard to make it look pretty), but if it'll be fainting or blickering, it'll add some confusion cuz you also have the wall effect as that. Plus idk how will it look, typically "too fast" movements are very rapid, under 0.4s, not sure if the user will notice especially if it's on mobile where there's a possibility of rapier being underneath the finger. All in all not sure if it'll work well in it's intended function of telling the user they moved too quickly. It barely happens on mobile anyway + on PC idk? Also it makes me feel like there'd be too many rapier effects at this point which is slightly distractive from the gameplay. The wall effect already somewhat is. I'll just shove it into "waste of time" category unless I envision a good solution
 
 --Ползунок звука и музыки? Без понятия, где его запилить, меню только под это делать не очень...
 
