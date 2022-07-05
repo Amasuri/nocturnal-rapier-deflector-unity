@@ -3,10 +3,11 @@
 
 --Switch to PC / HTML5 build and wrap it up there. I suspect you'll have to change some compression settings on sprites
 ----You can also slightly modify the mobile tutorial to have W instead of tap animation (otherwise the same)
-----Fill out the page & ready to pre-publish. Should be easy since it's not Google Play and you've done it many times
-----When you release on Itch, update links in the profile and on old game page AND make repo public at
-----https://github.com/Amasuri can also add "you can compile it yourself if you want, here's the source code" in itch
-----Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
+----(Done) Fill out the page & ready to pre-publish. Should be easy since it's not Google Play and you've done it many times
+----(Done) When you release on Itch, update links in the profile and on old game page AND
+---- make repo public at https://github.com/Amasuri can also add "you can compile it, here's the source code" in itch
+----(Done) Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
+----Release?
 
 --Actually publish it on Google Play lol!
 ----(Done) Upload the updated AAB package
