@@ -2,11 +2,12 @@
 ------------DO IT NOW----------------
 
 --Switch to PC / HTML5 build and wrap it up there. I suspect you'll have to change some compression settings on sprites
-----You can also slightly modify the mobile tutorial to have W instead of tap animation (otherwise the same)
+----(Done) You can also slightly modify the mobile tutorial to have W instead of tap animation (otherwise the same)
 ----(Done) Fill out the page & ready to pre-publish. Should be easy since it's not Google Play and you've done it many times
 ----(Done) When you release on Itch, update links in the profile and on old game page AND
 ---- make repo public at https://github.com/Amasuri can also add "you can compile it, here's the source code" in itch
 ----(Done) Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
+----If you finish HTML5 version, mention it in Youtube description, Itch and Twitter!
 ----Release?
 
 --Actually publish it on Google Play lol!
@@ -27,8 +28,7 @@
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
 
---HTML5 itch port? Mac/Linux port?
-----Should be pretty easy to make an HTML5 version
+--Update credits graphics, add yourself as "bad graphics" guy. ...I'd say, but deploying a new Google Play version for just that is such a painnnnnnnnnn
 
 -----------IF YOU'RE LOOKING TO WASTE TIME----------------
 

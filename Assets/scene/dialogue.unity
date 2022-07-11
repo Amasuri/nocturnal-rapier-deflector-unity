@@ -591,6 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 932556878}
   - component: {fileID: 932556879}
+  - component: {fileID: 932556880}
   m_Layer: 0
   m_Name: tutorial_bg_pressme_1
   m_TagString: Untagged
@@ -663,6 +664,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &932556880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932556877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16bfe30f480eeb408e58fd81741c005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchMeIcon: {fileID: 4604129017691783775, guid: 4bd3260d61c1a814f8b4740696bbb266, type: 3}
+  pressMeIcon: {fileID: -5146388401421127240, guid: 4bd3260d61c1a814f8b4740696bbb266, type: 3}
 --- !u!1 &1099586933
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,8 +54,34 @@ public class TextBackgroundTutorialIcon : MonoBehaviour
             renderer.enabled = false;
             rendererChild.enabled = false;
         }
-#else
-        renderer.enabled = false;
+#else //PC control manual was planned to be different but is for now the same; however that may change, hence the double
+        if (TextScene.CurrentSceneType != TextPool.SceneType.First)
+        {
+            renderer.enabled = false;
+            rendererChild.enabled = false;
+            return;
+        }
+
+        if (TextScene.current.TutorialIsShowingRightSide)
+        {
+            renderer.enabled = true;
+            rendererChild.enabled = false;
+            renderer.sprite = rapierIcon;
+            transform.position = rightPivot + new Vector3(Mathf.Cos(Time.realtimeSinceStartup * 2) / 5, Mathf.Sin(Time.realtimeSinceStartup * 2) / 20, 0);
+        }
+        else if (TextScene.current.TutorialIsShowingLeftSide)
+        {
+            renderer.enabled = true;
+            rendererChild.enabled = true;
+            renderer.sprite = touchMeIcon;
+            transform.position = leftPivot + new Vector3(0, Mathf.Cos(Time.realtimeSinceStartup * 2) / 10, 0);
+            rendererChild.transform.position = leftPivot + new Vector3(0, -0.2f, 0);
+        }
+        else
+        {
+            renderer.enabled = false;
+            rendererChild.enabled = false;
+        }
 #endif
     }
 }

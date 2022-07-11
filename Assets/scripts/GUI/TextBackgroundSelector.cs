@@ -31,6 +31,16 @@ public class TextBackgroundSelector : MonoBehaviour
             renderer.sprite = tutorialPicRight;
         else
             renderer.sprite = defaultBg;
+#else //PC control manual was planned to be different but is for now the same; however that may change, hence the double
+        if (TextScene.CurrentSceneType != TextPool.SceneType.First)
+            return;
+
+        if (TextScene.current.TutorialIsShowingLeftSide)
+            renderer.sprite = tutorialPicLeft;
+        else if (TextScene.current.TutorialIsShowingRightSide)
+            renderer.sprite = tutorialPicRight;
+        else
+            renderer.sprite = defaultBg;
 #endif
     }
 }
