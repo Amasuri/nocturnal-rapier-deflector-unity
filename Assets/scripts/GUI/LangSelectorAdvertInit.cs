@@ -15,6 +15,9 @@ public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationList
 
     private void Awake()
     {
+#if !UNITY_ANDROID
+        return;
+#endif
         if (!SystemInfo.operatingSystem.Contains("Android") || ADS_DISABLED__BUILD_PAID)
             return;
 
@@ -23,6 +26,10 @@ public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationList
 
     private void Update()
     {
+#if !UNITY_ANDROID
+        return;
+#endif
+
         if (!SystemInfo.operatingSystem.Contains("Android") || ADS_DISABLED__BUILD_PAID)
             return;
 

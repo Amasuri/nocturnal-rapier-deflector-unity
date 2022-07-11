@@ -7,6 +7,8 @@
 ----(Done) When you release on Itch, update links in the profile and on old game page AND
 ---- make repo public at https://github.com/Amasuri can also add "you can compile it, here's the source code" in itch
 ----(Done) Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
+----(Done) Upload & Debug HTML5 version on itch
+----Upload & Debug PC version on itch
 ----If you finish HTML5 version, mention it in Youtube description, Itch and Twitter!
 ----Release?
 
