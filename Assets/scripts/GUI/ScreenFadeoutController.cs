@@ -43,6 +43,9 @@ public class ScreenFadeoutController : MonoBehaviour
         {
             PreLoadTimerNow = PreLoadTimerMax;
             IsInPreLoadNow = true;
+#if !UNITY_ANDROID
+            PreLoadTimerNow = PreLoadTimerMax / 2;
+#endif
         }
         else
         {
