@@ -42,7 +42,9 @@ public class TouchButtonRotateSword : MonoBehaviour
         if (!pressable)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        var touch = TouchUtils.GetLeftScreenTouch();
+
+        if (touch.phase == TouchPhase.Began)
         {
             PressRapierButton();
         }

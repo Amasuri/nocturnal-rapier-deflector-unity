@@ -95,7 +95,7 @@ public class Rapier : MonoBehaviour
     /// </summary>
     private void UpdateRapierPosByTouch()
     {
-        var touch = Input.GetTouch(0);
+        var touch = TouchUtils.GetRightScreenTouch();
         bool isSuddenTouch = touch.phase == TouchPhase.Began;
 
         //Don't update deltas on sudden touches
@@ -105,7 +105,7 @@ public class Rapier : MonoBehaviour
             this.oldRapPos = this.gameObject.transform.position;
 
             //Get mouse (touch) position delta
-            var mPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            var mPos = Camera.main.ScreenToWorldPoint(touch.position);
             var mPosDelta = mPos - mPosOld;
 
             //Not needed 99% of the cases, but sometimes user can graze the finger or use two, and TouchPhase won't be ended, but finger will be "teleported"
@@ -134,8 +134,8 @@ public class Rapier : MonoBehaviour
         NearEdgeLastPx = (int)Mathf.Abs(Camera.main.WorldToScreenPoint(rapPos).x - minXpos);
 
         //Update old mouse position
-        mPosOld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-        oldTouchPhase = Input.GetTouch(0).phase;
+        mPosOld = Camera.main.ScreenToWorldPoint(touch.position);
+        oldTouchPhase = touch.phase;
     }
 
     /// <summary>
