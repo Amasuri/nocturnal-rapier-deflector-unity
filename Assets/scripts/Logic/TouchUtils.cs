@@ -8,9 +8,9 @@ public class TouchUtils : MonoBehaviour
     private const float msMaxDoubleTapDelay = 0.3f;
     static private float msDoubleTapDelay;
 
-    static private bool IsXLeftPart(float x) => x < Screen.width / 2;
+    static public bool IsXLeftPart(float x) => x < Screen.width / 2;
 
-    static private bool IsXRightPart(float x) => x >= Screen.width / 2;
+    static public bool IsXRightPart(float x) => x >= Screen.width / 2;
 
     private void Start()
     {

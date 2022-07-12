@@ -27,8 +27,8 @@
 
 -----------LATER / POSSIBLE----------------
 
---fix bug with only first touch working on both sword and touch button; instead, make poll all touches
-----not critical, but nasty to fix, so imma put it later
+
+
 
 -----------IF YOU'RE LOOKING TO WASTE TIME----------------
 

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// NOTE: This used to be a button that works from collider.
+/// But! It so happened that in touch devices, here in particular it's easier to simply check for zone, rather than work with collisions
+/// (that don't account for multitouches as clearly)
+/// So don't mind the collider, it doesn't do anything (anymore)
+/// </summary>
 public class TouchButtonRotateSword : MonoBehaviour
 {
     public SpriteRenderer renderer;
@@ -28,26 +34,41 @@ public class TouchButtonRotateSword : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+#if UNITY_ANDROID
+
         if (currentTouchDelay > 0f)
         {
             currentTouchDelay -= Time.deltaTime;
             if (currentTouchDelay <= 0f)
                 ;//renderer.sprite = normal; //Currently this works the same, but instead of button, there's half of screen
         }
+
+        //all touches that both X < ScreenWidth / 2 and TouchPhase.Began
+        foreach (var touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began && TouchUtils.IsXLeftPart(touch.position.x))
+                PressRapierButton();
+        }
+#endif
     }
 
     private void OnMouseOver()
     {
-        //Currently only can process first touch on device
-        if (!pressable)
-            return;
+#if !UNITY_ANDROID
+        return;
+#endif
 
-        var touch = TouchUtils.GetLeftScreenTouch();
+        // NOTE: This used to be a button that works from collider.
+        // But! It so happened that in touch devices, here in particular it's easier to simply check for zone, rather than work with collisions
+        // (that don't account for multitouches as clearly)
+        // So don't mind the collider, it doesn't do anything (anymore)
 
-        if (touch.phase == TouchPhase.Began)
-        {
-            PressRapierButton();
-        }
+        ////all touches that both <X/2 and TouchPhase.Began
+        //foreach (var touch in Input.touches)
+        //{
+        //    if (touch.phase == TouchPhase.Began && TouchUtils.IsXLeftPart(touch.position.x))
+        //        PressRapierButton();
+        //}
     }
 
     /// <summary>
@@ -70,6 +91,9 @@ public class TouchButtonRotateSword : MonoBehaviour
 
     private void PressRapierButton()
     {
+        if (!pressable)
+            return;
+
         currentTouchDelay = maxTouchDelay;
         ;//renderer.sprite = pressed; //Currently this works the same, but instead of button, there's half of screen
         Rapier.refToCurrentRapier.RotateRapier();
