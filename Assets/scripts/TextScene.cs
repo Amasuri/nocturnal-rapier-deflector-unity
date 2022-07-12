@@ -142,7 +142,7 @@ public class TextScene : MonoBehaviour
         CorrectTextIDValue();
 
         //Wait for fade in finish
-        if (ScreenFadeoutController.IsCurrentlyFading)
+        if (ScreenFadeoutController.IsHigherThanMinAlphaNow)
             return;
 
         CurrentTextMs += Time.deltaTime * 1000;
@@ -169,7 +169,7 @@ public class TextScene : MonoBehaviour
     public CurrentActorState GetCurrentActorState()
     {
         //On the left is raw data of current line. On the right is formatted & time-encoded speech (which means, cut mid-sentence if actor is speaking)
-        if (CurrentText[CurrentTextInt].Length > FormattedLine.Length && !ScreenFadeoutController.IsCurrentlyFading)
+        if (CurrentText[CurrentTextInt].Length > FormattedLine.Length && !ScreenFadeoutController.IsHigherThanMinAlphaNow)
             return CurrentActorState.Talking;
         else
             return CurrentActorState.Normal;

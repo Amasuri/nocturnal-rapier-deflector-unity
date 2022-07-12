@@ -10,6 +10,9 @@ public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationList
     private bool _testMode = false;
     private string _gameId;
 
+    static public bool Finalized => Advertisement.isInitialized && LangSelectorAdvertFullscreen.Loaded;
+    static public bool AdSupported => SystemInfo.operatingSystem.Contains("Android");
+
     //Internal variable for easier compilation of Free and Paid builds
     public const bool ADS_DISABLED__BUILD_PAID = false;
 

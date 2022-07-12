@@ -10,7 +10,8 @@ public class ScreenFadeoutController : MonoBehaviour
     public SpriteRenderer image;
     static public ScreenFadeoutController current;
 
-    public static bool IsCurrentlyFading;
+    public bool IsAtMaxAlpha => currentAlpha == maxAlpha;
+    public static bool IsHigherThanMinAlphaNow;
     public bool IsSlower;
 
     private const float maxAlpha = 1f;
@@ -50,7 +51,7 @@ public class ScreenFadeoutController : MonoBehaviour
             PreLoadTimerNow = PreLoadTimerMax;
             IsInPreLoadNow = true;
 #if !UNITY_ANDROID
-            PreLoadTimerNow = PreLoadTimerMax / 2;
+            PreLoadTimerNow = 2f;
 #endif
         }
         else
@@ -80,7 +81,7 @@ public class ScreenFadeoutController : MonoBehaviour
         float closest = UpdateAndApproximateCurrentAlpha();
         image.color = new Color(clr.r, clr.g, clr.b, closest);
 
-        IsCurrentlyFading = closest > minAlpha;
+        IsHigherThanMinAlphaNow = closest > minAlpha;
     }
 
     private float UpdateAndApproximateCurrentAlpha()
