@@ -5,6 +5,7 @@ using UnityEngine;
 public class LoadingIcon : MonoBehaviour
 {
     public LoadingIconComponent iconComponent;
+    public SpriteRenderer rend;
 
     private const float orbShrtDiv = 5f;
     private const float orbLngDiv = 3f;
@@ -21,6 +22,8 @@ public class LoadingIcon : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        rend = GetComponent<SpriteRenderer>();
+        SetSpriteAlpha(0f);
     }
 
     // Update is called once per frame
@@ -32,6 +35,12 @@ public class LoadingIcon : MonoBehaviour
             return;
         }
 
+        SetSpriteAlpha(rend.color.a + Time.deltaTime / 1.5f);
+        MoveAndRotateIconElement();
+    }
+
+    private void MoveAndRotateIconElement()
+    {
         var t = Time.realtimeSinceStartup * 1.5f;
 
         switch (iconComponent)
@@ -57,5 +66,10 @@ public class LoadingIcon : MonoBehaviour
                 transform.position = new Vector3(Mathf.Sin(t * 2) / orbShrtDiv, -Mathf.Cos(t * 1.5f) / orbLngDiv, 0);
                 break;
         }
+    }
+
+    private void SetSpriteAlpha(float a)
+    {
+        rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, a);
     }
 }
