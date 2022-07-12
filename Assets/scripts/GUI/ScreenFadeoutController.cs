@@ -22,7 +22,7 @@ public class ScreenFadeoutController : MonoBehaviour
 
     public static bool IsOnLangSelectScreen;
 
-    private const float PreLoadTimerMax = 4f;
+    private const float PreLoadTimerMax = 6f;
     private float PreLoadTimerNow = 0f;
     public static bool IsInPreLoadNow;
 
@@ -64,9 +64,14 @@ public class ScreenFadeoutController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //No screen updates on ad
         if (Advertisement.isShowing)
+        {
+            PreLoadTimerNow = 0f;
             return;
+        }
 
+        //Don't update if in pre-load state
         if (PreLoadTimerNow > 0f)
         {
             PreLoadTimerNow -= Time.deltaTime;
@@ -77,6 +82,7 @@ public class ScreenFadeoutController : MonoBehaviour
             IsInPreLoadNow = false;
         }
 
+        //Regular update below: slowly fade out
         var clr = image.color;
         float closest = UpdateAndApproximateCurrentAlpha();
         image.color = new Color(clr.r, clr.g, clr.b, closest);
