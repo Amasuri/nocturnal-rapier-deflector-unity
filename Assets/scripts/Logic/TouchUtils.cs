@@ -8,6 +8,10 @@ public class TouchUtils : MonoBehaviour
     private const float msMaxDoubleTapDelay = 0.3f;
     static private float msDoubleTapDelay;
 
+    static private bool IsXLeftPart(float x) => x < Screen.width / 2;
+
+    static private bool IsXRightPart(float x) => x >= Screen.width / 2;
+
     private void Start()
     {
         hadDoubleTapRecently = false;
@@ -42,6 +46,32 @@ public class TouchUtils : MonoBehaviour
         }
 
         return isDoubleTap;
+    }
+
+    static public Touch GetRightScreenTouch()
+    {
+        var touches = Input.touches;
+        var defaultTouch = Input.GetTouch(0); //default
+        foreach (var t in touches)
+        {
+            if (IsXRightPart(t.position.x))
+                return t;
+        }
+
+        return defaultTouch;
+    }
+
+    static public Touch GetLeftScreenTouch()
+    {
+        var touches = Input.touches;
+        var defaultTouch = Input.GetTouch(0); //default
+        foreach (var t in touches)
+        {
+            if (IsXLeftPart(t.position.x))
+                return t;
+        }
+
+        return defaultTouch;
     }
 
     /// <summary>
