@@ -22,7 +22,7 @@ public class ScreenFadeoutController : MonoBehaviour
 
     public static bool IsOnLangSelectScreen;
 
-    private const float PreLoadTimerMax = 6f;
+    private const float PreLoadTimerMax = 7f;
     private float PreLoadTimerNow = 0f;
     public static bool IsInPreLoadNow;
 

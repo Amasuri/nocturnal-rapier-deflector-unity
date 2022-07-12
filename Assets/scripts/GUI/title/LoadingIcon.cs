@@ -6,6 +6,10 @@ public class LoadingIcon : MonoBehaviour
 {
     public LoadingIconComponent iconComponent;
 
+    private const float orbShrtDiv = 5f;
+    private const float orbLngDiv = 3f;
+    private const float rotFact = -200f;
+
     public enum LoadingIconComponent
     {
         Rapier,
@@ -33,23 +37,24 @@ public class LoadingIcon : MonoBehaviour
         switch (iconComponent)
         {
             case LoadingIconComponent.Rapier:
-                transform.Rotate(0, 0, -200f * Time.deltaTime);
-                transform.position = new Vector3(Mathf.Sin(t * 1.5f) / 13, Mathf.Cos(t * 1.5f) / 13, 0);
+                transform.Rotate(0, 0, rotFact * Time.deltaTime);
+
+                //transform.position = new Vector3(Mathf.Sin(t * 1.5f) / 13, Mathf.Cos(t * 1.5f) / 13, 0);
                 break;
 
             case LoadingIconComponent.Junk1:
-                transform.Rotate(0, 0, -200f * Time.deltaTime);
-                transform.position = new Vector3(Mathf.Sin(t * 2) / 1.5f, Mathf.Cos(t * 1.5f) / 3, 0);
+                transform.Rotate(0, 0, rotFact * Time.deltaTime);
+                transform.position = new Vector3(Mathf.Sin(t * 2) / orbLngDiv, Mathf.Cos(t * 1.5f) / orbShrtDiv, 0);
                 break;
 
             case LoadingIconComponent.Junk2:
-                transform.Rotate(0, 0, -200f * Time.deltaTime);
-                transform.position = new Vector3(-Mathf.Sin(t * 2) / 3, Mathf.Cos(t * 1.5f) / 1.5f, 0);
+                transform.Rotate(0, 0, rotFact * Time.deltaTime);
+                transform.position = new Vector3(-Mathf.Sin(t * 2) / orbShrtDiv, Mathf.Cos(t * 1.5f) / orbLngDiv, 0);
                 break;
 
             case LoadingIconComponent.Junk3:
-                transform.Rotate(0, 0, -200f * Time.deltaTime);
-                transform.position = new Vector3(Mathf.Sin(t * 2) / 3, -Mathf.Cos(t * 1.5f) / 1.5f, 0);
+                transform.Rotate(0, 0, rotFact * Time.deltaTime);
+                transform.position = new Vector3(Mathf.Sin(t * 2) / orbShrtDiv, -Mathf.Cos(t * 1.5f) / orbLngDiv, 0);
                 break;
         }
     }
