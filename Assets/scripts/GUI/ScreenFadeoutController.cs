@@ -8,11 +8,15 @@ using UnityEngine.SceneManagement;
 public class ScreenFadeoutController : MonoBehaviour
 {
     public SpriteRenderer image;
+    static public ScreenFadeoutController current;
+
     public static bool IsCurrentlyFading;
+    public bool IsSlower;
 
     private const float maxAlpha = 1f;
     private const float minAlpha = 0f;
     private const float rateAlpha = 0.4f;
+    private const float slowRateAlpha = 0.2f;
     private float currentAlpha;
 
     public static bool IsOnLangSelectScreen;
@@ -34,6 +38,8 @@ public class ScreenFadeoutController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        current = this;
+
         IsOnLangSelectScreen = SceneManager.GetActiveScene().name == "title";
 
         image = gameObject.GetComponent<SpriteRenderer>();
@@ -79,10 +85,17 @@ public class ScreenFadeoutController : MonoBehaviour
 
     private float UpdateAndApproximateCurrentAlpha()
     {
-        currentAlpha -= rateAlpha * Time.deltaTime;
+        var rateCurrent = IsSlower ? slowRateAlpha : rateAlpha;
+
+        currentAlpha -= rateCurrent * Time.deltaTime;
         if (currentAlpha < 0f)
             currentAlpha = minAlpha;
         float closest = validAlpha.OrderBy(x => Mathf.Abs(currentAlpha - x)).First();
         return closest;
+    }
+
+    public void Reset()
+    {
+        Start();
     }
 }

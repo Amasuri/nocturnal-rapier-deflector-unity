@@ -30,8 +30,6 @@
 --fix bug with only first touch working on both sword and touch button; instead, make poll all touches
 ----not critical, but nasty to fix, so imma put it later
 
---Update credits graphics, add yourself as "bad graphics" guy. ...I'd say, but deploying a new Google Play version for just that is such a painnnnnnnnnn
-
 -----------IF YOU'RE LOOKING TO WASTE TIME----------------
 
 --Try to find a way to dynamically widen the dialogue pop-ups on the mobile. They look good on PC, but these edges on mobile.... (okay, this worked finely on PC, but turned out to be way harder than it seemed on mobile)

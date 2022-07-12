@@ -28,26 +28,17 @@ public class CreditsTextController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //textStepSec -= Time.deltaTime;
-        //if (textStepSec <= 0f)
-        //{
-        //    textStepSec = textStepSecMax;
+        //var pos = transform.position;
+        //var scroll = 0.04f * Time.deltaTime;
 
-        //    var pos = transform.position;
-        //    var scroll = 0.005f;//0.02f * Time.deltaTime;
+        //if(pos.y <= 0.15f)
         //    transform.position = new Vector3(pos.x, pos.y + scroll, pos.z);
-        //}
-
-        var pos = transform.position;
-        var scroll = 0.04f * Time.deltaTime;
-
-        if(pos.y <= 0.15f)
-            transform.position = new Vector3(pos.x, pos.y + scroll, pos.z);
 
         if(Input.GetMouseButtonDown(0) && !clickedToScore)
         {
+            //transform.position = new Vector3(pos.x, originalY, pos.z);
+            ScreenFadeoutController.current.Reset();
             textTerminal.text = GetScoreTextAndWriteToScoreFile();
-            transform.position = new Vector3(pos.x, originalY, pos.z);
             clickedToScore = true;
         }
     }
@@ -56,7 +47,7 @@ public class CreditsTextController : MonoBehaviour
     {
         if (TextPool.sceneLang == TextPool.SceneLanguage.English)
             return
-            "\nCode & Concept:" +
+            "\nCode & Concept & Bad Art:" +
             "\n   @AMasumari (Twitter)" +
             "\n     or amasuri.itch.io" +
             "\n" +
@@ -87,7 +78,7 @@ public class CreditsTextController : MonoBehaviour
             "\n(Click for your score or check the score.txt if on PC)\n";
         else
             return
-            "\n„K„€„t „y „x„p„t„…„}„{„p:" +
+            "\n„K„€„t, „x„p„t„…„}„{„p „y „„|„€„‡„y„u „„y„{„ƒ„u„|„y:" +
             "\n   @AMasumari (Twitter)," +
             "\n     „|„y„q„€ amasuri.itch.io" +
             "\n" +
@@ -178,8 +169,6 @@ public class CreditsTextController : MonoBehaviour
             return
                 $"\nHighscore" +
                 $"\n" +
-                $"\n  Base score" +
-                $"\n      {baseScore}" +
                 $"\n  Stage 1" +
                 $"\n      Dealt hits: {l1wTook} * {l1wTookM}" +
                 $"\n      Recieved: {l1pTook} * {l1pTookM}" +
@@ -205,8 +194,6 @@ public class CreditsTextController : MonoBehaviour
             return
             $"\n„Q„u„x„…„|„Ž„„„p„„" +
             $"\n" +
-            $"\n  „A„p„x„€„r„„u „€„‰„{„y" +
-            $"\n      {baseScore}" +
             $"\n  „T„‚„€„r„u„~„Ž 1" +
             $"\n      „N„p„~„u„ƒ„u„~„€ „„€ „s„€„|„€„r„u „‚„p„x: {l1wTook} * {l1wTookM}" +
             $"\n      „P„€„|„…„‰„u„~„€ „„€ „s„€„|„€„r„u „‚„p„x: {l1pTook} * {l1pTookM}" +
