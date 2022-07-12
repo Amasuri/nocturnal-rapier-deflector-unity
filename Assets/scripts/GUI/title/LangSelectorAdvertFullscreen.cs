@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
 
 public class LangSelectorAdvertFullscreen : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -37,6 +38,10 @@ public class LangSelectorAdvertFullscreen : MonoBehaviour, IUnityAdsLoadListener
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Loaded = true;
+
+        //Solving the perpetual problem of ads showing on dialogue screen...
+        if (!SceneManager.GetActiveScene().name.Contains("title"))
+            return;
 
         ShowAd();
     }
