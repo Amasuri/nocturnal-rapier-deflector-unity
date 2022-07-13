@@ -14,7 +14,7 @@ public class LangSelectorAdvertInit : MonoBehaviour, IUnityAdsInitializationList
     static public bool AdSupported => SystemInfo.operatingSystem.Contains("Android");
 
     //Internal variable for easier compilation of Free and Paid builds
-    public const bool ADS_DISABLED__BUILD_PAID = false;
+    public const bool ADS_DISABLED__BUILD_PAID = true;
 
     private void Awake()
     {
