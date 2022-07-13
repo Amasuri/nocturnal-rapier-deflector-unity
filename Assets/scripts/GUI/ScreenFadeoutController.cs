@@ -23,6 +23,7 @@ public class ScreenFadeoutController : MonoBehaviour
     public static bool IsOnLangSelectScreen;
 
     private const float PreLoadTimerMax = 7f;
+    private const float PreLoadTimerMaxPaid = 4f;
     private float PreLoadTimerNow = 0f;
     public static bool IsInPreLoadNow;
 
@@ -49,6 +50,9 @@ public class ScreenFadeoutController : MonoBehaviour
         if (IsOnLangSelectScreen)
         {
             PreLoadTimerNow = PreLoadTimerMax;
+            if (LangSelectorAdvertInit.ADS_DISABLED__BUILD_PAID)
+                PreLoadTimerNow = PreLoadTimerMaxPaid;
+
             IsInPreLoadNow = true;
 #if !UNITY_ANDROID
             PreLoadTimerNow = 2f;

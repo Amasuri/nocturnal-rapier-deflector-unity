@@ -8,7 +8,7 @@
 ----(Done) Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
 ----(Done) Upload & Debug HTML5 version on itch
 ----(Done) Upload & Debug PC version on itch
-----If you finish HTML5 version, mention it in Youtube description, Itch and Twitter!
+----If you finish HTML5 version, mention it in Youtube description (done), Itch (done) and Twitter (NOT done)!
 ----Make repo public at https://github.com/Amasuri can also add "you can compile it, here's the source code" in itch
 ----Release?
 
@@ -21,9 +21,9 @@
 ----If Klaas agrees to made a video, give him a link! ;)
 
 --Figure out how to separate two versions: paid and free, in Google Console
-----Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version. Reference: https://support.google.com/googleplay/android-developer/answer/6334373#:~:text=Once%20your%20app%20has%20been%20offered%20for%20free%2C%20the%20app%20can%27t%20be%20changed%20to%20paid.
+----(Done) Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version. 
 ----Paid version should have different package name & signature key (merchant account has been set up btw)
-----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading (it's there, but double-check later cuz I don't want to change code too much for multi-platform debug) 
+----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading (it's there, but double-check later cuz I don't want to change code too much for multi-platform debug) and ALSO reduce loading animation 7f=>4-5f and remove Ad Services whatsoever; + setup all ad classes to return on first line if IS_PAID_UP 
 
 -----------LATER / POSSIBLE----------------
 
