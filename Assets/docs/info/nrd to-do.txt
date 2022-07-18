@@ -20,10 +20,6 @@
 ----Might upload to Google Play a screenshot with Highscore (already on the phone!) and make a #NRDscore first post && Twitter incentive post (like "hey!") so that people'd post it too!
 ----If Klaas agrees to made a video, give him a link! ;)
 
---Figure out how to separate two versions: paid and free, in Google Console
-----(Done) Current version is "ad" one, because it's already set up as free & you can't change it. Make a separate version. 
-----Paid version should have different package name & signature key (merchant account has been set up btw)
-----Set up an easy IS_PAID_UP bool in AdInit; if true; disable all ad loading (it's there, but double-check later cuz I don't want to change code too much for multi-platform debug) and ALSO reduce loading animation 7f=>4-5f and remove Ad Services whatsoever; + setup all ad classes to return on first line if IS_PAID_UP 
 
 -----------LATER / POSSIBLE----------------
 
