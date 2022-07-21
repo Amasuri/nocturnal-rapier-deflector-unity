@@ -1,34 +1,23 @@
 
 ------------DO IT NOW----------------
 
---Switch to PC / HTML5 build and wrap it up there. I suspect you'll have to change some compression settings on sprites
-----(Done) You can also slightly modify the mobile tutorial to have W instead of tap animation (otherwise the same)
-----(Done) Fill out the page & ready to pre-publish. Should be easy since it's not Google Play and you've done it many times
-----(Done) When you release on Itch, update links in the profile and on old game page AND
-----(Done) Also update the Youtube trailer link to the new itch.io version. And have itch io ver have the trailer
-----(Done) Upload & Debug HTML5 version on itch
-----(Done) Upload & Debug PC version on itch
-----(Done) If you finish HTML5 version, mention it in Youtube description (done), Itch (done) and Twitter (done)!
-----(Done) Tag "@itchio ? :)" (they support it!) in replies to the release page!
-----Make repo public at https://github.com/Amasuri can also add "you can compile it, here's the source code" in itch
-----(Done) Release?
 
---Actually publish it on Google Play lol!
-----(Done) Upload the updated AAB package
-----(Done) Silently release the itch version before the Google one (it'll be easier to sync)
-----(Done) Once you wrap up with setting up both for Free and Paid versions, actually publish!
-----Check if "Early Access" is gone from store page after a few hours
-----Don't forget to make Youtube video public (and include links) + make a Twitter & VK (amasuri) announcement!
-----Make a #NRDscore first post && Twitter incentive post (like "hey!") so that people'd post it too!
-----If Klaas agrees to made a video, give him a link! ;)
+--Post-release things
+----Make repo public at https://github.com/Amasuri can also add "you can compile it, here's the source code" in itch
+----make a NEW fun gameplay gif on #screenshotsaturday "game about protecting yourself from flying stuff"/"Recently finished a new fun game" and add "get the game here -> https://twitter.com/AMasumary/status/1549469124987723776?s=20 "
+----Make a #NRDscore first post && Twitter incentive post (like "hey! can you beat me?") so that people'd post it too!
 
 
 -----------LATER / POSSIBLE----------------
 
 
-
+--Set up Web/Win release on another platform (just take everything from itch)
+----Gamejolt?
+----Newgrounds?
+----Once you're done with all of them, you can make a Twitter post about it
 
 -----------IF YOU'RE LOOKING TO WASTE TIME----------------
+
 
 --Okay, turns out in some cases the score points get confusing, so if you're looking to waste time, make a score tutorial: Highlight low part of the screen (same way you do l/r highlight of controls), but explicitly say that left is how many times you hit the witch, and right is how many times the witch has hit you
 
